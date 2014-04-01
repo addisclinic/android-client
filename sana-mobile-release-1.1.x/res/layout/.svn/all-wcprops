@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/res/layout
+END
+main.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/res/layout/main.xml
+END
+row.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/res/layout/row.xml
+END
+sd_import_list.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/res/layout/sd_import_list.xml
+END
+title_author_row.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/res/layout/title_author_row.xml
+END
+camera_preview.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/res/layout/camera_preview.xml
+END
+select_diagnosis.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/res/layout/select_diagnosis.xml
+END
+pageslist_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/res/layout/pageslist_item.xml
+END
+sd_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/res/layout/sd_item.xml
+END
+procedure_runner_done.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/res/layout/procedure_runner_done.xml
+END
+procedure_list_row.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/res/layout/procedure_list_row.xml
+END

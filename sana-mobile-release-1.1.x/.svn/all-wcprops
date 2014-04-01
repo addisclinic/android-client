@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/1195/clients/android/tags/release-1.1
+END
+default.properties
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/default.properties
+END
+welcome.3gp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/welcome.3gp
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/LICENSE
+END
+CHANGELOG
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/CHANGELOG
+END
+AndroidManifest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/1195/clients/android/tags/release-1.1/AndroidManifest.xml
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/.project
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/.classpath
+END

@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db
+END
+PatientValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/PatientValidator.java
+END
+ImageProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/ImageProvider.java
+END
+EventProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/EventProvider.java
+END
+EducationResourceProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/EducationResourceProvider.java
+END
+ProcedureProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/ProcedureProvider.java
+END
+SoundProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/SoundProvider.java
+END
+ProcedureDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/ProcedureDAO.java
+END
+EncounterDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/EncounterDAO.java
+END
+MocaDB.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/MocaDB.java
+END
+SavedProcedureProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/SavedProcedureProvider.java
+END
+NotificationProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/NotificationProvider.java
+END
+NotificationMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/NotificationMessage.java
+END
+Event.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/Event.java
+END
+EventDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/EventDAO.java
+END
+PatientProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/PatientProvider.java
+END
+PatientInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/PatientInfo.java
+END
+BinaryProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/BinaryProvider.java
+END
+BinaryDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/db/BinaryDAO.java
+END

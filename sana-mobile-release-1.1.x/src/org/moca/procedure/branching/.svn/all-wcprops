@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/procedure/branching
+END
+Criteria.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/procedure/branching/Criteria.java
+END
+LogicBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/procedure/branching/LogicBase.java
+END
+LogicAnd.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/procedure/branching/LogicAnd.java
+END
+LogicNot.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/procedure/branching/LogicNot.java
+END
+Criterion.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/procedure/branching/Criterion.java
+END
+LogicOr.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/procedure/branching/LogicOr.java
+END

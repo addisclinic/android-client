@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/task
+END
+ResetDatabaseTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/task/ResetDatabaseTask.java
+END
+ImportProcedure.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/task/ImportProcedure.java
+END
+ValidationListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/task/ValidationListener.java
+END
+ClearDatabaseTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/task/ClearDatabaseTask.java
+END
+MDSSyncTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/task/MDSSyncTask.java
+END
+ImageProcessingTaskRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/task/ImageProcessingTaskRequest.java
+END
+CheckCredentialsTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/task/CheckCredentialsTask.java
+END
+PatientLookupTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/task/PatientLookupTask.java
+END
+ImageProcessingTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/task/ImageProcessingTask.java
+END
+PatientLookupListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/task/PatientLookupListener.java
+END
+ImportProcedureAll.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/task/ImportProcedureAll.java
+END

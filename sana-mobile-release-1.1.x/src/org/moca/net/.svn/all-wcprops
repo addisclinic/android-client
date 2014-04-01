@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/net
+END
+MDSInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/net/MDSInterface.java
+END
+SMSReceive.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/net/SMSReceive.java
+END
+MDSResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/net/MDSResult.java
+END
+MDSCode.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/net/MDSCode.java
+END
+MDSNotification.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/src/org/moca/net/MDSNotification.java
+END

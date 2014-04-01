@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/res/anim
+END
+slide_to_left.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/res/anim/slide_to_left.xml
+END
+slide_from_left.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/res/anim/slide_from_left.xml
+END
+slide_from_right.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/res/anim/slide_from_right.xml
+END
+slide_to_right.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/1118/clients/android/tags/release-1.1/res/anim/slide_to_right.xml
+END

@@ -1,0 +1,12 @@
+K 10
+svn:ignore
+V 107
+classes.dex
+resources.ap_
+sana-release-1.0.x.apk
+sana-client-release-1.0.x.apk
+sana-release-1.1.x.apk
+
+res
+
+END

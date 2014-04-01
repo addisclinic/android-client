@@ -1,0 +1,9 @@
+* Version 1.0
+
+Initial release
+
+* Version 1.0.1
+
+- Support internationalizations for Spanish and Mandarin Chinese.
+- Fix for a bug which causes excessive battery usage by not disabling the GPS.
+- Fix a bug where the on screen keyboard stays visible while filling out a procedure.
