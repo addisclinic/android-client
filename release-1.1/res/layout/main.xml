@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:gravity="center"
+	android:background="@drawable/main_background">
+	<ImageView android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:src="@drawable/mocap" />
+	<!-- <Button android:id="@+id/moca_main_record"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Lookup Patient Record" /> -->
+	<Button android:id="@+id/moca_main_procedure"
+		android:layout_width="240px"
+		android:layout_height="wrap_content" android:text="@string/button_main_new_encounter" />
+	<Button android:id="@+id/moca_main_transfers"
+		android:layout_width="240px"
+		android:layout_height="wrap_content"
+		android:text="@string/button_main_view_prior_encounters" />
+	<Button android:id="@+id/moca_main_notifications"
+		android:layout_width="240px"
+		android:layout_height="wrap_content"
+		android:text="@string/button_main_view_notifications" />
+</LinearLayout>

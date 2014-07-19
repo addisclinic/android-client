@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="org.moca" android:versionCode="1" android:versionName="1.1">
+	<uses-sdk android:minSdkVersion="4" android:targetSdkVersion="4"/>
+	<application android:icon="@drawable/icon"
+		android:label="@string/app_name" android:debuggable="true">
+		
+		<service android:name=".service.BackgroundUploader" 
+		         android:icon="@drawable/icon2" 
+			     android:label="@string/title_upload_service" 
+			     android:enabled="true"/>
+			 
+		<provider android:name=".db.ProcedureProvider"
+			android:authorities="org.moca.provider.Procedure"/>
+				
+		<provider android:name=".db.SavedProcedureProvider"
+			android:authorities="org.moca.provider.SavedProcedure"/>
+			
+		<provider android:name=".db.BinaryProvider"
+            android:authorities="org.moca.provider.Binary"/>
+            
+		<provider android:name=".db.ImageProvider"
+			android:authorities="org.moca.provider.Image"/>
+			
+		<provider android:name=".db.SoundProvider"
+			android:authorities="org.moca.provider.Sound"/>
+		
+		<provider android:name=".db.NotificationProvider"
+			android:authorities="org.moca.provider.Notification"/>
+			
+		<provider android:name=".db.PatientProvider"
+			android:authorities="org.moca.provider.Patient"/>
+			
+		<provider android:name=".db.EventProvider"
+			android:authorities="org.moca.provider.Event"/>
+			
+        <provider android:name=".db.EducationResourceProvider"
+            android:authorities="org.moca.provider.EducationResource"/>
+
+		<activity android:name=".activity.ProceduresList"
+			android:label="@string/title_procedures_list">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<action android:name="android.intent.action.PICK" />
+				<category
+					android:name="android.intent.category.DEFAULT" />
+				<data
+					android:mimeType="vnd.android.cursor.dir/org.moca.procedure" />
+			</intent-filter>
+			<intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/org.moca.procedure" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".activity.SavedProcedureList"
+			android:label="@string/title_savedprocedure_list">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<action android:name="android.intent.action.PICK" />
+				<category
+					android:name="android.intent.category.DEFAULT" />
+				<data
+					android:mimeType="vnd.android.cursor.dir/org.moca.savedProcedure" />
+			</intent-filter>
+			<intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/org.moca.savedProcedure" />
+            </intent-filter>
+		</activity>
+		<activity android:name=".activity.NotificationList"
+			android:label="@string/title_notifications_list">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<action android:name="android.intent.action.PICK" />
+				<category
+					android:name="android.intent.category.DEFAULT" />
+				<data
+					android:mimeType="vnd.android.cursor.dir/org.moca.notification" />
+			</intent-filter>
+			<intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/org.moca.notification" />
+            </intent-filter>
+		</activity>
+		      <activity android:name=".activity.EducationResourceList"
+                android:label="@string/title_help_list">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.PICK" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:mimeType="vnd.android.cursor.dir/org.moca.info" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/org.moca.info" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.ProcedureSdImporter">
+            <intent-filter>
+                <action android:name="org.moca.activity.IMPORT_PROCEDURE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+		<activity android:name=".activity.ProcedureRunner" 
+		          android:label="@string/title_procedure_runner">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/org.moca.procedure" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/org.moca.savedProcedure" />
+			</intent-filter>
+		</activity>
+		<activity android:name=".activity.NotificationViewer" 
+		          android:label="@string/title_notification_viewer">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/org.moca.notification" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/title_settings" android:name=".activity.settings.Settings">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/org.moca.settings" />
+			</intent-filter>
+		</activity>
+        <activity android:label="@string/title_network_settings" android:name=".activity.settings.NetworkSettings">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/org.moca.settings" />
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/title_resource_settings" android:name=".activity.settings.ResourceSettings">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/org.moca.settings" />
+            </intent-filter>
+        </activity>
+		<activity android:name=".activity.Moca"
+			android:label="@string/app_name">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category
+					android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+        <receiver android:name=".net.SMSReceive">
+            <intent-filter>
+               <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+	</application>
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.RECEIVE_SMS" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.ACCESS_PHONE_SUB_INFO" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+</manifest>
