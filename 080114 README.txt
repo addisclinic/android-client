@@ -1,0 +1,91 @@
+release-1.1
+
+//import java.util.Random;
+/**
+ * ProcedureElement which collects and displays a patient ID.
+ * <p/>
+ * <ul type="none">
+ * <li><b>Clinical Use </b> For registering and looking up patients by id.</li>
+ * <li><b>Collects </b> A patient identifier string. This class makes no guarantee
+ * of the validity with any backing emr.</li>
+ * </ul>
+ * 
+ * @author Sana Development Team
+ */
+public class PatientIdElement extends ProcedureElement implements 
+	OnClickListener 
+{
+...
+    /** {@inheritDoc} */
+    @Override
+    public String getAnswer() {
+    	//Random rnd = new Random();
+    	//int randid = 10000000 + rnd.nextInt(90000000);
+        if(!isViewActive())
+            return answer;
+        else if(et.getText().length() == 0)
+        	//return Integer.toString(randid);
+        	return "";
+    	return et.getText().toString();
+    }
+
+
+
+/**
+ * Application utilities
+ * 
+ * @author Sana Development Team
+ *
+ */
+public class MocaUtil {
+...
+    /**
+     * Loading Sana with XML-described procedures is currently hard-coded. New 
+     * files can be added or removed here.
+     */
+    public static void loadDefaultDatabase(Context ctx) {
+        insertProcedure(ctx, R.raw.abdominalpain);
+        insertProcedure(ctx, R.raw.bleedingbruising);
+        insertProcedure(ctx, R.raw.breathingdifficulty);
+        insertProcedure(ctx, R.raw.chestpain);
+        insertProcedure(ctx, R.raw.constipation);
+        insertProcedure(ctx, R.raw.cough_children);
+        insertProcedure(ctx, R.raw.cough);
+        insertProcedure(ctx, R.raw.dehydration_children);
+        insertProcedure(ctx, R.raw.depression);
+        insertProcedure(ctx, R.raw.diarrhea_children);
+        insertProcedure(ctx, R.raw.diarrhea);
+        insertProcedure(ctx, R.raw.dysuria);
+        insertProcedure(ctx, R.raw.fever_children);
+        insertProcedure(ctx, R.raw.fever);
+        insertProcedure(ctx, R.raw.findpatient);
+        insertProcedure(ctx, R.raw.followup);
+        insertProcedure(ctx, R.raw.generalhistory);
+        insertProcedure(ctx, R.raw.headache);
+        insertProcedure(ctx, R.raw.hippain);
+        insertProcedure(ctx, R.raw.kneepain);
+        insertProcedure(ctx, R.raw.nauseavomiting);
+        insertProcedure(ctx, R.raw.new_patient);
+        insertProcedure(ctx, R.raw.numbness);
+        insertProcedure(ctx, R.raw.seizure);
+        insertProcedure(ctx, R.raw.shoulderpain);
+        insertProcedure(ctx, R.raw.test_result_upload);
+        insertProcedure(ctx, R.raw.unknownsymptom);
+        insertProcedure(ctx, R.raw.weakness);
+        insertProcedure(ctx, R.raw.wristpain);
+    }
+
+
+
+/**
+ * Defaults and constants including keys for looking up user preference values.
+ * 
+ * @author Sana Dev Team
+ */
+public class Constants {
+    /* *************************************************************************
+     * Constants related to preferences
+     **************************************************************************/
+    //DEFAULT PREFERENCE VALUES
+    /** Default location of the Sana mobile Dispatch Server */
+    public static final String DEFAULT_DISPATCH_SERVER ="ec2-54-209-157-139.compute-1.amazonaws.com";

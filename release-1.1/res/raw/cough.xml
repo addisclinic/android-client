@@ -1,0 +1,66 @@
+<Procedure title="Cough" author="Addis Clinic">
+	<Page>
+        <Element type="ENTRY" id="1" concept="COUGH START" question="For how long has the patient had the cough?" answer=""/>
+        <Element type="RADIO" id="2" concept="COUGH UP THINGS" question="Is the patient able to cough up anything?" answer="" choices="Yes,No"/>
+	</Page>
+	<Page>
+        <ShowIf>
+            <Criteria type="EQUALS" id="2" value="Yes"/>
+        </ShowIf>
+        <Element type="ENTRY" id="3" concept="COUGH UP THINGS DESCRIPTION" question="What do the things the patient is able to cough up look like?" answer=""/>
+	</Page>
+    <Page>
+        <Element type="RADIO" id="4" concept="COUGH WORSE TIME" question="Is there a time of day that the cough is worse?" answer="" choices="Yes,No"/>
+        <Element type="MULTI_SELECT" id="5" concept="COUGH TRIGGERS" question="Do any of the following trigger the patient's cough? If other, please describe below." answer="" choices="Physical activity,Exposure to smoke,Hot or cold temperatures,Other"/>
+        <Element type="ENTRY" id="6" concept="OTHER" question="Other:" answer=""/>
+        <Element type="RADIO" id="7" concept="SIMILAR SYMPTOMS" question="Does anyone around the patient have similar symptoms?" answer="" choices="Yes,No"/>
+    </Page>
+    <Page>
+        <Element type="RADIO" id="8" concept="COUGH BETTER" question="Is there anything that makes the cough better?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="9" concept="COUGH BETTER MEDICINE" question="Has the patient taken anything to make the cough better?" answer="" choices="Yes,No"/>
+    </Page>
+    <Page>
+        <ShowIf>
+            <Criteria type="EQUALS" id="9" value="Yes"/>
+        </ShowIf>
+        <Element type="ENTRY" id="10" concept="COUGH BETTER DESCRIBE" question="Please describe what makes the patient's cough better:" answer=""/>
+    </Page>
+    <Page>
+        <ShowIf>
+            <Criteria type="EQUALS" id="9" value="Yes"/>
+        </ShowIf>
+        <Element type="ENTRY" id="11" concept="COUGH BETTER MEDICINE DESCRIBE" question="Please describe any medicines or herbs that the patient has taken to make the cough better:" answer=""/>
+    </Page>
+    <Page>
+        <Element type="RADIO" id="12" concept="COUGH WAKE UP" question="Does the cough wake the patient up at night?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="13" concept="SIMILAR SYMPTOM PAST" question="Has the patient had something similar before?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="14" concept="OTHER SYMPTOMS" question="Does the patient experience any other symptoms?" answer="" choices="Yes,No"/>
+    </Page>
+    <Page>
+        <ShowIf>
+            <Criteria type="EQUALS" id="13" value="Yes"/>
+        </ShowIf>
+        <Element type="ENTRY" id="15" concept="SIMILAR SYMPTOM PAST DESCRIBE" question="When did patient last have a similar symptom, and how long did it last?" answer=""/>
+    </Page>
+    <Page>
+        <ShowIf>
+            <Criteria type="EQUALS" id="14" value="Yes"/>
+        </ShowIf>
+        <Element type="ENTRY" id="16" concept="COUGH OTHER SYMPTOMS" question="Please describe any other symptoms the patient experiences with the cough:" answer=""/>
+    </Page>
+    <Page>
+        <Element type="MULTI_SELECT" id="17" concept="OTHER SYMPTOMS CHECKLIST" question="Does the patient have any other associated symptoms? Check all that apply:" answer="" choices="Fevers,Chills,Night sweats,Weight loss,Sinus congestion,Nasal discharge,Sore throat,Heartburn,Chest pain,Difficulty swallowing,Shortness of breath"/>
+        <Element type="RADIO" id="18" concept="LUNG OR HEART PROBLEMS" question="Does the patient have any lung or heart problems that they know of?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="19" concept="SMOKE" question="Does the patient smoke?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="20" concept="TAKING MEDICATIONS" question="Is the patient taking any medications?" answer="" choices="Yes,No"/>
+    </Page>
+    <Page>
+        <ShowIf>
+            <Criteria type="EQUALS" id="20" value="Yes"/>
+        </ShowIf>
+        <Element type="ENTRY" id="21" concept="MEDICATIONS LIST" question="Please list the medications the patient currently takes." answer=""/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="22" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+    </Page>
+</Procedure>

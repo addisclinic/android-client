@@ -1,0 +1,114 @@
+<Procedure title="General History" author="addisclinic">
+   <Page>
+     <Element type="ENTRY" id="1" concept="TOP SYMPTOMS" question="What are the top 5 symptoms the patient is experiencing?" answer=""/>
+   </Page>
+   <Page>
+     <Element type="RADIO" concept="HIV POSITIVE" id="2" question="Does the patient test positive for HIV?" answer="" choices="Yes,No"/> 
+   </Page>
+   <Page>
+     <ShowIf>
+       <Criteria type="EQUALS" id="2" value="Yes"/>
+     </ShowIf>
+     <Element type="ENTRY" id="3" concept="DATE HIV POSITIVE" question="When was the patient found to be HIV positive" answer=""/>
+  </Page>
+  <Page>
+     <ShowIf>
+       <Criteria type="EQUALS" id="2" value="Yes"/>
+     </ShowIf>
+     <Element type="ENTRY" id="4" concept="CD4 COUNT PATIENT" question="What is the patient's CD4+ count?" answer=""/>
+     <Element type="ENTRY" id="5" concept="CD4 COUNT DATE" question="When was the CD4+ count last tested?" answer=""/>
+     <Element type="ENTRY" id="6" concept="VIRAL LOAD PATIENT" question="What is the patient's viral load?" answer=""/>
+     <Element type="ENTRY" id="7" concept="VIRAL LOAD DATE" question="When was the patient's viral load last tested?" answer=""/>
+  </Page>
+  <Page>
+     <ShowIf>
+       <Criteria type="EQUALS" id="2" value="Yes"/>
+     </ShowIf>
+     <Element type="MULTI_SELECT" concept="HIV COMPLICATIONS" id="8" question="Check all that apply:" answer="" choices="Rashes,Diarrhea,Seizures,Pneumonia,Other"/>
+     <Element type="ENTRY" id="9" concept="OTHER COMPLICATIONS" question="If Other: What are the patient's other HIV-related complications?" answer=""/>
+  </Page>
+  <Page>
+     <ShowIf>
+       <Criteria type="EQUALS" id="2" value="Yes"/>
+     </ShowIf>
+     <Element type="RADIO" concept="TAKING HIV MEDICATIONS" id="10" question="Is the patient taking any HIV medications?" answer="" choices="Yes,No"/> 
+  </Page>
+  <Page>
+     <ShowIf>
+       <and>
+       <Criteria type="EQUALS" id="2" value="Yes"/>
+       <Criteria type="EQUALS" id="10" value="Yes"/>
+       </and>
+     </ShowIf>
+     <Element type="ENTRY" id="11" concept="HIV MEDICATIONS" question="If Other: What HIV medications is the patient taking?" answer=""/>
+     <Element type="ENTRY" id="12" concept="HIV MEDICATIONS LENGTH" question="How long has the patient been taking these medications?" answer=""/>
+     <Element type="RADIO" concept="HIV MEDICATIONS FORGET" id="13" question="Does the patient ever forget to take his/her HIV medications?" answer="" choices="Yes,No"/> 
+  </Page>
+  <Page>
+     <Element type="RADIO" concept="TB POSITIVE" id="14" question="Does the patient have tuberculosis?" answer="" choices="Yes,Previously,No"/> 
+  </Page>
+  <Page>
+     <ShowIf>
+      <or>
+        <Criteria type="EQUALS" id="14" value="Yes"/>
+        <Criteria type="EQUALS" id="14" value="Previously"/>
+      </or>
+     </ShowIf>
+     <Element type="ENTRY" id="15" concept="TB DATE" question="When did the patient have tuberculosis?" answer=""/>
+  </Page>
+  <Page>
+     <ShowIf>
+      <or>
+        <Criteria type="EQUALS" id="14" value="Yes"/>
+        <Criteria type="EQUALS" id="14" value="Previously"/>
+      </or>
+     </ShowIf>
+     <Element type="RADIO" id="16" concept="TB TREATMENT" question="Was the patient treated for tuberculosis?" answer="" choices="Yes,No"/>
+   </Page>
+   <Page>
+     <ShowIf>
+       <Criteria type="EQUALS" id="16" value="Yes"/>
+     </ShowIf>
+    <Element type="ENTRY" id="17" concept="TB MEDICATIONS" question="What TB medication was the patient treated with?" answer=""/>
+    <Element type="ENTRY" id="18" concept="TB MEDICATIONS LENGTH" question="How long was the patient treated with this medication?" answer=""/>
+  </Page>
+  <Page>
+     <Element type="RADIO" id="19" concept="LOSING WEIGHT" question="Is the patient losing weight?" answer="" choices="Yes,No"/>
+  </Page>
+  <Page>
+     <ShowIf>
+       <Criteria type="EQUALS" id="19" value="Yes"/>
+     </ShowIf>
+     <Element type="ENTRY" id="20" concept="DAILY FOOD INTAKE" question="How much food is the patient eating each day?" answer=""/> 
+  </Page>
+  <Page>
+     <Element type="RADIO" id="21" concept="TAKING MEDICATIONS" question="Is the patient taking any medications?" answer="" choices="Yes,No"/>
+  </Page>
+  <Page>
+     <ShowIf>
+         <Criteria type="EQUALS" id="21" value="Yes"/>
+     </ShowIf>
+   <Element type="ENTRY" id="22" concept="MEDICATIONS LIST" question="Please list the medications the patient currently takes." answer=""/>
+   <Element type="ENTRY" id="23" concept="MEDICATIONS FREQUENCY" question="How often?" answer=""/>
+   <Element type="ENTRY" id="24" concept="MEDICATIONS LENGTH" question="How long has the patient been taking these medications?" answer=""/>
+  </Page>
+  <Page>
+     <Element type="RADIO" id="25" concept="HAVE MEDICATIONS ALLERGIES" question="Is the patient allergic to any medications?" answer="" choices="Yes,No"/>
+  </Page>
+  <Page>
+    <ShowIf>
+      <Criteria type="EQUALS" id="25" value="Yes"/>
+    </ShowIf>
+    <Element type="ENTRY" id="26" concept="MEDICATIONS ALLERGIES" question="Which medications are the patient allergic to?" answer=""/>
+    <Element type="MULTI_SELECT" concept="MEDICATIONS SIDEEFFECTS" id="27" question="Check all that apply:" answer="" choices="Rashes,Throat Itching,Difficulty Breathing,Other"/>
+    <Element type="ENTRY" id="27" concept="OTHER SIDEEFFECTS" question="If Other: What other side effects does the patient experience" answer=""/>
+  </Page>
+  <Page>
+    <Element type="ENTRY" concept="CHILDREN" id="28" question="How many children does the patient have?" answer=""/> 
+    <Element type="ENTRY" concept="MARRIAGE STATUS" id="29" question="Is the patient married?" answer=""/> 
+    <Element type="ENTRY" concept="HOUSEHOLD SIZE" id="30" question="How many people live in the patient's home?" answer=""/> 
+  </Page>
+  <Page>
+    <Element type="ENTRY" id="31" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+  </Page>
+</Procedure>

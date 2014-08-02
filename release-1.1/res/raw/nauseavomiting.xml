@@ -1,0 +1,19 @@
+<Procedure title="Nausea/Vomiting" author="addisclinic">
+  <Page>
+    <Element type="MULTI_SELECT" id="1" concept="VOMIT CONTENT" question="What is the patient vomiting?" answer="" choices="Foods,Liquids,Bile,Blood,Other"/>
+    <Element type="ENTRY" concept="VOMIT APPEARANCE" id="2" question="What does the vomit look like?" answer=""/>
+    <Element type="RADIO" id="3" concept="VOMIT FREQUENCY" question="Is the patient able to keep anything down?" answer="" choices="Yes,No"/>
+  </Page>
+  <Page>
+    <Element type="MULTI_SELECT" id="4" concept="OTHER SYMPTOMS" question="Does the patient experience any other symptoms?" answer="" choices="Fever,Diarrhea,Constipation,Abdominal Pain,Headache,Skin Changes,Yellow Eyes"/>
+    <Element type="RADIO" id="5" concept="URINATION NORMAL" question="Is the patient urinating normally?" answer="" choices="Yes,No"/>
+  </Page>
+  <Page> 
+    <Element type="RADIO" id="6" concept="NEW MEDICATIONS" question="Has the patient started any new medications recently?" answer="" choices="Yes,No"/>
+    <Element type="RADIO" id="7" concept="SIMILAR SYMPTOMS" question="Does anyone around the patient have similar symptoms?" answer="" choices="Yes,No"/>
+    <Element type="RADIO" id="8" concept="PRIOR ABDOMINAL SURGERY" question="Has the patient had any prior abdominal surgery?" answer="" choices="Yes,No"/>
+  </Page>
+  <Page>
+    <Element type="ENTRY" id="9" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+  </Page>
+</Procedure>

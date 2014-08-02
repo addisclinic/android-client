@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import java.util.Random;
 /**
  * ProcedureElement which collects and displays a patient ID.
  * <p/>
@@ -100,11 +101,14 @@ public class PatientIdElement extends ProcedureElement implements
     /** {@inheritDoc} */
     @Override
     public String getAnswer() {
+    	Random rnd = new Random();
+    	int randid = 10000000 + rnd.nextInt(90000000);
         if(!isViewActive())
             return answer;
         else if(et.getText().length() == 0)
-            return "";
-        return et.getText().toString();
+        	return Integer.toString(randid);
+        	//return "";
+    	return et.getText().toString();
     }
 
     /** {@inheritDoc} */

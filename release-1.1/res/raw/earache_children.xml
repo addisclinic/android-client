@@ -1,0 +1,41 @@
+<Procedure title="Earache (children)" author="Addis Clinic">
+	<Page>
+		<Element type="ENTRY" id="1" concept="CHILD FEELING DESCRIPTION" question="Please describe how the child is feeling." answer=""/>
+		<Element type="RADIO" concept="CHILD WARM" id="2" question="Does the child feel warm to the touch or have they felt warm to touch?" answer="" choices="Yes,No"/>
+		<Element type="MULTI_SELECT" concept="CHILD OTHER SYMPTOMS" id="3" question="Is the child experiencing any other symptoms? If other, describe below." answer="" choices="runny nose,cough,pain,other"/>
+		<Element type="ENTRY" id="4" concept="OTHER" question="Other:" answer=""/>
+	</Page>
+	<Page>
+    	<ShowIf>
+    		<Criteria type="EQUALS" id="4" value="pain"/>
+    	</ShowIf>
+    		<Element type="ENTRY" id="5" concept="CHILD PAIN LOCATION" question="Please describe where the pain is located." answer=""/>
+   </Page>
+   <Page>
+   		<Element type="RADIO" concept="CHILD CRYING" id="6" question="Is the child crying a lot?" answer="" choices="Yes,No"/>
+   		<Element type="RADIO" concept="CHILD IRRITABLE" id="7" question="Is the child irritable?" answer="" choices="Yes,No"/>
+    	<Element type="RADIO" concept="CHILD LAY DOWN" id="8" question="Does the child cry or become more irritable when they lay down?" answer="" choices="Yes,No"/>
+    	<Element type="RADIO" concept="CHILD PULL EAR" id="9" question="Does the child rub, pull, or hold their ear?" answer="" choices="Yes,No"/>
+   </Page>
+   <Page>
+   		<Element type="RADIO" concept="CHILD LIQUID FROM EAR" id="10" question="Does the child have any liquid coming from their ear?" answer="" choices="Yes,No"/>
+   	</Page>
+	<Page>
+    	<ShowIf>
+    		<Criteria type="EQUALS" id="10" value="Yes"/>
+    	</ShowIf>
+    		<Element type="ENTRY" id="11" concept="LIQUID FROM EAR COLOR" question="Please describe the color of the liquid coming out of the child's ear." answer=""/>
+    		<Element type="RADIO" concept="LIQUID FROM EAR PAST" id="12" question="Has the child had liquid come from their ear before in the past?" answer="" choices="Yes,No"/>
+    		<Element type="ENTRY" id="13" concept="LIQUID FROM EAR LENGTH" question="How long has the child had fluid coming from their ear?" answer=""/>
+   </Page>
+   <Page>
+   		<Element type="RADIO" id="14" concept="OBJECT IN EAR" question="Has the child or anyone else ever put anything in the ear to clean it?" answer="" choices="Yes,No"/>
+   		<Element type="RADIO" id="15" concept="NURSING" question="Is the child nursing as usual?" answer="" choices="Yes,No"/>
+   		<Element type="RADIO" id="16" concept="CHILD EATING DRINKING NORMAL" question="Is the child eating and drinking as usual?" answer="" choices="Yes,No"/>
+   		<Element type="RADIO" id="17" concept="CHILD HEAR" question="Is the child able to hear when you speak to them?" answer="" choices="Yes,No"/>
+   		<Element type="RADIO" id="18" concept="CHILD LOUD SOUNDS" question="Do loud sounds bother the child?" answer="" choices="Yes,No"/>
+   </Page>
+   <Page>
+      <Element type="ENTRY" id="19" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+    </Page>
+</Procedure>

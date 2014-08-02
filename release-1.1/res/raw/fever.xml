@@ -1,0 +1,34 @@
+<Procedure title="Fever" author="Sana">
+	<Page>
+        <Element type="ENTRY" id="1" concept="FEVER DURATION" question="How long has the patient had a fever?" answer=""/>
+        <Element type="SELECT" id="2" concept="FEVER DURATION" question="" answer="" choices="Hours,Weeks,Months,Years"/>
+        <Element type="RADIO" id="3" concept="FEVER MEASUREMENT" question="Has the patient measured their fever?" answer="" choices="Yes,No"/>
+	</Page>
+	<Page>
+        <ShowIf>
+            <Criteria type="EQUALS" id="3" value="Yes"/>
+        </ShowIf>
+        <Element type="ENTRY" id="4" concept="FEVER TEMPERATURE" question="How high is the patient's fever? (in Celcius)" answer=""/>
+	</Page>
+    <Page>
+        <Element type="RADIO" id="5" concept="FEVER ASSOCIATED SIMPTOMS" question="Does the patient have any shakes, chills, or sweats associated with the fever?" answer="" choices="Yes,No"/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="6" concept="FEVER FREQUENCY" question="How often does the patient experience a fever?" answer=""/>
+        <Element type="MULTI_SELECT" concept="OTHER FEVER SYMPTOMS" id="7" question="Does the patient have any other associated symptoms? Check all that apply:" answer="" choices="Cough,Sore throat,Rash,Abdominal pain,Nausea,Diahrea,Headache,Neck stiffness,Any open sores or wounds,pain with urination,vaginal or penile discharge"/>
+        <Element type="ENTRY" id="8" concept="OTHER" question="Other:" answer=""/>
+    </Page>
+    <Page>
+        <Element type="RADIO" id="9" concept="SICK FRIENDS" question="Has anyone around the patient sick or been sick recently?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="10" concept="NEW MEDICATIONS" question="Has the patient started any new medications recently?" answer="" choices="Yes,No"/> 
+    </Page>
+    <Page>
+        <ShowIf>
+            <Criteria type="EQUALS" id="10" value="Yes"/>
+        </ShowIf>
+        <Element type="ENTRY" id="11" concept="NEW MEDICATIONS DESCRIPTION" question="Please list any new medications the patient has started:" answer=""/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="12" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+    </Page>
+</Procedure>

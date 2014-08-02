@@ -1,0 +1,23 @@
+<Procedure title="Unknown Symptom" author="addisclinic">
+  <Page>
+    <Element type="ENTRY" concept="DESCRIPTION OF COMPLAINT" id="1" question="Have the patient describe the complaint in their own words." answer=""/>
+    <Element type="ENTRY" concept="DURATION" id="2" question="How long has it been going on for?" answer=""/>
+    <Element type="RADIO" id="3" concept="SIMILAR SYMPTOM PAST" question="Has the patient had something similar before?" answer="" choices="Yes,No"/>
+    <Element type="ENTRY" id="4" concept="DESCRIBE" question="If yes, please describe." answer=""/>
+  </Page>
+  <Page> 
+    <Element type="RADIO" id="5" concept="SYMPTOMS BETTER" question="Does anything make it better?" answer="" choices="Yes,No"/>
+    <Element type="ENTRY" id="6" concept="DESCRIBE" question="If yes, please describe." answer=""/>
+    <Element type="RADIO" id="7" concept="SYMPTOMS WORSE" question="Does anything make it worse?" answer="" choices="Yes,No"/>
+    <Element type="ENTRY" id="8" concept="DESCRIBE" question="If yes, please describe." answer=""/>
+  </Page>
+  <Page>
+    <Element type="RADIO" id="9" concept="TREATMENT PREVIOUS" question="Has the patient tried anything to treat the problem?" answer="" choices="Yes,No"/>
+    <Element type="ENTRY" id="10" concept="DESCRIBE" question="If yes, please describe." answer=""/>
+    <Element type="RADIO" id="11" concept="RECENT LIFE CHANGES" question="Have there been any recent changes in the patient's life?" answer="" choices="Yes,No"/>
+    <Element type="ENTRY" id="12" concept="DESCRIBE" question="If yes, please describe." answer=""/>
+  </Page>
+  <Page>
+    <Element type="ENTRY" id="13" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+  </Page>
+</Procedure>

@@ -1,0 +1,20 @@
+<Procedure title="Breathing Difficulty" author="addisclinic">
+  <Page>
+    <Element type="ENTRY" id="1" concept="BREATH SHORTNESS TIME" question="When does the patient have shortness of breath?" answer=""/>
+    <Element type="ENTRY" id="2" concept="DURATION" question="How long has it been going on for?" answer=""/>
+    <Element type="ENTRY" id="3" concept="ACTIVITIES WORSE" question="What activities make it worse?" answer=""/>
+    <Element type="SELECT" concept="STAIRS" id="4" question="How many flights of stairs can the patient walk up before stopping?" answer="" choices="1,2,3,4,5,6,7,8"/>
+  </Page>
+  <Page>
+    <Element type="MULTI_SELECT" concept="TYPE OF PAIN" id="5" question="Is the patient experiencing any of the following? Check all that apply:" answer="" choices="Coughing,Chest Pain,Fast Heart Rate,Lightheadness or Dizzyness,Weakness,Leg Swelling,Leg Pain"/>
+    <Element type="ENTRY" id="6" concept="MEDICATIONS LIST" question="Please list the medications the patient currently takes." answer=""/>
+  </Page>
+  <Page>   
+    <Element type="MULTI_SELECT" id="7" concept="MULTISELECT" question="Check all that apply:" answer="" choices="Recently Ill,Recent Fever,Pregnant,On Hormonal Therapy,History of Blood Clots,Smoker"/>
+    <Element type="RADIO" concept="SLEEP FLAT" id="8" question="Can the patient sleep flat in bed?" answer="" choices="Yes,No"/>
+    <Element type="RADIO" concept="WAKE SHORT OF BREATH" id="9" question="Does the patient wake up in the middle of the night short of breath?" answer="" choices="Yes,No"/>  
+  </Page>
+  <Page>
+    <Element type="ENTRY" id="10" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+  </Page>
+</Procedure>

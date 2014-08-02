@@ -1,0 +1,18 @@
+<Procedure title="Constipation" author="Addis Clinic">
+	<Page>
+        <Element type="ENTRY" id="1" concept="DEFECATION NORMALLY" question="How often does the patient normally defecate?" answer=""/>
+        <Element type="ENTRY" id="2" concept="DEFECATION CURRENTLY" question="How often is the patient currently defecating?" answer=""/>
+        <Element type="MULTI_SELECT" concept="THINGS IN STOOL" id="3" question="Has the patient noticed any of the following in their stools?" answer="" choices="Bright blood,Black or tarry appearance,Mucus"/>
+        <Element type="MULTI_SELECT" concept="OTHER SYMPTOMS CHECKLIST" id="4" question="Does the patient have any other associated symptoms? Check all that apply:" answer="" choices="Nausea,Vomiting,Cramping,Abdominal pain or discomfort,Alternation with diarrhea,Weight loss,Fever,Chills,History of previous abdominal surgery,Swollen glands"/>
+	</Page>
+	<Page>
+		<Element type="ENTRY" id="5" concept="LAST BOWEL MOVEMENT" question="When was the patient's last bowel movement?" answer=""/>
+		<Element type="RADIO" id="6" concept="HURT TO PASS STOOL" question="Does it hurt for the patient to pass stools?" answer="" choices="Yes,No"/>
+		<Element type="ENTRY" id="7" concept="STOOL CHANGE" question="Please describe is the stool changed in aspect or size (looks like smal balls)?" answer=""/>
+		<Element type="RADIO" id="8" concept="CHANGE DIET" question="Has the patient changed their diet lately?" answer="" choices="Yes,No"/>
+		<Element type="ENTRY" id="9" concept="TAKING MEDICATION OR HERBS" question="Please describe any medication (laxatives, stool softeners, diuretics, iron) or herbs that the patient is taking?" answer=""/>
+    </Page>
+    <Page>
+    	<Element type="ENTRY" id="10" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+  	</Page>
+</Procedure>

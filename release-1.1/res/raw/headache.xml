@@ -1,0 +1,40 @@
+<Procedure title="Headache" author="Addis Clinic">
+	<Page>
+        <Element type="ENTRY" id="1" concept="LOCATION HEADACHE DESCRIPTION" question="Describe exactly where your head hurts. Is it on both sides or just one side?" answer=""/>
+        <Element type="RADIO" concept="PAIN LEVEL" id="2" question="How severe is the pain?" answer="" choices="Mild,Moderate,Severe"/>
+        <Element type="MULTI_SELECT" concept="HEADACHE DESCRIPTION" id="3" question="What does the headache feel like? If other, describe below." answer="" choices="achy,throbbing,sharp,pounding,other"/>
+        <Element type="ENTRY" id="4" concept="OTHER" question="Other:" answer=""/>
+	</Page>
+	<Page>
+	 	<Element type="MULTI_SELECT" concept="SYMPTOMS BEFORE HEADACHE" id="5" question="Did the patient have any of the following symptoms before the headache began? If other, describe below." answer="" choices="flashing lights,vision changes,seeing dots,weakness,numbness,other"/>
+        <Element type="ENTRY" id="6" concept="OTHER" question="Other:" answer=""/>
+        <Element type="RADIO" concept="NAUSEA VOMITTING HEADACHE" id="7" question="Does the patient experience any nausea or vomitting with the headache?" answer="" choices="Yes,No"/>
+        <Element type="MULTI_SELECT" concept="PAIN WORSE SELECT" id="8" question="Do any of the following make the pain worse? Select all that apply." answer="" choices="light,movement,chewing"/>
+   	</Page>
+	<Page>
+		<Element type="RADIO" concept="HEADACHE PAST" id="9" question="Has the patient had any similar headaches in the past" answer="" choices="Yes,No"/>
+	</Page>
+	<Page>
+    	<ShowIf>
+    		<Criteria type="EQUALS" id="9" value="Yes"/>
+    	</ShowIf>
+    		<Element type="ENTRY" id="10" concept="FREQUENCY HEADACHE" question="How often were the patient's headaches in the past?" answer=""/>
+    		<Element type="ENTRY" id="11" concept="LENGTH TIME HEADACHE" question="How long did the patient's headaches last?" answer=""/>
+    		<Element type="ENTRY" id="12" concept="HEADACHE BETTER" question="Did anything make the headaches better?" answer=""/>
+    		<Element type="ENTRY" id="13" concept="HEADACHE WORSE" question="Did anything make the headaches worse?" answer=""/>
+   </Page>
+   <Page>
+		<Element type="RADIO" concept="HEADACHE FAM HISTORY" id="14" question="Does the patient have any family history of headaches?" answer="" choices="Yes,No"/>
+		<Element type="MULTI_SELECT" concept="SYMPTOMS WITH HEADACHE" id="15" question="Does the patient have any of the following symptoms? If other, describe below." answer="" choices="fever,weakness,numbness,neck stiffness,confusion,nose running,other"/>
+        <Element type="ENTRY" id="16" concept="OTHER" question="Other:" answer=""/>
+	</Page>
+	<Page>
+    	<ShowIf>
+    		<Criteria type="EQUALS" id="16" value="nose running"/>
+    	</ShowIf>
+    		<Element type="RADIO" concept="NOSE DRAINAGE COLOR" id="17" question="Is the patient's nose drainage green in color?" answer="" choices="Yes,No"/>
+   </Page>
+   <Page>
+        <Element type="ENTRY" id="18" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+    </Page>
+</Procedure>

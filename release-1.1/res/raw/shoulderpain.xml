@@ -1,0 +1,27 @@
+<Procedure title="Shoulder Pain" author="addisclinic">
+  <Page>
+    <Element id="1" type="PICTURE" concept="PIC SHOW LOCATION" question="Where does it hurt? (Take picture of patient pointing to area of body that hurts)" answer=""/>
+  </Page>
+  <Page>
+    <Element type="ENTRY" id="2" concept="INJURY DURATION" question="How long has the injury been hurting?" answer=""/>
+    <Element type="ENTRY" id="3" concept="PAIN MOVING" question="Does the pain move anywhere?" answer=""/>
+  </Page>
+  <Page>
+    <Element type="MULTI_SELECT" concept="TYPE OF PAIN" id="4" question="What type of pain is the patient experiencing? Check all that apply or describe below:" answer="" choices="Sharp,Achy,Stabbing"/>
+    <Element type="ENTRY" id="5" concept="OTHER TYPE OF PAIN" question="Any additional pain symptoms?" answer=""/>   
+    <Element type="ENTRY" id="6" concept="WORSE PAIN" question="What makes the pain worse?" answer=""/>
+    <Element type="RADIO" concept="PAIN LEVEL" id="7" question="How severe is the pain?" answer="" choices="Mild,Moderate,Severe"/> 
+  </Page>
+  <Page>
+    <Element type="ENTRY" id="8" concept="SHOULDER INJURY" question="Any known present injury to patient's shoulder?" answer=""/>
+    <Element type="ENTRY" id="9" concept="WEAKNESS PRESENT" question="Any weakness in affected area?" answer=""/>
+    <Element type="ENTRY" id="10" concept="REPETITIVE ACTIVITIES" question="Does the patient conduct any repetitive activities?" answer=""/>
+  </Page>
+  <Page>
+    <Element type="ENTRY" id="11" concept="PAST INJURY" question="Has the patient injured or received treatment for affected area previously?" answer=""/>
+    <Element type="ENTRY" id="12" concept="PAIN WITH MOTION" question="Does the pain worsen if the patient moves his or her neck?" answer=""/>
+  </Page>
+  <Page>
+    <Element type="ENTRY" id="13" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+  </Page>
+</Procedure>

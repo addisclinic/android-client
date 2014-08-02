@@ -408,30 +408,35 @@ public class MocaUtil {
      * files can be added or removed here.
      */
     public static void loadDefaultDatabase(Context ctx) {
-    	/*
-      	insertProcedure(ctx, R.raw.bronchitis);
-      	insertProcedure(ctx, R.raw.cervicalcancer);
-      	insertProcedure(ctx, R.raw.surgery_demo);
-
-      	insertProcedure(ctx, R.raw.tbcontact);
-      	insertProcedure(ctx, R.raw.multiupload_test); 
-    	 */
-    	/*
-    	insertProcedure(ctx, R.raw.upload_test);
-    	insertProcedure(ctx, R.raw.hiv);
-    	insertProcedure(ctx, R.raw.cervicalcancer);
-    	insertProcedure(ctx, R.raw.prenatal);
-    	insertProcedure(ctx, R.raw.surgery);
-    	insertProcedure(ctx, R.raw.derma);
-    	insertProcedure(ctx, R.raw.teleradiology);
-    	insertProcedure(ctx, R.raw.ophthalmology);
-    	insertProcedure(ctx, R.raw.tbcontact2);
-    	insertProcedure(ctx, R.raw.tbpatient);
-    	insertProcedure(ctx, R.raw.cvd_protocol);
-    	insertProcedure(ctx, R.raw.oral_cancer);
-    	*/
-    	//insertProcedure(ctx, R.raw.api_test);
-    	insertProcedure(ctx, R.raw.surgery);
+        insertProcedure(ctx, R.raw.abdominalpain);
+        insertProcedure(ctx, R.raw.bleedingbruising);
+        insertProcedure(ctx, R.raw.breathingdifficulty);
+        insertProcedure(ctx, R.raw.chestpain);
+        insertProcedure(ctx, R.raw.constipation);
+        insertProcedure(ctx, R.raw.cough_children);
+        insertProcedure(ctx, R.raw.cough);
+        insertProcedure(ctx, R.raw.dehydration_children);
+        insertProcedure(ctx, R.raw.depression);
+        insertProcedure(ctx, R.raw.diarrhea_children);
+        insertProcedure(ctx, R.raw.diarrhea);
+        insertProcedure(ctx, R.raw.dysuria);
+        insertProcedure(ctx, R.raw.fever_children);
+        insertProcedure(ctx, R.raw.fever);
+        insertProcedure(ctx, R.raw.findpatient);
+        insertProcedure(ctx, R.raw.followup);
+        insertProcedure(ctx, R.raw.generalhistory);
+        insertProcedure(ctx, R.raw.headache);
+        insertProcedure(ctx, R.raw.hippain);
+        insertProcedure(ctx, R.raw.kneepain);
+        insertProcedure(ctx, R.raw.nauseavomiting);
+        insertProcedure(ctx, R.raw.new_patient);
+        insertProcedure(ctx, R.raw.numbness);
+        insertProcedure(ctx, R.raw.seizure);
+        insertProcedure(ctx, R.raw.shoulderpain);
+        insertProcedure(ctx, R.raw.test_result_upload);
+        insertProcedure(ctx, R.raw.unknownsymptom);
+        insertProcedure(ctx, R.raw.weakness);
+        insertProcedure(ctx, R.raw.wristpain);
     }
 
     /** 

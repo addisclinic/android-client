@@ -1,0 +1,44 @@
+<Procedure title="Dehydration (Children)" author="Addis Clinic">
+	<Page>
+        <Element type="RADIO" id="1" concept="CHILD SKIN TEMPERATURE" question="How does the child's skin feel?" answer="" choices="Warm,Cool,Cold"/>
+        <Element type="RADIO" id="2" concept="CHILD VOMITING" question="Has the child had vomiting?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="3" concept="CHILD DIARRHEA" question="Has the child had diarrhea?" answer="" choices="Yes,No"/>
+	</Page>
+	<Page>
+        <ShowIf>
+            <Criteria type="EQUALS" id="2" value="Yes"/>
+        </ShowIf>
+        <Element type="ENTRY" id="4" concept="CHILD VOMITING DAYS" question="For how many days has the child been vomiting?" answer=""/>
+        <Element type="ENTRY" id="5" concept="CHILD VOMITING FREQUENCY" question="How frequent is the child's vomiting?" answer=""/>
+	</Page>
+	<Page>
+        <ShowIf>
+            <Criteria type="EQUALS" id="3" value="Yes"/>
+        </ShowIf>
+        <Element type="ENTRY" id="6" concept="CHILD DIARRHEA DAYS" question="For how many days has the child had diarrhea" answer=""/>
+        <Element type="ENTRY" id="7" concept="CHILD DIARRHEA FREQUENCY" question="How frequent is the child's diarrhea?" answer=""/>
+	</Page>
+	<Page>
+        <Element type="RADIO" id="8" concept="CHILD NURSING DRINKING" question="How is the child nursing/ drinking compared to normal?" answer="" choices="Less than normal,Normal,More than normal"/>
+        <Element type="RADIO" id="9" concept="CHILD EATING NORMAL" question="How has the child been eating compared to normal?" answer="" choices="Less than normal,Normal,More than normal"/>
+        <Element type="RADIO" id="10" concept="CHILD PASSING URINE" question="How often is the child passing urine compared to normal?" answer="" choices="More often,Same as usual,Less often"/>
+        <Element type="ENTRY" id="11" concept="CHILD ACTIVITY DESCRIPTION" question="How has the child been acting?" answer=""/>
+	</Page>
+    <Page>
+        <Element type="RADIO" id="12" concept="CHILD IRRITABLE" question="Is the child irritable?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="13" concept="CHILD DIFFICULT TO AROUSE" question="Is the child difficult to arouse?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="14" concept="CHILD SKIN FEEL" question="Does the child's skin feel:" answer="" choices="Dry,Wet,Normal"/>
+        <Element type="RADIO" id="15" concept="CHILD TEARS" question="Is the child making tears when they cry?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="16" concept="CHILD MOUTH MOISTURE" question="Is the child's mouth:" answer="" choices="Wet,Dry,Normal"/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="17" concept="CHILD LIPS DESCRIPTION" question="Describe the appearance of the child's lips. Are they pink in color and wet, or dry and pale?" answer=""/>
+        <Element type="RADIO" id="18" concept="CHILD BREATHING PACE" question="How is the child's breathing?" answer="" choices="Fast,Slow,Normal"/>
+        <Element type="RADIO" id="19" concept="CHILD DRINKING FREQUENCY" question="Is the child drinking:" answer="" choices="Only a little,Same as normal,Frequently"/>
+        <Element type="RADIO" id="20" concept="CHILD COUGH COLD" question="Has the child had any cough or colds?" answer="" choices="Yes,No"/>
+        <Element type="ENTRY" id="21" concept="CHILD RECENT INJURIES DESCRIPTION" question="Please describe any recent injuries the child has suffered." answer=""/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="22" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+    </Page>
+</Procedure>

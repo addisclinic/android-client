@@ -1,0 +1,37 @@
+<Procedure title="Cough (Children)" author="Addis Clinic">
+	<Page>
+        <Element type="ENTRY" id="1" concept="COUGH START CHILD" question="For how long has the child had the cough?" answer=""/>
+        <Element type="RADIO" id="2" concept="WARM TO TOUCH CHILD" question="Does the child feel warm to touch?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="3" concept="NIGHT SWEATS CHILD" question="Does the child have any night sweats?" answer="" choices="Yes,No"/>
+        <Element type="ENTRY" id="4" concept="COUGH WORSE" question="Is the cough getting worse or seem different than before?" answer=""/>
+	</Page>
+	<Page>
+        <Element type="MULTI_SELECT" id="5" concept="COUGH DEVELOPMENT" question="Has the cough been sudden or slow to develop?" answer="" choices="Sudden,Slow"/>
+        <Element type="MULTI_SELECT" id="6" concept="COUGH WETTNESS" question="Please select the best description for the cough:" answer="" choices="Wet,Dry,Harsh"/>
+        <Element type="MULTI_SELECT" id="7" concept="CHILD BREATHING PACE" question="How is the child's breathing?" answer="" choices="Fast,Slow,Normal"/>
+        <Element type="MULTI_SELECT" concept="OTHER SYMPTOMS CHECKLIST" id="8" question="Does the patient have any other associated symptoms? Check all that apply:" answer="" choices="Discharge from nose,Congestion in nose,Shortness of breath,Pain in chest with cough,Tightness in chest with cough,Belly hurting"/>
+	</Page>
+	<Page>
+		<Element type="MULTI_SELECT" id="9" concept="COUGH FREQUENCY" question="How often does a patient experience the cough?" answer="" choices="Occasionally,All the time"/>
+		<Element type="ENTRY" id="10" concept="COUGH TIME OF DAY" question="Does the cough occur only during the day or only at night?" answer=""/>
+		<Element type="RADIO" id="11" concept="COUGH WORSE AT NIGHT" question="Does the cough get worse at night?" answer="" choices="Yes,No"/>
+		<Element type="MULTI_SELECT" id="12" concept="CHILD ACTIVITY" question="Has the child been acting:" answer="" choices="Active,Normal,Very tired"/>
+	</Page>
+	<Page>
+		<Element type="RADIO" id="13" concept="COUGH CHILD WITH FEEDING" question="Does the child cough with feeding?" answer="" choices="Yes,No"/>
+		<Element type="RADIO" id="14" concept="COUGH CHILD WITH RUNNING" question="Does the child cough with running?" answer="" choices="Yes,No"/>
+		<Element type="RADIO" id="15" concept="COUGH CHILD AT REST" question="Does the child cough when he/she is at rest?" answer="" choices="Yes,No"/>
+		<Element type="RADIO" id="16" concept="CHILD SPUTUM WHEN COUGH" question="Does the child have any sputum when he/she coughs?" answer="" choices="Yes,No"/>
+		<Element type="RADIO" id="20" concept="LOSING WEIGHT CHILD" question="Is the child losing weight?" answer="" choices="Yes,No"/>
+	</Page>
+	<Page>
+		<Element type="RADIO" id="17" concept="WHEEZING CHILD" question="Does the child sound like he/she is wheezing?" answer="" choices="Yes,No"/>
+		<Element type="RADIO" id="18" concept="TB CHILD PAST" question="Has the child ever had Tuberculosis?" answer="" choices="Yes,No"/>
+		<Element type="RADIO" id="19" concept="TB IN HOME" question="Is there anyone in the home now or recently with Tuberculosis?" answer="" choices="Yes,No"/>
+		<Element type="MULTI_SELECT" id="21" concept="CHILD EATING NORMAL" question="How has the child been eating compared to normal?" answer="" choices="More than usual,Same as usual,Less than usual"/>
+		<Element type="ENTRY" id="22" concept="OTHER CONCERNS" question="Does the patient have any other concerns that relate to this problem?" answer=""/>
+	</Page>
+	<Page>
+    	<Element type="ENTRY" id="23" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+  	</Page>
+</Procedure>

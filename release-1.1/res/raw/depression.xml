@@ -1,0 +1,30 @@
+<Procedure title="Depression" author="Addis Clinic">
+	<Page>
+        <Element type="RADIO" id="1" concept="SAD MOST OF TIME" question="Has the patient felt sad more than 50% of the time?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="2" concept="FEELING IRRITABILITY OR ANGER" question="Has the patient been feeling more irritable or angry than normal?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="3" concept="LESS INTEREST IN ACTIVITIES" question="Has the patient felt less interest or enjoymemt in activities that they typically enjoy?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="4" concept="LESS ENERGY" question="Has the patient been felt less energy during the day than normal?" answer="" choices="Yes,No"/>
+	</Page>
+	<Page>
+        <Element type="RADIO" id="5" concept="PROBLEMS WITH SLEEP" question="Has the patient had any problems with sleep?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="8" concept="MORE HUNGRY" question="Has the patient been feeling more hungry than usual?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="8" concept="LESS HUNGRY" question="Has the patient been feeling less hungry than usual?" answer="" choices="Yes,No"/>
+	</Page>
+	<Page>
+        <ShowIf>
+            <Criteria type="EQUALS" id="5" value="Yes"/>
+        </ShowIf>
+        <Element type="ENTRY" id="6" concept="PROBLEMS WITH SLEEP DESCRIPTION" question="Please select any of the following problems with sleep the patient has experienced:" answer="" choices="Problems falling asleep,Waking up frequently in the night,Waking up too early in the morning,Sleeping more than normal,Other"/>
+        <Element type="ENTRY" id="7" concept="OTHER" question="Other:" answer=""/>
+	</Page>
+	<Page>
+		<Element type="RADIO" id="9" concept="FEELING BAD OR GUILTY" question="Has the patient been feeling badly about themselves, or guilty about the things they have done?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="10" concept="PROBLEMS WITH CONCENTRATION" question="Has the patient had more problems with concentration than normal?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="11" concept="SLOW THOUGHTS" question="Has the patient felt that their thoughts are more slowed than normal?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="12" concept="LETHARGIC" question="Has the patient been feeling more lethargic or physically slowed down than normal?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="13" concept="THOUGHTS OF DEATH OR SELF HURT" question="Has the patient had thoughts of wanting to die or of hurting themselves?" answer="" choices="Yes,No"/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="14" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+    </Page>
+</Procedure>

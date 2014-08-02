@@ -1,0 +1,79 @@
+<Procedure title="Seizure" author="addisclinic">
+  <Page>
+    <Element type="RADIO" id="1" concept="SEIZURE OR FAINTING" question="Sometimes there is confusion about whether an event is a seizure or fainting - is the patient sure these are seizures?" answer="" choices="Yes,No"/>
+    <Element type="MULTI_SELECT" id="2" concept="SEIZURE SYMPTOMS" question="Check all that apply about patient's seizure episode(s):" answer="" choices="Witnessed by Someone Else,Bitten Tongue,Jerking Movements,Lost Control of Bladder or Bowels"/>
+  </Page>
+  <Page>
+    <Element type="ENTRY" concept="SEIZURE LAST" id="3" question="When was the patient's last seizure?" answer=""/>
+    <Element type="ENTRY" concept="SEIZURE FIRST" id="4" question="When was the patient's first seizure?" answer=""/>
+    <Element type="RADIO" concept="SEIZURE FREQUENCY" id="5" question="How often does the patient have seizures?" answer="" choices="Every Day,Every Week,Every Month,Every Year,Less than Once a Year"/>
+    <Element type="ENTRY" concept="SEIZURE DURATION" id="6" question="How long do the seizures last?" answer=""/>
+  </Page>
+  <Page>
+    <Element type="ENTRY" concept="SEIZURE TRIGGER" id="7" question="Does anything trigger the seizures?" answer=""/>
+    <Element type="RADIO" concept="SEIZURE FEVER" id="8" question="Does fever trigger the seizures?" answer="" choices="Yes,No"/>  
+    <Element type="RADIO" concept="FEVER RECENT" id="9" question="Has the patient had recent fever?" answer="" choices="Yes,No"/>
+    <Element type="RADIO" concept="HEAD INJURY RECENT" id="10" question="Has the patient had any head injury or trauma recently?" answer="" choices="Yes,No"/>
+  </Page>
+  <Page>
+    <ShowIf>
+       <Criteria type="EQUALS" id="10" value="Yes"/>
+    </ShowIf>
+    <Element type="ENTRY" id="11" concept="INJURY TYPE" question="What type of injury?" answer=""/>
+    <Element type="ENTRY" id="12" concept="INJURY LOCATION" question="Where was the injury located?" answer=""/>
+  </Page>
+  <Page>
+    <Element type="RADIO" concept="DIABETES" id="13" question="Does the patient have diabetes?" answer="" choices="Yes,No"/>
+    <Element type="RADIO" concept="ALCOHOL" id="14" question="Does the patient drink alcohol?" answer="" choices="Yes,No"/>
+  </Page>
+  <Page>
+    <ShowIf>
+       <Criteria type="EQUALS" id="14" value="Yes"/>
+    </ShowIf>
+    <Element type="ENTRY" id="15" concept="ALCOHOL AMOUNT AND FREQUENCY" question="How much alcohol does the patient consume, and how often?" answer=""/>
+  </Page>
+  <Page>
+    <Element type="RADIO" concept="SEIZURE VISUAL CHANGE" id="16" question="Does the patient experience visual changes (i.e. bright lights) before seizures?" answer="" choices="Yes,No"/>
+    <Element type="RADIO" concept="VISUAL CHANGE" id="17" question="Has the patient experienced any visual changes in general?" answer="" choices="Yes,No"/>  
+    <Element type="RADIO" concept="SENSATION CHANGE" id="18" question="Has the patient experienced any changes in sensation (i.e. tingling, numbness) in a distinct part of the body?" answer="" choices="Yes,No"/>  
+    <Element type="RADIO" concept="STRENGTH CHANGE" id="19" question="Has the patient experienced any changes in strength in a distinct part of the body?" answer="" choices="Yes,No"/>
+  </Page>
+  <Page>
+    <ShowIf>
+       <Criteria type="EQUALS" id="18" value="Yes"/>
+    </ShowIf>
+    <Element type="ENTRY" id="20" concept="SENSATION CHANGE LOCATION" question="Which of the part of the body is experiencing this sensation?" answer=""/>
+  </Page>
+  <Page>
+    <ShowIf>
+       <Criteria type="EQUALS" id="19" value="Yes"/>
+    </ShowIf>
+    <Element type="ENTRY" id="21" concept="STRENGTH CHANGE LOCATION" question="Which part of the body is experiencing this change in strength?" answer=""/>
+  </Page>
+  <Page>
+    <Element type="RADIO" id="22" concept="HEADACHE FREQUENT" question="Has the patient had more frequent headaches recently?" answer="" choices="Yes,No"/>  
+    <Element type="RADIO" id="23" concept="HEADACHE SEVERE" question="Has the patient had more severe headaches recently?" answer="" choices="Yes,No"/>
+  </Page>
+  <Page>
+    <ShowIf>
+      <or>
+       <Criteria type="EQUALS" id="22" value="Yes"/>
+       <Criteria type="EQUALS" id="23" value="Yes"/>
+      </or>
+    </ShowIf>
+    <Element type="ENTRY" id="24" concept="HEADACHE LOCATION" question="What part of the head hurts?" answer=""/>
+  </Page>
+  <Page>  
+    <Element type="RADIO" id="25" concept="SEIZURE FAMILY" question="Has anyone in the patient's family had seizures before?" answer="" choices="Yes,No"/>
+  </Page>
+  <Page>
+    <ShowIf>
+       <Criteria type="EQUALS" id="25" value="Yes"/>
+    </ShowIf>
+    <Element type="ENTRY" id="26" concept="FAMILY RELATION" question="What was the person's relation to the patient?" answer=""/>
+    <Element type="ENTRY" id="27" concept="SEIZURE FAMILY FREQUENCY" question="How often did this person have seizures?" answer=""/>
+  </Page>
+  <Page>
+    <Element type="ENTRY" id="28" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+  </Page>
+</Procedure>

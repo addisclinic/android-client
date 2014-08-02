@@ -1,0 +1,26 @@
+<Procedure title="Diarrhea" author="Addis Clinic">
+	<Page>
+   		<Element type="MULTI_SELECT" concept="DIARRHEA CHARACTERISTICS" id="1" question="What are the characteristics of the patient's diarrhea?" answer="" choices="Watery,Copious,Explosive"/>
+        <Element type="ENTRY" id="2" concept="OTHER" question="Other:" answer=""/>
+        <Element type="ENTRY" id="3" concept="STOOL COLOR" question="What is the color of the patient's stool?" answer=""/>
+        <Element type="MULTI_SELECT" concept="THINGS IN STOOL" id="4" question="Has the patient noticed any of the following in their stools?" answer="" choices="Blood,Mucus,Undigested Food,Oil or Fat?"/>
+    </Page>
+    <Page>
+    	<Element type="ENTRY" id="5" concept="STOOL ODOR" question="Please describe the odor of the patient's stool:" answer=""/>
+    	<Element type="ENTRY" id="6" concept="BATHROOM FREQUENCY" question="How often does the patient go to the bathroom? Every:" answer=""/>
+        <Element type="SELECT" id="7" concept="BATHROOM FREQUENCY" question="" answer="" choices="Minutes,Hours,Days"/>
+        <Element type="RADIO" id="8" concept="BATHROOM FREQUENCY DIFFERENCE" question="Is this frequency different than usual?" answer="" choices="Yes,No"/>
+    </Page>
+    <Page>
+    	<Element type="MULTI_SELECT" concept="OTHER SYMPTOMS" id="9" question="Does the patient experience any other symptoms?" answer="" choices="Nausea,Vomiting,Thirst,Cramping,Abdominal Pain,Alternates with constipation,Fecal incontinence,Weight loss,Fever,Chills"/>
+    </Page>
+    <Page>
+        <Element type="RADIO" id="10" concept="DIARRHEA WITH FOOD" question="Does the episode of diarrhea relate to any particular food or drink intake?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="11" concept="TRAVEL" question="Has the patient traveled to another city or country lately?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="12" concept="MEDICATIONS" question="Is the patient taking any medications or herbs (laxatives, stool softeners, antidiarrheals)?" answer="" choices="Yes,No"/>
+        <Element type="RADIO" id="13" concept="WORMS" question="Does the patient see any worms moving in their stools?" answer="" choices="Yes,No"/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="14" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+    </Page>
+</Procedure>
