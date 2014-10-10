@@ -1,27 +1,33 @@
-<Procedure title="Fever (Children)" author="Sana">
+<Procedure title="Fever (Children)" author="addisclinic">
 	<Page>
-		<Element type="ENTRY" id="1" concept="FEVER START" question="When did the fever start?" answer=""/>
-        <Element type="ENTRY" id="2" concept="FEVER DURATION" question="How long has the child had a fever?" answer=""/>
-        <Element type="SELECT" id="3" concept="FEVER DURATION" question="" answer="" choices="Hours,Weeks,Months"/>
+    	<Element type="RADIO" id="1" concept="PATIENT TYPE" question="The patient is a:" answer="" choices="ACT Project Beneficiary,Community Clinic Patient"/>
+    	<Element type="ENTRY" id="2" concept="TEMPERATURE" question="Enter patient's temperature:" answer=""/>
+    	<Element type="ENTRY" id="3" concept="BLOOD PRESSURE" question="Enter patient's blood pressure:" answer=""/>
+   		<Element type="ENTRY" id="4" concept="HEARTBEAT" question="Enter patient's heart rate:" answer=""/>
+   		<Element type="ENTRY" id="5" concept="RESPIRATION RATE" question="Enter patient's respiration rate:" answer=""/>
+  </Page><Page>
+		<Element type="ENTRY" id="6" concept="FEVER START" question="When did the fever start?" answer=""/>
+        <Element type="ENTRY" id="7" concept="FEVER DURATION" question="How long has the child had a fever?" answer=""/>
+        <Element type="SELECT" id="8" concept="FEVER DURATION" question="" answer="" choices="Hours,Days,Weeks"/>
 	</Page>
 	<Page>
-	    <Element type="RADIO" id="4" concept="FEVER TYPE" question="Is the fever:" answer="" choices="Continuous,Intermittent,Recurrent"/>
-        <Element type="ENTRY" id="5" concept="FEVER LENGTH" question="How long does the child's fever last?" answer=""/>
-        <Element type="SELECT" id="6" concept="FEVER LENGTH" question="" answer="" choices="Hours,Weeks,Months"/>
+	    <Element type="RADIO" id="9" concept="FEVER TYPE" question="Is the fever:" answer="" choices="Continuous,Intermittent,Recurrent"/>
+        <Element type="ENTRY" id="10" concept="FEVER LENGTH" question="How long does the child's fever last?" answer=""/>
+        <Element type="SELECT" id="11" concept="FEVER LENGTH" question="" answer="" choices="Hours,Days,Weeks"/>
 	</Page>
 	<Page>
-		<Element type="ENTRY" id="7" concept="CHILD APPEARANCE" question="How does the child appear?" answer=""/>
-		<Element type="RADIO" id="8" concept="CHILD ACTIVITY" question="Has the child been acting:" answer="" choices="Active,Lethargic (like a wet dish rag)"/>
+		<Element type="ENTRY" id="12" concept="CHILD APPEARANCE" question="How does the child appear?" answer=""/>
+		<Element type="RADIO" id="13" concept="CHILD ACTIVITY" question="Has the child been acting:" answer="" choices="Active,Lethargic"/>
 	</Page>
 	<Page>
-        <Element type="MULTI_SELECT" concept="OTHER FEVER SYMPTOMS" id="9" question="Does the child have any other associated symptoms? Check all that apply:" answer="" choices="changes in alertness,confusion,runny nose,cough,sore throat,vomiting,diarrhea,abdominal pain,pain with passing urine,pain in arms or legs,swelling in arms or legs,any recent or current rashes,neck pain,bumps on the back of their neck,bruising,bleeding"/>
-        <Element type="ENTRY" id="10" concept="OTHER" question="Other:" answer=""/>
+        <Element type="MULTI_SELECT" id="14" concept="OTHER FEVER SYMPTOMS" question="Does the child have any other associated symptoms? Check all that apply:" answer="" choices="Changes in Alertness,Confusion,Runny Nose,Cough,Sore Throat,Vomiting,Diarrhea,Abdominal Pain,Pain with Passing Urine,Pain in Arms or Legs,Arm or Leg Swelling,Recent or Current Rashes,Neck Pain,Bumps on Back of Neck,Bruising,Bleeding"/>
+        <Element type="ENTRY" id="15" concept="OTHER" question="Other:" answer=""/>
 	</Page>
 	<Page>
-	    <Element type="RADIO" id="11" concept="EATING" question="Is the child eating?" answer="" choices="Yes,No"/>
-	    <Element type="RADIO" id="12" concept="DRINKING" question="Is the child drinking?" answer="" choices="Yes,No"/>
+	    <Element type="RADIO" id="16" concept="EATING" question="Is the child eating?" answer="" choices="Yes,No"/>
+	    <Element type="RADIO" id="17" concept="DRINKING" question="Is the child drinking?" answer="" choices="Yes,No"/>
     </Page>
     <Page>
-    	<Element type="ENTRY" id="13" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+    	<Element type="ENTRY" id="18" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
   	</Page>
 </Procedure>

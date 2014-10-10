@@ -1,47 +1,49 @@
 <Procedure title="Weakness" author="addisclinic">
   <Page>
-    <Element type="ENTRY" concept="WEAKNESS START" id="1" question="When did the patient's weakness begin?" answer=""/>
-    <Element type="RADIO" id="2" concept="PREVIOUS OCCURRENCE" question="Has this occurred before?" answer="" choices="Yes,No"/>
-    <Element type="ENTRY" concept="WEAKNESS ACTIVITY" id="3" question="During what type of activity does the patient notice the weakness?" answer=""/>
+    <Element type="RADIO" id="1" concept="PATIENT TYPE" question="The patient is a:" answer="" choices="ACT Project Beneficiary,Community Clinic Patient"/>
+    <Element type="ENTRY" id="2" concept="TEMPERATURE" question="Enter patient's temperature:" answer=""/>
+    <Element type="ENTRY" id="3" concept="BLOOD PRESSURE" question="Enter patient's blood pressure:" answer=""/>
+    <Element type="ENTRY" id="4" concept="HEARTBEAT" question="Enter patient's heart rate:" answer=""/>
+    <Element type="ENTRY" id="5" concept="RESPIRATION RATE" question="Enter patient's respiration rate:" answer=""/>
   </Page>
   <Page>
-    <Element type="ENTRY" concept="WEAKNESS LOCATION" id="4" question="Where is the weakness located?" answer=""/>
-    <Element type="RADIO" id="5" concept="WEAKNESS SIDE" question="Is the weakness on one or both sides?" answer="" choices="One Side,Both Sides"/>
-    <Element type="ENTRY" concept="WEAKNESS LOCATION CHANGE" id="6" question="Has the location of the weakness changed over time, and if so, how?" answer=""/>
-    <Element type="ENTRY" concept="WEAKNESS EXTENT CHANGE" id="7" question="Has the extent of the weakness changed over time, and if so, how?" answer=""/>
-    <Element type="RADIO" id="8" concept="MUSCLE SIZE CHANGE" question="Has the affected muscle changed in size?" answer="" choices="Yes,No"/>
+    <Element type="ENTRY" id="6" concept="WEAKNESS LOCATION" question="Where is the weakness located?" answer=""/>
+    <Element type="RADIO" id="7" concept="WEAKNESS SIDE" question="Is the weakness on one or both sides?" answer="" choices="One Side,Both Sides"/>
+    <Element type="ENTRY" id="7" concept="WEAKNESS LOCATION CHANGE" question="Has the location of the weakness changed over time, and if so, how?" answer=""/>
+    <Element type="ENTRY" id="8" concept="WEAKNESS EXTENT CHANGE" question="Has the extent of the weakness changed over time, and if so, how?" answer=""/>
+    <Element type="RADIO" id="9" concept="MUSCLE SIZE CHANGE" question="Has the affected muscle changed in size?" answer="" choices="Yes,No"/>
   </Page>
   <Page>
-    <Element type="RADIO" id="9" concept="PAIN ACCOMPANYING" question="Is the patient experiencing any accompanying pain?" answer="" choices="Yes,No"/>
-    <Element type="RADIO" id="10" concept="SENSATION CHANGE" question="Has the patient experienced any changes in sensation (i.e. tingling, numbness) in a distinct part of the body?" answer="" choices="Yes,No"/>
-    <Element type="MULTI_SELECT" id="11" concept="SYMPTOM TYPE" question="Is the patient experiencing any of the following? Check all that apply:" answer="" choices="Change in Balance,Dizziness,Nausea,Headaches,Cognitive Change"/>
-    <Element type="RADIO" id="12" concept="SYMPTOMS BETTER" question="Does anything make it better?" answer="" choices="Yes,No"/>
-    <Element type="RADIO" id="13" concept="SYMPTOMS WORSE" question="Does anything make it worse?" answer="" choices="Yes,No"/>
+    <Element type="ENTRY" id="10" concept="WEAKNESS START" question="When did the patient's weakness begin?" answer=""/>
+    <Element type="RADIO" id="11" concept="PREVIOUS OCCURRENCE" question="Has this occurred before?" answer="" choices="Yes,No"/>
+    <Element type="ENTRY" id="12" concept="WEAKNESS ACTIVITY" question="During what type of activity does the patient notice the weakness?" answer=""/>
+  </Page>
+  <Page>
+    <Element type="RADIO" id="13" concept="PAIN ACCOMPANYING" question="Is the patient experiencing any accompanying pain?" answer="" choices="Yes,No"/>
+    <Element type="RADIO" id="14" concept="SENSATION CHANGE" question="Has the patient experienced any changes in sensation (i.e. tingling, numbness) in a distinct part of the body?" answer="" choices="Yes,No"/>
+    <Element type="MULTI_SELECT" id="15" concept="SYMPTOM TYPE" question="Is the patient experiencing any of the following? Check all that apply:" answer="" choices="Change in Balance,Dizziness,Nausea,Headaches,Cognitive Change"/>
+    <Element type="RADIO" id="16" concept="SYMPTOMS BETTER" question="Does anything make it better?" answer="" choices="Yes,No"/>
+    <Element type="RADIO" id="17" concept="SYMPTOMS WORSE" question="Does anything make it worse?" answer="" choices="Yes,No"/>
   </Page>
   <Page>    
-    <Element type="RADIO" id="14" concept="WEAKNESS FAMILY" question="Does the patient have a family history of weakness?" answer="" choices="Yes,No"/>
-    <Element type="RADIO" id="15" concept="BACK NECK SURGERY" question="Has the patient had any back or neck surgeries?" answer="" choices="Yes,No"/>
-    <Element type="RADIO" id="16" concept="BACK NECK INJURY" question="Has the patient had any back or neck injuries?" answer="" choices="Yes,No"/>
-    <Element type="RADIO" id="17" concept="BACK NECK PAIN" question="Does the patient currently or has the patient ever had unexplainable back or neck pain?" answer="" choices="Yes,No"/>
+    <Element type="RADIO" id="18" concept="WEAKNESS FAMILY" question="Does the patient have a family history of weakness?" answer="" choices="Yes,No"/>
+    <Element type="RADIO" id="19" concept="BACK NECK SURGERY" question="Has the patient had any back or neck surgeries?" answer="" choices="Yes,No"/>
+    <Element type="RADIO" id="20" concept="BACK NECK INJURY" question="Has the patient had any back or neck injuries?" answer="" choices="Yes,No"/>
+    <Element type="RADIO" id="21" concept="BACK NECK PAIN" question="Does the patient currently or has the patient ever had unexplainable back or neck pain?" answer="" choices="Yes,No"/>
+    <Element type="ENTRY" id="22" concept="EXPLAIN MULTIPLE" question="If 'Yes' for any of the aboce questions, please explain." answer=""/>    
   </Page>
   <Page> 
-    <Element type="RADIO" id="18" concept="DIABETES OR ILLNESS" question="Does the patient have diabetes or any other chronic illness?" answer="" choices="Yes,No"/>
-    <Element type="RADIO" id="19" concept="MEDICATIONS" question="Is the patient taking any medications or herbs (laxatives, stool softeners, antidiarrheals)?" answer="" choices="Yes,No"/>
-    <Element type="RADIO" concept="TOBACCO" id="20" question="Does the patient use tobacco products?" answer="" choices="Yes,No"/>
-    <Element type="RADIO" id="21" concept="ALCOHOL" question="Does the patient drink alcohol?" answer="" choices="Yes,No"/>
+    <Element type="RADIO" id="23" concept="DIABETES OR ILLNESS" question="Does the patient have diabetes or any other chronic illness?" answer="" choices="Yes,No"/>
+    <Element type="ENTRY" id="24" concept="DESCRIBE" question="If 'Yes', please describe." answer=""/>
+    <Element type="ENTRY" id="25" concept="MEDICATIONS LIST" question="Please list the medications the patient currently takes." answer=""/>    
   </Page>
   <Page>
-    <ShowIf>
-       <Criteria type="EQUALS" id="21" value="Yes"/>
-    </ShowIf>
-    <Element type="ENTRY" id="22" concept="ALCOHOL AMOUNT AND FREQUENCY" question="How much alcohol does the patient consume, and how often?" answer=""/>
+    <Element type="RADIO" id="26" concept="TOBACCO" question="Does the patient use tobacco products?" answer="" choices="Yes,No"/>
+    <Element type="ENTRY" id="27" concept="CAUSE OF PROBLEM" question="What does the patient think is causing the problem?" answer=""/>
+    <Element type="RADIO" id="28" concept="TREATMENT PREVIOUS" question="Has the patient tried anything to treat the problem?" answer="" choices="Yes,No"/>
+    <Element type="ENTRY" id="29" concept="DESCRIBE" question="If 'Yes', please describe." answer=""/>
   </Page>
   <Page>
-    <Element type="ENTRY" concept="CAUSE OF PROBLEM" id="23" question="What does the patient think is causing the problem?" answer=""/>
-    <Element type="RADIO" id="24" concept="TREATMENT PREVIOUS" question="Has the patient tried anything to treat the problem?" answer="" choices="Yes,No"/>
-    <Element type="ENTRY" id="25" concept="DESCRIBE" question="If yes, please describe." answer=""/>
-  </Page>
-  <Page>
-    <Element type="ENTRY" id="26" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+    <Element type="ENTRY" id="30" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
   </Page>
 </Procedure>

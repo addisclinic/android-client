@@ -108,7 +108,8 @@
             </intent-filter>
         </activity>
 		<activity android:name=".activity.ProcedureRunner" 
-		          android:label="@string/title_procedure_runner">
+		          android:label="@string/title_procedure_runner"
+		          android:screenOrientation="portrait">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
