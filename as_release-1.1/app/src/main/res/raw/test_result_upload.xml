@@ -1,0 +1,8 @@
+<Procedure title="Test Result Upload" author="Sana">
+   <Page>
+     <Element type="PICTURE" id="1" concept="TEST RESULT IMAGE" question="Take Picture of test result" answer=""/>
+   </Page> 
+   <Page>
+    <Element type="ENTRY" id="2" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+  </Page>
+ </Procedure>

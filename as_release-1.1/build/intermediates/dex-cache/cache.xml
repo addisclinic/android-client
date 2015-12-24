@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Dev\addis_client\as_release-1.1\app\build\intermediates\exploded-aar\com.android.support\support-v13\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c4caf832116bca1f2e140bf1fb600e2edd190837">
+        <dex dex="C:\Dev\addis_client\as_release-1.1\app\build\intermediates\pre-dexed\debug\classes-98411595161796b3c0092a19fc07eb752baea7a0.jar" />
+    </item>
+    <item
+        jar="C:\Dev\addis_client\as_release-1.1\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="C:\Dev\addis_client\as_release-1.1\app\build\intermediates\pre-dexed\debug\classes-9e6929b5ac5597843a46402edbb62a60a4a01731.jar" />
+    </item>
+    <item
+        jar="C:\Users\Albert\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="C:\Dev\addis_client\as_release-1.1\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-91488cbd9399557fedbd54c1120b2970fd86b15a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Albert\.gradle\caches\modules-2\files-2.1\commons-httpclient\commons-httpclient\3.1\964cd74171f427720480efdec40a7c7f6e58426a\commons-httpclient-3.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="964cd74171f427720480efdec40a7c7f6e58426a">
+        <dex dex="C:\Dev\addis_client\as_release-1.1\app\build\intermediates\pre-dexed\debug\commons-httpclient-3.1-f1004c828747cac305dabfd93b4dcd2bb8aedfde.jar" />
+    </item>
+    <item
+        jar="C:\Users\Albert\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.5\686c608d1805b6d4d425ec4459e88164ffc85870\gson-2.5.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="686c608d1805b6d4d425ec4459e88164ffc85870">
+        <dex dex="C:\Dev\addis_client\as_release-1.1\app\build\intermediates\pre-dexed\debug\gson-2.5-d16231c811e941d0e1dd61b15ad69c260499bee9.jar" />
+    </item>
+    <item
+        jar="C:\Dev\addis_client\as_release-1.1\app\build\intermediates\exploded-aar\com.android.support\support-v13\22.2.1\jars\libs\internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6fc4c7067459e8d69e1bbcb3a8973cdd84d5d87b">
+        <dex dex="C:\Dev\addis_client\as_release-1.1\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-5c04eb5617a9efb3326dc4f6232a16bd0e3268f3.jar" />
+    </item>
+    <item
+        jar="C:\Users\Albert\.gradle\caches\modules-2\files-2.1\commons-codec\commons-codec\1.10\4b95f4897fa13f2cd904aee711aeafc0c5295cd8\commons-codec-1.10.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4b95f4897fa13f2cd904aee711aeafc0c5295cd8">
+        <dex dex="C:\Dev\addis_client\as_release-1.1\app\build\intermediates\pre-dexed\debug\commons-codec-1.10-8fc1c670f5020c5a4ac83dad9c56c9b4c67f99b3.jar" />
+    </item>
+    <item
+        jar="C:\Dev\addis_client\as_release-1.1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="C:\Dev\addis_client\as_release-1.1\app\build\intermediates\pre-dexed\debug\classes-beb00b9d41f74a85100e983b10a3aaa46919c203.jar" />
+    </item>
+    <item
+        jar="C:\Dev\addis_client\as_release-1.1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="C:\Dev\addis_client\as_release-1.1\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-cbabbb5d8be1ba29cb73780430be0c3cbb8b98c8.jar" />
+    </item>
+
+</items>

@@ -1,0 +1,11 @@
+<Procedure title="Followup" author="Sana">
+  <Page> 
+    <Element type="ENTRY" id="1" concept="CLINICAL DEVELOPMENT" question="Have there been any updates to the patient's condition?" answer=""/>
+  </Page>
+  <Page> 
+    <Element type="ENTRY" id="2" concept="TREATMENT FOLLOWUP" question="Have there been any changes to the patient's treatment?" answer=""/>
+  </Page> 
+  <Page> 
+    <Element type="ENTRY" id="3" concept="ADDITIONAL INFORMATION" question="Please provide answers to doctor's questions." answer=""/>
+  </Page>     
+</Procedure>

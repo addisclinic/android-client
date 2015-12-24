@@ -1,0 +1,39 @@
+<Procedure title="Wrist Pain" author="addisclinic">
+  <Page>
+    <Element type="RADIO" id="1" concept="PATIENT TYPE" question="The patient is a:" answer="" choices="ACT Project Beneficiary,Community Clinic Patient"/>
+    <Element type="ENTRY" id="2" concept="TEMPERATURE" question="Enter patient's temperature:" answer=""/>
+    <Element type="ENTRY" id="3" concept="BLOOD PRESSURE" question="Enter patient's blood pressure:" answer=""/>
+    <Element type="ENTRY" id="4" concept="HEARTBEAT" question="Enter patient's heart rate:" answer=""/>
+    <Element type="ENTRY" id="5" concept="RESPIRATION RATE" question="Enter patient's respiration rate:" answer=""/>
+  </Page>
+  <Page>
+    <Element type="PICTURE" id="6" concept="PIC SHOW LOCATION" question="Where does it hurt? (Take picture of patient pointing to area of body that hurts)" answer=""/>
+  </Page>
+  <Page>
+    <Element type="ENTRY" id="7" concept="INJURY DURATION" question="How long has the injury been hurting?" answer=""/>
+    <Element type="ENTRY" id="8" concept="PAIN MOVING" question="Does the pain move anywhere?" answer=""/>
+  </Page>
+  <Page>
+    <Element type="MULTI_SELECT" id="9" concept="TYPE OF PAIN" question="What type of pain is the patient experiencing? Check all that apply or describe below:" answer="" choices="Sharp,Achy,Stabbing"/>
+    <Element type="ENTRY" id="10" concept="OTHER TYPE OF PAIN" question="Any additional pain symptoms?" answer=""/>   
+    <Element type="ENTRY" id="11" concept="WORSE PAIN" question="What makes the pain worse?" answer=""/>
+    <Element type="SELECT" id="12" concept="PAIN LEVEL" question="On a scale of 0-10 with 0 being no pain and 10 being the most severe pain you can imagine, how severe is the patient's pain?" answer="" choices="0,1,2,3,4,5,6,7,8,9,10"/> 
+  </Page>
+  <Page>
+    <Element type="ENTRY" id="13" concept="WRIST INJURY" question="Any known injury to patient's wrist?" answer=""/>
+    <Element type="ENTRY" id="14" concept="WEAKNESS PRESENT" question="Any weakness in affected area?" answer=""/>
+    <Element type="ENTRY" id="15" concept="REPETITIVE ACTIVITIES" question="Does the patient conduct any repetitive activities?" answer=""/>
+  </Page>
+  <Page>
+    <Element type="ENTRY" id="16" concept="PAIN TIME OF DAY" question="Is the pain worse in the morning or at night?" answer=""/>
+    <Element type="ENTRY" id="17" concept="PAIN CONSTANCY" question="Is the pain constant or intermittent?" answer=""/>
+    <Element type="ENTRY" id="18" concept="NUMBNESS OR TINGLING" question="Is the patient experiencing any numbness or tingling? If so, where?" answer=""/>
+  </Page>
+  <Page>
+    <Element type="MULTI_SELECT" id="19" concept="PAIN SYMPTOMS" question="Is the patient experiencing any of the following?" answer="" choices="Swelling,Redness or Warmth,Fever"/> 
+    <Element type="ENTRY" id="20" concept="DESCRIBE" question="If 'Yes', please describe." answer=""/>
+  </Page>
+  <Page>
+    <Element type="ENTRY" id="21" concept="ADDITIONAL COMMENTS" question="Please enter any additional comments or information." answer=""/>
+  </Page>
+</Procedure>

@@ -1,0 +1,7 @@
+as_release-1.1/app/build/
+*.iml
+as_release-1.1/import-summary.txt
+as_release-1.1/.idea/
+as_release-1.1/.gradle/
+as_release-1.1/gradlew
+as_release-1.1/gradlew.bat
