@@ -1116,7 +1116,7 @@ public class MDSInterface {
 		postData.add(new NameValuePair("username", username));
 		postData.add(new NameValuePair("password", password));
 		MDSResult postResponse = MDSInterface.doPost(c, mUrl, postData);
-		boolean result = (postResponse != null)? postResponse.succeeded():false;
+		boolean result = (postResponse != null) && postResponse.succeeded();
 		Log.i(TAG, "MDS reports " + (result ? "success" : "failure")
 				+ " for credentials");
 		return result;

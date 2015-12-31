@@ -34,7 +34,7 @@ public class ProceduresList extends ListActivity implements LoaderManager.Loader
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //setContentView(R.layout.procedure_list);
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
                                             R.layout.procedure_list_row,
                                             null,  // assign Cursor when onLoadFinished() is called
