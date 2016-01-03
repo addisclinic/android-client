@@ -224,8 +224,8 @@ public class MDSInterface {
 	 * @param postData the form data.
 	 * @return 
 	 */
-	protected static MDSResult doPost(Context ctx, String mUrl, 
-			List<NameValuePair> postData) 
+	private static MDSResult doPost(Context ctx, String mUrl,
+			List<NameValuePair> postData) throws IOException
 	{
 		PostMethod post = new PostMethod(mUrl);
 		Log.d(TAG, "doPost(): " + mUrl + ", " + postData.size());
@@ -244,7 +244,7 @@ public class MDSInterface {
 	 * @param parts the form data.
 	 * @return 
 	 */
-	protected static MDSResult doPost(Context ctx, String mUrl, Part[] parts) 
+	private static MDSResult doPost(Context ctx, String mUrl, Part[] parts) throws IOException
 	{
 		PostMethod post = new PostMethod(mUrl);
 		post.setRequestEntity(new MultipartRequestEntity(parts,
@@ -259,7 +259,7 @@ public class MDSInterface {
 	 * @param method The Http
 	 * @return
 	 */
-	protected static MDSResult doExecute(Context ctx, HttpMethod method){
+	private static MDSResult doExecute(Context ctx, HttpMethod method) throws IOException {
 		HttpClient client = new HttpClient();
 		SharedPreferences preferences = 
 			PreferenceManager.getDefaultSharedPreferences(ctx);
@@ -304,12 +304,10 @@ public class MDSInterface {
 			Gson gson = new Gson();
 			response = gson.fromJson(responseString, MDSResult.class);
 
-		} catch (IOException e1) {
-			Log.e(TAG, e1.toString());
-			e1.printStackTrace();
-		} catch (JsonParseException e) {
+		}  catch (JsonParseException e) {
 			Log.e(TAG, "postResponses(): Error parsing MDS JSON response: " 
 					+ e.getMessage());
+            return new MDSResult("JSONParseException", "", e.getMessage());
 		} finally {
 			method.releaseConnection();
 		}
@@ -324,11 +322,11 @@ public class MDSInterface {
 	 * default starting packet size).
 	 * 
 	 * @param savedProcedureGuid the encounter unique identifier
-	 * @param responses the encounter text
+	 * @param jsonResponses the encounter text
 	 * @return true if upload succeeds, otherwise false
 	 */
 	private static boolean postResponses(Context c, String savedProcedureGuid, 
-			String jsonResponses)
+			String jsonResponses) throws IOException
 	{
 		SharedPreferences preferences = PreferenceManager
 											.getDefaultSharedPreferences(c);
@@ -370,7 +368,7 @@ public class MDSInterface {
 	private static boolean postBinaryAsEncodedText(Context c, 
 			String savedProcedureId, String elementId, String fileGuid, 
 			ElementType type, int fileSize, int start, int end, 
-			byte byte_data[]) 
+			byte byte_data[]) throws IOException
 	{
 
 		SharedPreferences preferences = PreferenceManager
@@ -443,7 +441,7 @@ public class MDSInterface {
 	 */
 	private static boolean postBinaryAsFile(Context c, String savedProcedureId, 
 			String elementId, String fileGuid, ElementType type, int fileSize, 
-			int start, int end, byte byte_data[]) 
+			int start, int end, byte byte_data[]) throws IOException
 	{
 		SharedPreferences preferences = 
 			PreferenceManager.getDefaultSharedPreferences(c);
@@ -483,7 +481,7 @@ public class MDSInterface {
 	 */
 	private static boolean postBinary(Context c, String savedProcedureId, 
 			String elementId, String fileGuid, ElementType type, int fileSize, 
-			int start, int end, byte byte_data[]) 
+			int start, int end, byte byte_data[])  throws IOException
 	{
 		SharedPreferences preferences = PreferenceManager
 											.getDefaultSharedPreferences(c);
@@ -685,7 +683,7 @@ public class MDSInterface {
 	 * @param context current context
 	 * @return true if upload was successful, false if not
 	 */
-	public static boolean postProcedureToDjangoServer(Uri uri, Context context) {
+	public static boolean postProcedureToDjangoServer(Uri uri, Context context) throws IOException{
 		Log.i(TAG, "In Post procedure to Django server for background uploading service.");
 		Cursor cursor = context.getContentResolver().query(
 				uri, savedProcedureProjection, null,
@@ -946,7 +944,7 @@ public class MDSInterface {
 	 */
 	private static int transmitBinary(Context c, String savedProcedureId, 
 			String elementId, String binaryGuid, ElementType type, 
-			Uri binaryUri, int startPacketSize) throws Exception 
+			Uri binaryUri, int startPacketSize) throws IOException
 	{
 		int packetSize, fileSize;
 		ContentValues cv = new ContentValues();
@@ -1129,7 +1127,7 @@ public class MDSInterface {
 	 * @param c the current Context
 	 * @return true if successfully updated
 	 */
-	public static boolean updatePatientDatabase(Context c, ContentResolver cr) {
+	public static boolean updatePatientDatabase(Context c, ContentResolver cr) throws IOException {
 		Log.i(TAG, "updatePatientDatabase():");
 		SharedPreferences preferences = PreferenceManager
 											.getDefaultSharedPreferences(c);
@@ -1167,7 +1165,7 @@ public class MDSInterface {
 	 * @param c the current Context
 	 * @return The string representation of a patient
 	 */
-	public static String getUserInfo(Context c, String userid) {
+	public static String getUserInfo(Context c, String userid) throws IOException {
 	
 		Log.i(TAG, "getUserInfo(): " + userid);
 		SharedPreferences preferences = PreferenceManager
@@ -1197,7 +1195,7 @@ public class MDSInterface {
 	 * @param userid the id to verify
 	 * @return true if the id is not in use
 	 */
-	public static boolean isNewPatientIdValid(Context c, String userid) {
+/*	public static boolean isNewPatientIdValid(Context c, String userid) {
 		Log.i(TAG, "isNewPatientValid(): " + userid);
 		String data = MDSInterface.getUserInfo(c, userid);
 
@@ -1207,7 +1205,7 @@ public class MDSInterface {
 		}
 		Log.i(TAG, "isNewPatientValid(): Id is not in use and is valid");
 		return true;
-	}
+	}*/
 	
 	
 	/**
@@ -1217,7 +1215,7 @@ public class MDSInterface {
 	 * @param eventsList a list of events
 	 * @return true if successfully sent
 	 */
-	public static boolean submitEvents(Context c, List<Event> eventsList) {
+	public static boolean submitEvents(Context c, List<Event> eventsList) throws IOException {
 		Log.i(TAG, "submitEvents(): " + eventsList.size());
 
 		SharedPreferences preferences = PreferenceManager

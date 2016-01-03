@@ -32,7 +32,13 @@ public class MDSResult {
 		data = "";
 		procedure_guid = "";
 	}
-	
+
+	MDSResult(String status, String code, String data) {
+		this.status = status;
+        this.code = code;
+        this.data = data;
+	}
+
 	/**
 	 * Whether the result is successful.
 	 * @return true if <code>status</code> equals "SUCCESS" 
