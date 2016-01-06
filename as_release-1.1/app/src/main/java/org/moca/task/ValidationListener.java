@@ -13,5 +13,5 @@ public interface ValidationListener {
 	 * 
 	 * @param validationResult the validation result.
 	 */
-	void onValidationComplete(int validationResult);
+	void onValidationComplete(Integer validationResult);
 }

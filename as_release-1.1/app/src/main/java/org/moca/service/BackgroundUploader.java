@@ -84,7 +84,9 @@ public class BackgroundUploader extends Service {
 	}
 	
 	private class CredentialValidationListener implements ValidationListener {
-		public void onValidationComplete(int validationResult) {
+
+		@Override
+		public void onValidationComplete(Integer validationResult) {
 			checkCredentialsTask = null;
 			if (validationResult == CheckCredentialsTask.CREDENTIALS_INVALID) {
 				credentialStatus = CredentialStatus.INVALID;

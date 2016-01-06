@@ -6,6 +6,7 @@ import org.moca.activity.settings.Settings;
 import org.moca.db.MocaDB.NotificationSQLFormat;
 import org.moca.db.MocaDB.ProcedureSQLFormat;
 import org.moca.db.MocaDB.SavedProcedureSQLFormat;
+import org.moca.fragments.BaseDialog;
 import org.moca.media.EducationResource;
 import org.moca.procedure.Procedure;
 import org.moca.service.BackgroundUploader;
@@ -112,33 +113,37 @@ public class Moca extends Activity implements View.OnClickListener {
      * 
      * @author Sana Development Team
      */
-    private class CredentialsValidatedListener implements ValidationListener {
+    private ValidationListener credentialsListener = new ValidationListener()  {
     	/**
          * Called when CheckCredentialsTask completes
          */
-    	public void onValidationComplete(int validationResult) {
+        @Override
+    	public void onValidationComplete(Integer validationResult) {
+            Log.w(TAG, "result : " + validationResult);
     		switch(validationResult){
-    		case(CheckCredentialsTask.CREDENTIALS_NO_CONNECTION):
-    			Log.i(TAG, "Cannot validate EMR credentials -"+
-					"no network connectivity!");
-    			if(!isFinishing())
-    				showDialog(DIALOG_NO_CONNECTIVITY);
-    			break;
-    		case(CheckCredentialsTask.CREDENTIALS_INVALID):
-    			Log.i(TAG, "Could not validate EMR username/password");
-				if (mUploadService != null) {
-					mUploadService.onCredentialsChanged(false);
-				}
-    			break;
-    		case(CheckCredentialsTask.CREDENTIALS_VALID):
-    			Log.i(TAG, "Username/Password for EMR correct");
-				if (mUploadService != null) {
-					mUploadService.onCredentialsChanged(true);
-				}
-    			break;
-    		}
+                case(CheckCredentialsTask.CREDENTIALS_NO_CONNECTION):
+                    Log.i(TAG, "Cannot validate EMR credentials -"+
+                        "no network connectivity!");
+                    if(!isFinishing()) {
+                        BaseDialog dialog = BaseDialog.getInstance(R.string.general_error, R.string.msg_no_connection);
+                        dialog.show();
+                    }
+                    break;
+                case(CheckCredentialsTask.CREDENTIALS_INVALID):
+                    Log.i(TAG, "Could not validate EMR username/password");
+                    if (mUploadService != null) {
+                        mUploadService.onCredentialsChanged(false);
+                    }
+                    break;
+                case(CheckCredentialsTask.CREDENTIALS_VALID):
+                    Log.i(TAG, "Username/Password for EMR correct");
+                    if (mUploadService != null) {
+                        mUploadService.onCredentialsChanged(true);
+                    }
+                    break;
+            }
     	}
-    }
+    };
 
     /** {@inheritDoc} */
 	@Override
@@ -256,8 +261,7 @@ public class Moca extends Activity implements View.OnClickListener {
         			(mCredentialsTask != null && mCredentialsTask.getStatus() == Status.FINISHED))
         		{
         				mCredentialsTask = new CheckCredentialsTask();
-        				mCredentialsTask.setValidationListener(
-        								new CredentialsValidatedListener());
+        				mCredentialsTask.setValidationListener(credentialsListener);
         				mCredentialsTask.execute(this);
         		}
         	}
@@ -504,8 +508,7 @@ public class Moca extends Activity implements View.OnClickListener {
     private void restoreLocalTaskState(Bundle savedInstanceState){
     	if (savedInstanceState.getBoolean(STATE_CHECK_CREDENTIALS)){
 			final CheckCredentialsTask task = new CheckCredentialsTask();
-			task.setValidationListener(
-						new CredentialsValidatedListener());
+			task.setValidationListener(credentialsListener);
 			mCredentialsTask = (CheckCredentialsTask) task.execute(this);
     	}
     	if (savedInstanceState.getBoolean(STATE_MDS_SYNC))
