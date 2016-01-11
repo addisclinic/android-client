@@ -42,12 +42,9 @@ public class NotificationViewer extends Activity implements OnClickListener {
                 null, NotificationSQLFormat.DEFAULT_SORT_ORDER);
         
         cursor.moveToFirst();
-        String procedureIdentifier = cursor.getString(cursor.getColumnIndex(
-        		NotificationSQLFormat.PROCEDURE_ID));
-        String patientId = cursor.getString(cursor.getColumnIndex(
-        		NotificationSQLFormat.PATIENT_ID));
-        String message = cursor.getString(cursor.getColumnIndex(
-        		NotificationSQLFormat.FULL_MESSAGE));
+        String procedureIdentifier = cursor.getString(cursor.getColumnIndex(NotificationSQLFormat.PROCEDURE_ID));
+        String patientId = cursor.getString(cursor.getColumnIndex(NotificationSQLFormat.PATIENT_ID));
+        String message = cursor.getString(cursor.getColumnIndex(NotificationSQLFormat.FULL_MESSAGE));
         cursor.close();
         /*
         cursor = managedQuery(SavedProcedureSQLFormat.CONTENT_URI, new String[] {SavedProcedureSQLFormat._ID, SavedProcedureSQLFormat.PROCEDURE_ID, SavedProcedureSQLFormat.PROCEDURE_STATE},
