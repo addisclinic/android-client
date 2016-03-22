@@ -17,10 +17,12 @@ import java.util.Map.Entry;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HostConfiguration;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.NameValuePair;
+import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.multipart.FilePart;
 import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
@@ -33,6 +35,7 @@ import org.apache.commons.httpclient.protocol.SSLProtocolSocketFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.moca.AddisApp;
 import org.moca.Constants;
 import org.moca.db.Event;
 import org.moca.db.MocaDB.BinarySQLFormat;
@@ -47,6 +50,7 @@ import org.moca.procedure.ProcedureParseException;
 import org.moca.procedure.ProcedureElement.ElementType;
 import org.moca.util.MocaUtil;
 import org.moca.util.UserDatabase;
+import org.moca.util.UserSettings;
 import org.xml.sax.SAXException;
 
 import android.content.ContentResolver;
@@ -165,7 +169,9 @@ public class MDSInterface {
 		return mdsURL + Constants.DATABASE_DOWNLOAD_PATTERN;
 	}
 
-
+    private static String constructNotficationUrl(String mdsUrl) {
+        return mdsUrl + Constants.NOTIFICATION_ENDPOINT;
+    }
 	/**
 	 * Http request url for requesting patient info
 	 * @param mdsURL host url
@@ -213,6 +219,28 @@ public class MDSInterface {
 		String scheme = (useSecure)? "https": "http";
 		String url = scheme + "://" + host;
 		return url +"/"+ Constants.PATH_MDS;
+	}
+
+	private static MDSResult doGet(Context ctx, String mUrl,
+									List<NameValuePair> getData) throws IOException
+	{
+
+		Log.d(TAG, "doGet(): " + mUrl + ", " + getData.size());
+		StringBuilder getRequest = new StringBuilder(mUrl);
+
+        for(int i=0; i < getData.size(); i++) {
+            NameValuePair pair = getData.get(i);
+            if (i == 0) {
+                getRequest.append("?");
+            } else {
+                getRequest.append("&");
+            }
+            getRequest.append(pair.getName()).append("=").append(pair.getValue());
+
+        }
+		GetMethod get = new GetMethod(getRequest.toString());
+
+		return MDSInterface.doExecute(ctx, get);
 	}
 
 	/**
@@ -292,21 +320,22 @@ public class MDSInterface {
 				Protocol https = new Protocol("https", ssl, 443);
 				Protocol.registerProtocol("https", https);
 			}
+
 			int status = client.executeMethod(method); 
 			Log.d(TAG, "postResponses got response code " +  status);
 
 			char buf[] = new char[20560];
-			Reader reader = new InputStreamReader(
-					method.getResponseBodyAsStream());
+			Reader reader = new InputStreamReader(method.getResponseBodyAsStream());
 			int total = reader.read(buf, 0, 20560);
-			String responseString = new String(buf);
-			Log.d(TAG, "Received from MDS:" + responseString.length()+" chars");
+			String responseString = new String(buf).trim();
+			Log.d(TAG, "Received from MDS:" + responseString); //.length()+" chars");
 			Gson gson = new Gson();
 			response = gson.fromJson(responseString, MDSResult.class);
 
 		}  catch (JsonParseException e) {
 			Log.e(TAG, "postResponses(): Error parsing MDS JSON response: " 
 					+ e.getMessage());
+
             return new MDSResult("JSONParseException", "", e.getMessage());
 		} finally {
 			method.releaseConnection();
@@ -1121,6 +1150,35 @@ public class MDSInterface {
 	}
 
 
+	public static String requestNotifications() throws Exception {
+		Log.i(TAG, "requestNotifications(): ");
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(AddisApp.getInstance()
+                																		      .getApplicationContext());
+		String mdsURL = getMDSUrl(preferences);
+		mdsURL = checkMDSUrl(mdsURL);
+		String mUrl = constructNotficationUrl(mdsURL);
+		UserSettings userSettings = new UserSettings();
+		String username = userSettings.getDjangoUsername();
+		String password = userSettings.getDjangoPassword();
+
+		List<NameValuePair> postData = new ArrayList<NameValuePair>();
+		postData.add(new NameValuePair("username", username));
+		postData.add(new NameValuePair("password", password));
+		GetMethod get = new GetMethod();
+		MDSResult postResponse = MDSInterface.doGet(AddisApp.getInstance().getApplicationContext(),
+                                                    mUrl, postData);
+		boolean result = (postResponse != null) && postResponse.succeeded();
+		String response = null;
+		try{
+			if (result){
+                response = postResponse.getData();
+			}
+		} catch (Exception e){
+			response = "Error";
+			Log.e(TAG, "requestNotifications(): " + e.getMessage());
+		}
+		return response;
+	}
 	/**
 	 * Sync patient database on phone with permanent record store.
 	 * 
