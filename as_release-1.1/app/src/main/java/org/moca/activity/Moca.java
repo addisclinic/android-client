@@ -1,12 +1,31 @@
 package org.moca.activity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask.Status;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+
+import org.moca.AddisApp;
 import org.moca.Constants;
 import org.moca.R;
 import org.moca.activity.settings.Settings;
 import org.moca.db.MocaDB.NotificationSQLFormat;
 import org.moca.db.MocaDB.ProcedureSQLFormat;
 import org.moca.db.MocaDB.SavedProcedureSQLFormat;
+import org.moca.fragments.BaseDialog;
 import org.moca.media.EducationResource;
+import org.moca.net.AddisCallback;
+import org.moca.net.MDSNotification;
 import org.moca.procedure.Procedure;
 import org.moca.service.BackgroundUploader;
 import org.moca.service.ServiceConnector;
@@ -16,24 +35,10 @@ import org.moca.task.MDSSyncTask;
 import org.moca.task.ResetDatabaseTask;
 import org.moca.task.ValidationListener;
 import org.moca.util.MocaUtil;
+import org.moca.util.UserSettings;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.DialogInterface.OnClickListener;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.AsyncTask.Status;
-import android.preference.PreferenceManager;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * Main Sana activity. When Sana is launched, this activity runs, allowing the 
@@ -112,33 +117,37 @@ public class Moca extends Activity implements View.OnClickListener {
      * 
      * @author Sana Development Team
      */
-    private class CredentialsValidatedListener implements ValidationListener {
+    private ValidationListener credentialsListener = new ValidationListener()  {
     	/**
          * Called when CheckCredentialsTask completes
          */
-    	public void onValidationComplete(int validationResult) {
+        @Override
+    	public void onValidationComplete(Integer validationResult) {
+            Log.w(TAG, "result : " + validationResult);
     		switch(validationResult){
-    		case(CheckCredentialsTask.CREDENTIALS_NO_CONNECTION):
-    			Log.i(TAG, "Cannot validate EMR credentials -"+
-					"no network connectivity!");
-    			if(!isFinishing())
-    				showDialog(DIALOG_NO_CONNECTIVITY);
-    			break;
-    		case(CheckCredentialsTask.CREDENTIALS_INVALID):
-    			Log.i(TAG, "Could not validate EMR username/password");
-				if (mUploadService != null) {
-					mUploadService.onCredentialsChanged(false);
-				}
-    			break;
-    		case(CheckCredentialsTask.CREDENTIALS_VALID):
-    			Log.i(TAG, "Username/Password for EMR correct");
-				if (mUploadService != null) {
-					mUploadService.onCredentialsChanged(true);
-				}
-    			break;
-    		}
+                case(CheckCredentialsTask.CREDENTIALS_NO_CONNECTION):
+                    Log.i(TAG, "Cannot validate EMR credentials -"+
+                        "no network connectivity!");
+                    if(!isFinishing()) {
+                        BaseDialog dialog = BaseDialog.getInstance(R.string.general_error, R.string.msg_no_connection);
+                        dialog.show();
+                    }
+                    break;
+                case(CheckCredentialsTask.CREDENTIALS_INVALID):
+                    Log.i(TAG, "Could not validate EMR username/password");
+                    if (mUploadService != null) {
+                        mUploadService.onCredentialsChanged(false);
+                    }
+                    break;
+                case(CheckCredentialsTask.CREDENTIALS_VALID):
+                    Log.i(TAG, "Username/Password for EMR correct");
+                    if (mUploadService != null) {
+                        mUploadService.onCredentialsChanged(true);
+                    }
+                    break;
+            }
     	}
-    }
+    };
 
     /** {@inheritDoc} */
 	@Override
@@ -211,7 +220,7 @@ public class Moca extends Activity implements View.OnClickListener {
 	/** {@inheritDoc} */
     @Override
     public void onClick(View arg0) {
-		Log.d(TAG, "Button: " +arg0.getId());
+		Log.d(TAG, "Button: " + arg0.getId());
 		switch (arg0.getId()) {
 		// buttons on the main screen
 		case R.id.moca_main_procedure:
@@ -221,11 +230,26 @@ public class Moca extends Activity implements View.OnClickListener {
 			pickSavedProcedure();
 			break;
 		case R.id.moca_main_notifications:
+            requestNotifications();
 			pickNotification();
 			break;
 		}
 	}
-    
+
+    private void requestNotifications() {
+        String patientId = new UserSettings().getPatientId();
+        AddisApp.getInstance().getNetworkClient().requestNotifications(patientId, new AddisCallback<MDSNotification>() {
+            @Override
+            public void onResponse(Call<MDSNotification> call, Response<MDSNotification> response) {
+                super.onResponse(call, response);
+                if (response.isSuccessful()) {
+                    Log.i(TAG, response.body().toString());
+                } else {
+                    Log.i( TAG, response.errorBody().toString());
+                }
+            }
+        });
+    }
     /** {@inheritDoc} */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, 
@@ -256,8 +280,7 @@ public class Moca extends Activity implements View.OnClickListener {
         			(mCredentialsTask != null && mCredentialsTask.getStatus() == Status.FINISHED))
         		{
         				mCredentialsTask = new CheckCredentialsTask();
-        				mCredentialsTask.setValidationListener(
-        								new CredentialsValidatedListener());
+        				mCredentialsTask.setValidationListener(credentialsListener);
         				mCredentialsTask.execute(this);
         		}
         	}
@@ -504,8 +527,7 @@ public class Moca extends Activity implements View.OnClickListener {
     private void restoreLocalTaskState(Bundle savedInstanceState){
     	if (savedInstanceState.getBoolean(STATE_CHECK_CREDENTIALS)){
 			final CheckCredentialsTask task = new CheckCredentialsTask();
-			task.setValidationListener(
-						new CredentialsValidatedListener());
+			task.setValidationListener(credentialsListener);
 			mCredentialsTask = (CheckCredentialsTask) task.execute(this);
     	}
     	if (savedInstanceState.getBoolean(STATE_MDS_SYNC))

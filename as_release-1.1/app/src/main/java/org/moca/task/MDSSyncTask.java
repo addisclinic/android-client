@@ -1,5 +1,6 @@
 package org.moca.task;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class MDSSyncTask extends AsyncTask<Context, Void, Integer> {
 		mContext = c;
 	}
 	
-	private boolean syncPatients(Context c) {
+	private boolean syncPatients(Context c) throws IOException {
 		return MDSInterface.updatePatientDatabase(c, c.getContentResolver());
 	}
 	
@@ -138,14 +139,17 @@ public class MDSSyncTask extends AsyncTask<Context, Void, Integer> {
 		Context c = params[0];
 		
 		Integer result = EMR_SYNC_NO_CONNECTION; // TODO detect this case better
+		if (MocaUtil.checkConnection(c)) {
+			return result;
+		}
 		try{
-			if (MocaUtil.checkConnection(c)) {
-				boolean patientSyncResult = syncPatients(c);
-				boolean eventSyncResult = syncEvents(c);
-			
-				result = (patientSyncResult && eventSyncResult) ? 
-						EMR_SYNC_SUCCESS : EMR_SYNC_FAILURE;  
-			}
+
+			boolean patientSyncResult = syncPatients(c);
+			boolean eventSyncResult = syncEvents(c);
+
+			result = (patientSyncResult && eventSyncResult) ?
+					EMR_SYNC_SUCCESS : EMR_SYNC_FAILURE;
+
 		} catch(Exception e){
 			Log.e(TAG, "Could not sync. " + e.toString());
 		}

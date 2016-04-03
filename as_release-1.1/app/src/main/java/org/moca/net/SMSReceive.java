@@ -5,30 +5,20 @@
  */
 package org.moca.net;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.moca.R;
-import org.moca.db.NotificationMessage;
-import org.moca.db.MocaDB.NotificationSQLFormat;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
-import android.content.ContentUris;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
+
+import org.moca.R;
 
 /**
  * SMSReceive handles the doctor->healthworker diagnosis exchange.
@@ -79,7 +69,7 @@ public class SMSReceive extends BroadcastReceiver {
 	private void processNotificationMessage(Context context, 
 			MDSNotification notificationHeader, String message) 
 	{
-		Gson g = new Gson();
+		/*Gson g = new Gson();
 		
 		if (notificationHeader.n == null) {
 			Log.e(TAG, "Received mal-formed notification GUID -- none provided.");
@@ -220,7 +210,7 @@ public class SMSReceive extends BroadcastReceiver {
 			Intent viewIntent = new Intent(Intent.ACTION_VIEW, notificationUri);
 			showNotification(context, "Patient ID# " + patientId, fullMessage, 
 					viewIntent);			
-		}
+		}*/
 	}
 	
 	private void processMessage(Context context, SmsMessage m) {

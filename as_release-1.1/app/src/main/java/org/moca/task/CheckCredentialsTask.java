@@ -7,6 +7,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import java.io.IOException;
+
 /**
  * A Task for validating authorization.
  * 
@@ -53,10 +55,10 @@ public class CheckCredentialsTask extends AsyncTask<Context, Void, Integer> {
 				boolean credentialsValid = MDSInterface.validateCredentials(c);
 				result = credentialsValid ? 
 						CREDENTIALS_VALID : CREDENTIALS_INVALID;
-			} catch (Exception e) {
+			} catch (IOException e) {
 				Log.e(TAG, "Got exception while validating credentials: " + e);
-				e.printStackTrace();
-				result = CREDENTIALS_NO_CONNECTION;
+				//e.printStackTrace();
+				return CREDENTIALS_NO_CONNECTION;
 			}
 		}
 		return result;
@@ -65,8 +67,9 @@ public class CheckCredentialsTask extends AsyncTask<Context, Void, Integer> {
 	/** {@inheritDoc} */
 	@Override
 	protected void onPostExecute(Integer result) {
-		Log.i(TAG, "Completed CheckCredentialsTask");
+
 		if (validationListener != null) {
+			Log.i(TAG, "Completed CheckCredentialsTask");
 			validationListener.onValidationComplete(result);
 			// Free the reference to help prevent leaks.
 			validationListener = null;

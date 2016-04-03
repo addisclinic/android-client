@@ -44,7 +44,11 @@ public class ProceduresList extends ListActivity implements LoaderManager.Loader
         setListAdapter(adapter);
         LoaderManager loader = getLoaderManager();
         Bundle args = new Bundle();
-        args.putString(URI_KEY, getIntent().getData().toString());
+        Uri uri = getIntent().getData();
+        if(uri == null)
+            uri = ProcedureSQLFormat.CONTENT_URI;
+
+        args.putString(URI_KEY, uri.toString());
         loader.initLoader(LOADER_ID, args, this);
     }
     
@@ -74,7 +78,7 @@ public class ProceduresList extends ListActivity implements LoaderManager.Loader
             uri = ProcedureSQLFormat.CONTENT_URI;
         }
         return new CursorLoader(ProceduresList.this, uri, PROJECTION,
-                                null, null, null);
+                                null, null, ProcedureSQLFormat.DEFAULT_SORT_ORDER);
     }
 
     @Override

@@ -42,7 +42,8 @@ public class Constants {
     /** Url for sending event submissions */
     public static final String EVENTLOG_SUBMIT_PATTERN = 
     	"/json/eventlog/submit/";
-    
+
+    public static final String NOTIFICATION_ENDPOINT =  "/json/notification";
     // PACKETIZATION FIELDS
     /** The default binary packet size in KB */
     public static final int DEFAULT_INIT_PACKET_SIZE = 20;

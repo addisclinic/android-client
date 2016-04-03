@@ -168,4 +168,6 @@
     
     <!-- Notification Viewer Activity -->
     <string name="note_pt_diagnosis">Diagnosis for Patient</string>
+    <string name="title_no_connection">Connection Issue</string>
+    <string name="msg_no_connection">Unable to connect at this time. Please try again later.</string>
 </resources>
