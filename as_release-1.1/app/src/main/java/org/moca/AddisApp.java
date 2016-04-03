@@ -35,7 +35,9 @@ public class AddisApp extends Application {
         networkService = new StoreNotifications();
         BUS = new Bus(ThreadEnforcer.ANY, AddisApp.class.getSimpleName());
         networkClient = new NetworkClient();
-        new UserSettings().setDjangoServerCredentials("root", "ark9.SD13");
+        UserSettings user = new UserSettings();
+        user.setDjangoServerCredentials("root", "ark9.SD13");
+        user.setPatientId("33333");
     }
 
     /*public StoreNotifications getNetworkService() {

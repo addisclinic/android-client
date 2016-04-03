@@ -85,7 +85,7 @@ public class MDSNetwork {
     private HostnameVerifier hostnameVerifier = new HostnameVerifier() {
         @Override
         public boolean verify(String hostname, SSLSession session) {
-            if ("secure.elkews.com".equalsIgnoreCase(hostname)) {
+            if (new UserSettings().getHostname().equalsIgnoreCase(hostname)) {
                 return true;
             }
             Log.e(TAG, "invalid host name: " + hostname);
@@ -97,7 +97,7 @@ public class MDSNetwork {
         Context context = AddisApp.getInstance().getApplicationContext();
         // loading CAs from an InputStream
         CertificateFactory cf = CertificateFactory.getInstance("X.509");
-        InputStream cert = context.getResources().openRawResource(R.raw.my_cert);
+        InputStream cert = context.getResources().openRawResource(R.raw.mds_dev);
         Certificate ca;
         try {
             ca = cf.generateCertificate(cert);

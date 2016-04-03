@@ -11,7 +11,7 @@ import retrofit2.http.Query;
  */
 public interface NotificationService {
 
-    @POST("mds/notification")
+    @POST("mds/notifications/")
     Call<MDSNotification> requestNotification(@Query("patient_id") String patientId,
                                            @Query("username") String username,
                                            @Query("password") String password);

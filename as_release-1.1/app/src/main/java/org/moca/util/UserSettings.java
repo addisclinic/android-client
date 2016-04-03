@@ -17,7 +17,11 @@ public class UserSettings {
     private SharedPreferences settings;
 
     public String getPatientId() {
-        return settings.contains(UserPrefKey.PATIENT_ID_KEY.get()) ? getUserStringPref(UserPrefKey.USERNAME_KEY) : null;
+        return settings.contains(UserPrefKey.PATIENT_ID_KEY.get()) ? getUserStringPref(UserPrefKey.PATIENT_ID_KEY) : null;
+    }
+
+    public void setPatientId(String patientId) {
+        setUserPref(UserPrefKey.PATIENT_ID_KEY, patientId);
     }
 
     private enum UserPrefKey {
@@ -96,11 +100,11 @@ public class UserSettings {
     }
     
     public String getDjangoUsername () {
-        return settings.contains(UserPrefKey.DJANGO_USERNAME_KEY.get()) ? getUserStringPref(UserPrefKey.USERNAME_KEY) : null;
+        return settings.contains(UserPrefKey.DJANGO_USERNAME_KEY.get()) ? getUserStringPref(UserPrefKey.DJANGO_USERNAME_KEY) : null;
     }
 
     public String getDjangoPassword () {
-        return settings.contains(UserPrefKey.PASSWORD_KEY.get()) ? getUserStringPref(UserPrefKey.PASSWORD_KEY) : null;
+        return settings.contains(UserPrefKey.DJANGO_PASSWORD_KEY.get()) ? getUserStringPref(UserPrefKey.DJANGO_PASSWORD_KEY) : null;
     }
 
     public String getUsername () {
@@ -111,6 +115,9 @@ public class UserSettings {
         return settings.contains(UserPrefKey.PASSWORD_KEY.get()) ? getUserStringPref(UserPrefKey.PASSWORD_KEY) : null;
     }
 
+    public String getHostname () {
+        return settings.contains(UserPrefKey.PREFERENCE_MDS_URL.get()) ? getUserStringPref(UserPrefKey.PREFERENCE_MDS_URL) : Constants.DEFAULT_DISPATCH_SERVER;
+    }
     public String getMDSUrl() {
         String host = settings.contains(UserPrefKey.PREFERENCE_MDS_URL.get()) ? getUserStringPref(UserPrefKey.PREFERENCE_MDS_URL) : Constants.DEFAULT_DISPATCH_SERVER;
 
@@ -119,6 +126,6 @@ public class UserSettings {
         boolean useSecure = getUserBoolPref(UserPrefKey.PREFERENCE_SECURE_TRANSMISSION);
         String scheme = (useSecure)? "https": "http";
         String url = scheme + "://" + host;
-        return url +"/"+ Constants.PATH_MDS + "/";
+        return url +"/"; //+ Constants.PATH_MDS + "/";
     }
 }

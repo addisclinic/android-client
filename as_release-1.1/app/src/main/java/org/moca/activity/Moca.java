@@ -220,7 +220,7 @@ public class Moca extends Activity implements View.OnClickListener {
 	/** {@inheritDoc} */
     @Override
     public void onClick(View arg0) {
-		Log.d(TAG, "Button: " +arg0.getId());
+		Log.d(TAG, "Button: " + arg0.getId());
 		switch (arg0.getId()) {
 		// buttons on the main screen
 		case R.id.moca_main_procedure:
@@ -242,7 +242,11 @@ public class Moca extends Activity implements View.OnClickListener {
             @Override
             public void onResponse(Call<MDSNotification> call, Response<MDSNotification> response) {
                 super.onResponse(call, response);
-                Log.w(TAG, response.body().toString());
+                if (response.isSuccessful()) {
+                    Log.i(TAG, response.body().toString());
+                } else {
+                    Log.i( TAG, response.errorBody().toString());
+                }
             }
         });
     }
