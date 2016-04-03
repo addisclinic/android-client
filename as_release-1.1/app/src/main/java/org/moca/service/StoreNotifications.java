@@ -1,38 +1,22 @@
 package org.moca.service;
 
-import android.content.ContentUris;
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import android.util.Log;
-import android.widget.Toast;
-
-import com.google.gson.Gson;
-
-import org.moca.db.MocaDB;
-import org.moca.db.NotificationMessage;
 import org.moca.net.MDSInterface;
-import org.moca.net.MDSNotification;
-import org.moca.notification.NotificationHelper;
 
 import java.io.File;
 import java.io.FileFilter;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * Created by Albert on 3/19/2016.
  */
-public class NetworkService {
+public class StoreNotifications {
 
-    private static final String TAG = NetworkService.class.getSimpleName();
+    private static final String TAG = StoreNotifications.class.getSimpleName();
     private Executor networkExecutor;
 
-    public NetworkService() {
+    public StoreNotifications() {
         networkExecutor = Executors.newFixedThreadPool(getNumCores());
     }
 
@@ -70,7 +54,7 @@ public class NetworkService {
         });
     }
 
-    private void processNotificationMessage(Context context,
+    /*private void processNotificationMessage(Context context,
                                     MDSNotification notificationHeader, String message)
     {
         Gson g = new Gson();
@@ -214,5 +198,5 @@ public class NetworkService {
             Intent viewIntent = new Intent(Intent.ACTION_VIEW, notificationUri);
             new NotificationHelper().show("Patient ID# " + patientId, fullMessage);
         }
-    }
+    }*/
 }

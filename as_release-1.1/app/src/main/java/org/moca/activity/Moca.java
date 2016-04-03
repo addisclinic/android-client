@@ -1,5 +1,21 @@
 package org.moca.activity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask.Status;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+
+import org.moca.AddisApp;
 import org.moca.Constants;
 import org.moca.R;
 import org.moca.activity.settings.Settings;
@@ -8,6 +24,8 @@ import org.moca.db.MocaDB.ProcedureSQLFormat;
 import org.moca.db.MocaDB.SavedProcedureSQLFormat;
 import org.moca.fragments.BaseDialog;
 import org.moca.media.EducationResource;
+import org.moca.net.AddisCallback;
+import org.moca.net.MDSNotification;
 import org.moca.procedure.Procedure;
 import org.moca.service.BackgroundUploader;
 import org.moca.service.ServiceConnector;
@@ -17,24 +35,10 @@ import org.moca.task.MDSSyncTask;
 import org.moca.task.ResetDatabaseTask;
 import org.moca.task.ValidationListener;
 import org.moca.util.MocaUtil;
+import org.moca.util.UserSettings;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.DialogInterface.OnClickListener;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.AsyncTask.Status;
-import android.preference.PreferenceManager;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * Main Sana activity. When Sana is launched, this activity runs, allowing the 
@@ -226,11 +230,22 @@ public class Moca extends Activity implements View.OnClickListener {
 			pickSavedProcedure();
 			break;
 		case R.id.moca_main_notifications:
+            requestNotifications();
 			pickNotification();
 			break;
 		}
 	}
-    
+
+    private void requestNotifications() {
+        String patientId = new UserSettings().getPatientId();
+        AddisApp.getInstance().getNetworkClient().requestNotifications(patientId, new AddisCallback<MDSNotification>() {
+            @Override
+            public void onResponse(Call<MDSNotification> call, Response<MDSNotification> response) {
+                super.onResponse(call, response);
+                Log.w(TAG, response.body().toString());
+            }
+        });
+    }
     /** {@inheritDoc} */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, 

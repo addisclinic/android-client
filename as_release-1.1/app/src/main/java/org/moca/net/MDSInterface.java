@@ -275,6 +275,7 @@ public class MDSInterface {
 	private static MDSResult doPost(Context ctx, String mUrl, Part[] parts) throws IOException
 	{
 		PostMethod post = new PostMethod(mUrl);
+		Log.i(TAG, "endpoint: " + mUrl);
 		post.setRequestEntity(new MultipartRequestEntity(parts,
 				post.getParams()));
 		return MDSInterface.doExecute(ctx, post);
@@ -1165,7 +1166,7 @@ public class MDSInterface {
 		postData.add(new NameValuePair("username", username));
 		postData.add(new NameValuePair("password", password));
 		GetMethod get = new GetMethod();
-		MDSResult postResponse = MDSInterface.doGet(AddisApp.getInstance().getApplicationContext(),
+		MDSResult postResponse = MDSInterface.doPost(AddisApp.getInstance().getApplicationContext(),
                                                     mUrl, postData);
 		boolean result = (postResponse != null) && postResponse.succeeded();
 		String response = null;

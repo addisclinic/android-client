@@ -2,6 +2,7 @@ package org.moca.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import org.moca.AddisApp;
 import org.moca.Constants;
@@ -15,12 +16,17 @@ public class UserSettings {
     private String APP_PREFS_FILE = TAG + ".APP_PREFS_FILE";
     private SharedPreferences settings;
 
+    public String getPatientId() {
+        return settings.contains(UserPrefKey.PATIENT_ID_KEY.get()) ? getUserStringPref(UserPrefKey.USERNAME_KEY) : null;
+    }
+
     private enum UserPrefKey {
         FIRST_TIME_KEY              ( TAG + ".FIRST_TIME_KEY"           ),
         USERNAME_KEY                ( TAG + ".USERNAME_KEY"             ),
         PASSWORD_KEY                ( TAG + ".PASSWORD_KEY"             ),
         DJANGO_USERNAME_KEY         ( TAG + ".DJANGO_USERNAME_KEY"),
         DJANGO_PASSWORD_KEY         ( TAG + ".DJANGO_PASSWORD_KEY"),
+        PATIENT_ID_KEY              ( TAG + ".PATIENT_ID_KEY"),
         PREFERENCE_MDS_URL          ( Constants.PREFERENCE_MDS_URL),
         PREFERENCE_SECURE_TRANSMISSION (Constants.PREFERENCE_SECURE_TRANSMISSION);
 
@@ -37,8 +43,8 @@ public class UserSettings {
 
     private UserSettings(Context ctxt) {
         Context mApplicationContext = ctxt.getApplicationContext();
-        settings = mApplicationContext.getSharedPreferences(APP_PREFS_FILE,
-                                                            Context.MODE_PRIVATE);
+        //settings = mApplicationContext.getSharedPreferences(APP_PREFS_FILE, Context.MODE_PRIVATE);
+        settings = PreferenceManager.getDefaultSharedPreferences(mApplicationContext);
     }
 
     public UserSettings() {
@@ -113,6 +119,6 @@ public class UserSettings {
         boolean useSecure = getUserBoolPref(UserPrefKey.PREFERENCE_SECURE_TRANSMISSION);
         String scheme = (useSecure)? "https": "http";
         String url = scheme + "://" + host;
-        return url +"/"+ Constants.PATH_MDS;
+        return url +"/"+ Constants.PATH_MDS + "/";
     }
 }

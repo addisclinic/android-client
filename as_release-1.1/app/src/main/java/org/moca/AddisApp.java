@@ -2,7 +2,12 @@ package org.moca;
 
 import android.app.Application;
 
-import org.moca.service.NetworkService;
+import com.squareup.otto.Bus;
+import com.squareup.otto.ThreadEnforcer;
+
+import org.moca.net.clients.NetworkClient;
+import org.moca.service.StoreNotifications;
+import org.moca.util.UserSettings;
 
 /**
  * Created by Albert on 12/30/2015.
@@ -10,7 +15,10 @@ import org.moca.service.NetworkService;
 public class AddisApp extends Application {
 
     private static AddisApp singleton;
-    private NetworkService networkService;
+
+    private static  Bus BUS;
+    private StoreNotifications networkService;
+    private NetworkClient networkClient;
 
     public static AddisApp getInstance() {
         return singleton;
@@ -24,10 +32,22 @@ public class AddisApp extends Application {
 
     private void init() {
         singleton = this;
-        networkService = new NetworkService();
+        networkService = new StoreNotifications();
+        BUS = new Bus(ThreadEnforcer.ANY, AddisApp.class.getSimpleName());
+        networkClient = new NetworkClient();
+        new UserSettings().setDjangoServerCredentials("root", "ark9.SD13");
     }
 
-    public NetworkService getNetworkService() {
+    /*public StoreNotifications getNetworkService() {
         return networkService;
+    }*/
+
+    public NetworkClient getNetworkClient() {
+        return networkClient;
     }
+
+    public Bus getBus() {
+        return BUS;
+    }
+
 }
