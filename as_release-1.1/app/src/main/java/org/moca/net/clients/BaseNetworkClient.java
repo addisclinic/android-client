@@ -8,7 +8,7 @@ import org.moca.AddisApp;
 import org.moca.events.NetworkConnectionEvent;
 import org.moca.model.NetworkConnectionEnum;
 import org.moca.net.AddisCallback;
-import org.moca.net.MDSNotification;
+import org.moca.model.MDSNotification;
 import org.moca.net.NetworkGateway;
 import org.moca.net.commands.ICommand;
 import org.moca.net.commands.TestApiCommand;

@@ -1,8 +1,6 @@
-package org.moca.net;
+package org.moca.model;
 
 import com.google.gson.annotations.SerializedName;
-
-import org.moca.model.MDSNotifyPayload;
 
 /**
  * A representation of a notification sent from the MDS. This may be one segment
@@ -12,11 +10,17 @@ import org.moca.model.MDSNotifyPayload;
  *
  */
 public class MDSNotification {
-    @SerializedName( "status" )
-	public String status;
 
-    @SerializedName( "data" )
-	public MDSNotifyPayload payload;
+    @SerializedName( "mds_id" )
+    public String mdsNotificationId;
+
+    @SerializedName( "patient_id" )
+    public String patientId;
+
+    @SerializedName( "procedure_id" )
+    public String procedureId;
+
+    public String message;
 	
 	/** The patient identifier. */ 
 	//public String p;

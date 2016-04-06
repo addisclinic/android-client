@@ -4,7 +4,7 @@ import android.os.CountDownTimer;
 
 import org.moca.AddisApp;
 import org.moca.net.AddisCallback;
-import org.moca.net.MDSNotification;
+import org.moca.model.MDSNotification;
 import org.moca.util.UserSettings;
 
 import retrofit2.Call;

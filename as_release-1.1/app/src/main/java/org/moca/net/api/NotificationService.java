@@ -1,6 +1,6 @@
 package org.moca.net.api;
 
-import org.moca.net.MDSNotification;
+import org.moca.model.MDSNotification;
 
 import retrofit2.Call;
 import retrofit2.http.POST;

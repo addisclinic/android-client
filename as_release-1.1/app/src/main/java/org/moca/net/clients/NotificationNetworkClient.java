@@ -1,7 +1,7 @@
 package org.moca.net.clients;
 
 import org.moca.net.AddisCallback;
-import org.moca.net.MDSNotification;
+import org.moca.model.MDSNotification;
 import org.moca.net.commands.ICommand;
 import org.moca.net.commands.RequestNotificationsCommand;
 

@@ -1,10 +1,5 @@
 package org.moca.db;
 
-import java.util.HashMap;
-
-import org.moca.db.MocaDB.DatabaseHelper;
-import org.moca.db.MocaDB.NotificationSQLFormat;
-
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -16,6 +11,11 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
+
+import org.moca.db.MocaDB.DatabaseHelper;
+import org.moca.db.MocaDB.NotificationSQLFormat;
+
+import java.util.HashMap;
 /**
  * Content provider for notifications.
  * 
@@ -160,7 +160,7 @@ public class NotificationProvider extends ContentProvider {
             values.put(NotificationSQLFormat.PATIENT_ID, "");
         }
         
-        if(values.containsKey(NotificationSQLFormat.PROCEDURE_ID) == false) {
+        if(!values.containsKey(NotificationSQLFormat.PROCEDURE_ID)) {
             values.put(NotificationSQLFormat.PROCEDURE_ID, "");
         }
         

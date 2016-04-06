@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 
 import org.moca.R;
+import org.moca.model.MDSNotification;
 
 /**
  * SMSReceive handles the doctor->healthworker diagnosis exchange.
@@ -67,7 +68,7 @@ public class SMSReceive extends BroadcastReceiver {
 	}
 	
 	private void processNotificationMessage(Context context, 
-			MDSNotification notificationHeader, String message) 
+			MDSNotification notificationHeader, String message)
 	{
 		/*Gson g = new Gson();
 		

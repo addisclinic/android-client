@@ -6,7 +6,7 @@ import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
 
 import org.moca.net.clients.NetworkClient;
-import org.moca.service.StoreNotifications;
+import org.moca.notification.StoreNotifications;
 import org.moca.util.UserSettings;
 
 /**

@@ -24,21 +24,17 @@ import org.moca.db.MocaDB.ProcedureSQLFormat;
 import org.moca.db.MocaDB.SavedProcedureSQLFormat;
 import org.moca.fragments.BaseDialog;
 import org.moca.media.EducationResource;
-import org.moca.net.AddisCallback;
-import org.moca.net.MDSNotification;
 import org.moca.procedure.Procedure;
 import org.moca.service.BackgroundUploader;
 import org.moca.service.ServiceConnector;
 import org.moca.service.ServiceListener;
+import org.moca.notification.StoreNotifications;
 import org.moca.task.CheckCredentialsTask;
 import org.moca.task.MDSSyncTask;
 import org.moca.task.ResetDatabaseTask;
 import org.moca.task.ValidationListener;
 import org.moca.util.MocaUtil;
 import org.moca.util.UserSettings;
-
-import retrofit2.Call;
-import retrofit2.Response;
 
 /**
  * Main Sana activity. When Sana is launched, this activity runs, allowing the 
@@ -238,17 +234,7 @@ public class Moca extends Activity implements View.OnClickListener {
 
     private void requestNotifications() {
         String patientId = new UserSettings().getPatientId();
-        AddisApp.getInstance().getNetworkClient().requestNotifications(patientId, new AddisCallback<MDSNotification>() {
-            @Override
-            public void onResponse(Call<MDSNotification> call, Response<MDSNotification> response) {
-                super.onResponse(call, response);
-                if (response.isSuccessful()) {
-                    Log.i(TAG, response.body().toString());
-                } else {
-                    Log.i( TAG, response.errorBody().toString());
-                }
-            }
-        });
+        AddisApp.getInstance().getNetworkClient().requestNotifications(patientId, new StoreNotifications());
     }
     /** {@inheritDoc} */
     @Override
