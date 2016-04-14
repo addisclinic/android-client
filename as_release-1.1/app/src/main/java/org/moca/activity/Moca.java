@@ -1,6 +1,5 @@
 package org.moca.activity;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -10,10 +9,13 @@ import android.net.Uri;
 import android.os.AsyncTask.Status;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.squareup.otto.Subscribe;
 
 import org.moca.AddisApp;
 import org.moca.Constants;
@@ -22,13 +24,15 @@ import org.moca.activity.settings.Settings;
 import org.moca.db.MocaDB.NotificationSQLFormat;
 import org.moca.db.MocaDB.ProcedureSQLFormat;
 import org.moca.db.MocaDB.SavedProcedureSQLFormat;
+import org.moca.events.LoginFailedEvent;
 import org.moca.fragments.BaseDialog;
+import org.moca.fragments.LoginFragment;
 import org.moca.media.EducationResource;
+import org.moca.notification.StoreNotifications;
 import org.moca.procedure.Procedure;
 import org.moca.service.BackgroundUploader;
 import org.moca.service.ServiceConnector;
 import org.moca.service.ServiceListener;
-import org.moca.notification.StoreNotifications;
 import org.moca.task.CheckCredentialsTask;
 import org.moca.task.MDSSyncTask;
 import org.moca.task.ResetDatabaseTask;
@@ -43,7 +47,7 @@ import org.moca.util.UserSettings;
  * 
  * @author Sana Dev Team
  */
-public class Moca extends Activity implements View.OnClickListener {
+public class Moca extends AppCompatActivity implements View.OnClickListener, LoginFragment.LoginFragmentListener {
     public static final String TAG = Moca.class.getSimpleName();
 
     // Option menu codes
@@ -86,7 +90,6 @@ public class Moca extends Activity implements View.OnClickListener {
     static final String STATE_CHECK_CREDENTIALS = "_credentials";
     static final String STATE_MDS_SYNC = "_mdssync";
     static final String STATE_RESET_DB = "_resetdb";
-    
     /**
      * Background listener for taking action when network service is available
      * 
@@ -149,6 +152,7 @@ public class Moca extends Activity implements View.OnClickListener {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
+        AddisApp.getInstance().getBus().unregister(this);
 		try {
 			mConnector.disconnect(this);
 			mUploadService = null;
@@ -164,14 +168,8 @@ public class Moca extends Activity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.main);
-        View openProcedure = findViewById(R.id.moca_main_procedure);
-        openProcedure.setOnClickListener(this);
-
-        View viewTransfers = findViewById(R.id.moca_main_transfers);
-        viewTransfers.setOnClickListener(this);
-
-        View viewNotifications = findViewById(R.id.moca_main_notifications);
-        viewNotifications.setOnClickListener(this);
+        inflateViews();
+        AddisApp.getInstance().getBus().register(this);
         // Create a connection to the background upload service. 
         // This starts the service when the app starts.
         try {
@@ -188,7 +186,18 @@ public class Moca extends Activity implements View.OnClickListener {
         EducationResource.intializeDevice();
         Procedure.intializeDevice();
     }
-    
+
+    private void inflateViews() {
+        View openProcedure = findViewById(R.id.moca_main_procedure);
+        openProcedure.setOnClickListener(this);
+
+        View viewTransfers = findViewById(R.id.moca_main_transfers);
+        viewTransfers.setOnClickListener(this);
+
+        View viewNotifications = findViewById(R.id.moca_main_notifications);
+        viewNotifications.setOnClickListener(this);
+    }
+
     /** Activates selecting a procedure and to start a new encounter */
     private void pickProcedure() {
     	Intent i = new Intent(Intent.ACTION_PICK);
@@ -527,5 +536,22 @@ public class Moca extends Activity implements View.OnClickListener {
     protected void onResume() {
         super.onResume();
         if (mSavedState != null) restoreLocalTaskState(mSavedState);
+    }
+
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Subscribe
+    public void onFailedLogin(LoginFailedEvent event) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                LoginFragment login = LoginFragment.getInstance(1);
+                login.show(getFragmentManager(), LoginFragment.class.getSimpleName());
+            }
+        });
     }
 }

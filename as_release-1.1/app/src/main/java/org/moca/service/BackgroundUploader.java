@@ -1,14 +1,5 @@
 package org.moca.service;
 
-import java.util.PriorityQueue;
-
-import org.moca.db.MocaDB.ProcedureSQLFormat;
-import org.moca.db.MocaDB.SavedProcedureSQLFormat;
-import org.moca.net.MDSInterface;
-import org.moca.task.CheckCredentialsTask;
-import org.moca.task.ValidationListener;
-import org.moca.util.MocaUtil;
-
 import android.app.Application;
 import android.app.Service;
 import android.content.ContentUris;
@@ -23,6 +14,17 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
+
+import org.moca.AddisApp;
+import org.moca.db.MocaDB.ProcedureSQLFormat;
+import org.moca.db.MocaDB.SavedProcedureSQLFormat;
+import org.moca.events.LoginFailedEvent;
+import org.moca.net.MDSInterface;
+import org.moca.task.CheckCredentialsTask;
+import org.moca.task.ValidationListener;
+import org.moca.util.MocaUtil;
+
+import java.util.PriorityQueue;
 
 /**
  * Background service to upload pending cases when data service is available.
@@ -88,22 +90,25 @@ public class BackgroundUploader extends Service {
 		@Override
 		public void onValidationComplete(Integer validationResult) {
 			checkCredentialsTask = null;
-			if (validationResult == CheckCredentialsTask.CREDENTIALS_INVALID) {
-				credentialStatus = CredentialStatus.INVALID;
-			} else if (
-				validationResult == CheckCredentialsTask.CREDENTIALS_VALID){
-				credentialStatus = CredentialStatus.VALID;
-			} else if (
-				validationResult == CheckCredentialsTask.CREDENTIALS_NO_CONNECTION){
-				// Leave credentialStatus as it is.
-			}
-			
-			if (credentialStatus.equals(CredentialStatus.VALID)) {
-				// Process the queue, since the credentials were valid. Only
-				// call this if they are valid because this callback is
-				// called as a result of a request from processUploadQueue(), so
-				// prevent a loop.
-				processUploadQueue();
+			switch (validationResult) {
+				case  CheckCredentialsTask.CREDENTIALS_INVALID:
+					credentialStatus = CredentialStatus.INVALID;
+                    AddisApp.getInstance().getBus().post(new LoginFailedEvent());
+					break;
+
+				case CheckCredentialsTask.CREDENTIALS_VALID:
+					credentialStatus = CredentialStatus.VALID;
+					// Process the queue, since the credentials were valid. Only
+					// call this if they are valid because this callback is
+					// called as a result of a request from processUploadQueue(), so
+					// prevent a loop.
+					processUploadQueue();
+					break;
+
+				default:
+				case CheckCredentialsTask.CREDENTIALS_NO_CONNECTION:
+					// Leave credentialStatus as it is.
+					break;
 			}
 		}
 	}
