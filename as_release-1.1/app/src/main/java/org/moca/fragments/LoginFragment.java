@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatButton;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
+import org.apache.commons.codec.binary.StringUtils;
 import org.moca.R;
 
 import java.util.List;
@@ -50,6 +52,7 @@ public class LoginFragment extends DialogFragment implements UserLoginTask.UserL
     private EditText passwordView;
     private View mProgressView;
     private View mLoginFormView;
+    private AppCompatButton loginButton;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -88,6 +91,13 @@ public class LoginFragment extends DialogFragment implements UserLoginTask.UserL
         emailView = (AutoCompleteTextView) rootView.findViewById(R.id.input_email);
         passwordView = (EditText) rootView.findViewById(R.id.input_password);
         mLoginFormView = rootView.findViewById(R.id.login_form);
+        loginButton = (AppCompatButton) rootView.findViewById(R.id.btn_login);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                attemptLogin();
+            }
+        });
         return rootView;
     }
 
@@ -134,6 +144,7 @@ public class LoginFragment extends DialogFragment implements UserLoginTask.UserL
         } else {
             passwordView.setError(getString(R.string.error_incorrect_password));
             passwordView.requestFocus();
+            loginButton.setEnabled(true);
         }
     }
 
@@ -141,6 +152,7 @@ public class LoginFragment extends DialogFragment implements UserLoginTask.UserL
     public void onCancelled() {
         mAuthTask = null;
         showProgress(false);
+        loginButton.setEnabled(true);
     }
 
     /**
@@ -232,6 +244,7 @@ public class LoginFragment extends DialogFragment implements UserLoginTask.UserL
             // form field with an error.
             focusView.requestFocus();
         } else {
+            loginButton.setEnabled(false);
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
@@ -242,11 +255,11 @@ public class LoginFragment extends DialogFragment implements UserLoginTask.UserL
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        return !TextUtils.isEmpty(email);
     }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() >= 8 && password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$");
     }
 }
