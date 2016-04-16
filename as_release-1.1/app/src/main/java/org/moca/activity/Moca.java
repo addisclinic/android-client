@@ -549,8 +549,8 @@ public class Moca extends AppCompatActivity implements View.OnClickListener, Log
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                LoginFragment login = LoginFragment.getInstance(1);
-                login.show(getFragmentManager(), LoginFragment.class.getSimpleName());
+                // LoginFragment login = LoginFragment.getInstance(1);
+                //login.show(getFragmentManager(), LoginFragment.class.getSimpleName());
             }
         });
     }
