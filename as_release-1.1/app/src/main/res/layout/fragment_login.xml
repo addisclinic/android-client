@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="1dp">
 
     <FrameLayout
+        android:id="@+id/image_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:background="@android:color/holo_orange_dark">
 
         <ImageView
@@ -23,10 +25,11 @@
     <!-- Login progress -->
     <ProgressBar
         android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
+        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_centerInParent="true"
+        android:indeterminateDrawable="@drawable/circular_progress_custom"
         android:visibility="gone" />
 
     <LinearLayout
@@ -35,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:layout_below="@+id/image_container"
         android:orientation="vertical">
 
         <!--  Email Label -->
@@ -76,6 +80,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/login_form"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:orientation="horizontal">
@@ -108,7 +113,8 @@
             android:layout_marginBottom="24dp"
             android:padding="12dp"
             android:background="@android:color/transparent"
-            android:text="Login"/>
+            android:text="Login"
+            android:textColor="@android:color/darker_gray"/>
 
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

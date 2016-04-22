@@ -4,7 +4,9 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,11 +19,18 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
-import org.apache.commons.codec.binary.StringUtils;
+import org.moca.AddisApp;
 import org.moca.R;
+import org.moca.model.LoginResult;
+import org.moca.net.AddisCallback;
+import org.moca.util.UserSettings;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,7 +40,7 @@ import java.util.List;
  * Use the {@link LoginFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LoginFragment extends DialogFragment implements UserLoginTask.UserLoginListener{
+public class LoginFragment extends DialogFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -42,27 +51,23 @@ public class LoginFragment extends DialogFragment implements UserLoginTask.UserL
     private int mParam2;
 
     private LoginFragmentListener mListener;
-    /**
-     * Keep track of the login task to ensure we can cancel it if requested.
-     */
-    private UserLoginTask mAuthTask = null;
+
 
     // UI references.
     private AutoCompleteTextView emailView;
     private EditText passwordView;
-    private View mProgressView;
+    private ProgressBar mProgressView;
     private View mLoginFormView;
     private AppCompatButton loginButton;
 
     public LoginFragment() {
-        // Required empty public constructor
+        setStyle(DialogFragment.STYLE_NO_TITLE, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
     }
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
      * @param param2 Parameter 2.
      * @return A new instance of fragment LoginFragment.
      */
@@ -88,13 +93,16 @@ public class LoginFragment extends DialogFragment implements UserLoginTask.UserL
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView =  inflater.inflate(R.layout.fragment_login, container, false);
+        mProgressView = (ProgressBar) rootView.findViewById(R.id.login_progress);
         emailView = (AutoCompleteTextView) rootView.findViewById(R.id.input_email);
         passwordView = (EditText) rootView.findViewById(R.id.input_password);
         mLoginFormView = rootView.findViewById(R.id.login_form);
         loginButton = (AppCompatButton) rootView.findViewById(R.id.btn_login);
+        loginButton.setEnabled(true);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loginButton.setEnabled(false);
                 attemptLogin();
             }
         });
@@ -134,26 +142,7 @@ public class LoginFragment extends DialogFragment implements UserLoginTask.UserL
         void onFragmentInteraction(Uri uri);
     }
 
-    @Override
-    public void onComplete(boolean success) {
-        mAuthTask = null;
-        showProgress(false);
-
-        if (success) {
-            //finish();
-        } else {
-            passwordView.setError(getString(R.string.error_incorrect_password));
-            passwordView.requestFocus();
-            loginButton.setEnabled(true);
-        }
-    }
-
-    @Override
-    public void onCancelled() {
-        mAuthTask = null;
-        showProgress(false);
-        loginButton.setEnabled(true);
-    }
+    
 
     /**
      * Shows the progress UI and hides the login form.
@@ -243,13 +232,15 @@ public class LoginFragment extends DialogFragment implements UserLoginTask.UserL
             // There was an error; don't attempt login and focus the first
             // form field with an error.
             focusView.requestFocus();
+            loginButton.setEnabled(true);
         } else {
             loginButton.setEnabled(false);
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password, this);
-            mAuthTask.execute((Void) null);
+            //mAuthTask = new UserLoginTask(email, password, this);
+            //mAuthTask.execute((Void) null);
+            AddisApp.getInstance().getNetworkClient().login(callback, email, password);
         }
     }
 
@@ -262,4 +253,31 @@ public class LoginFragment extends DialogFragment implements UserLoginTask.UserL
         //TODO: Replace this with your own logic
         return password.length() >= 8 && password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$");
     }
+
+    private AddisCallback<LoginResult> callback = new AddisCallback<LoginResult>() {
+        @Override
+        public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+            showProgress(false);
+            if (response.body().status.equals("SUCCESS")) {
+                dismiss();
+                loginButton.setEnabled(true);
+            } else {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                                .setMessage("Login Failed.")
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                        loginButton.setEnabled(true);
+                                    }
+                                }).create();
+                        dialog.show();
+                    }
+                });
+            }
+        }
+    };
 }

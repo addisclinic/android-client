@@ -9,6 +9,7 @@ import com.google.gson.GsonBuilder;
 
 import org.moca.AddisApp;
 import org.moca.R;
+import org.moca.net.api.LoginService;
 import org.moca.net.api.NotificationService;
 import org.moca.util.UserSettings;
 
@@ -48,6 +49,7 @@ public class MDSNetwork {
     private  Retrofit.Builder builder;
 
     private  NotificationService userService;
+    private  LoginService loginService;
 
     public static MDSNetwork getInstance() {
         if (singleton == null) {
@@ -146,5 +148,13 @@ public class MDSNetwork {
 
         TokenAuthenticator.resetRetryCount();
         return userService;
+    }
+
+    public LoginService getLoginService() {
+        if (loginService == null)
+            loginService = createServiceWithAuth(LoginService.class);
+
+        TokenAuthenticator.resetRetryCount();
+        return loginService;
     }
 }
