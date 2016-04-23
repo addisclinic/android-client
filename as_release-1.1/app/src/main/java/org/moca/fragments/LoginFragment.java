@@ -25,7 +25,7 @@ import org.moca.AddisApp;
 import org.moca.R;
 import org.moca.model.LoginResult;
 import org.moca.net.AddisCallback;
-import org.moca.util.UserSettings;
+import org.moca.ui.views.ObfuscatedPasswordView;
 
 import java.util.List;
 
@@ -55,7 +55,7 @@ public class LoginFragment extends DialogFragment {
 
     // UI references.
     private AutoCompleteTextView emailView;
-    private EditText passwordView;
+    private ObfuscatedPasswordView passwordView;
     private ProgressBar mProgressView;
     private View mLoginFormView;
     private AppCompatButton loginButton;
@@ -95,7 +95,7 @@ public class LoginFragment extends DialogFragment {
         View rootView =  inflater.inflate(R.layout.fragment_login, container, false);
         mProgressView = (ProgressBar) rootView.findViewById(R.id.login_progress);
         emailView = (AutoCompleteTextView) rootView.findViewById(R.id.input_email);
-        passwordView = (EditText) rootView.findViewById(R.id.input_password);
+        passwordView = (ObfuscatedPasswordView) rootView.findViewById(R.id.input_password);
         mLoginFormView = rootView.findViewById(R.id.login_form);
         loginButton = (AppCompatButton) rootView.findViewById(R.id.btn_login);
         loginButton.setEnabled(true);
@@ -142,7 +142,7 @@ public class LoginFragment extends DialogFragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    
+
 
     /**
      * Shows the progress UI and hides the login form.
@@ -153,10 +153,10 @@ public class LoginFragment extends DialogFragment {
         // for very easy animations. If available, use these APIs to fade-in
         // the progress spinner.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
+            int animTime = getResources().getInteger(android.R.integer.config_longAnimTime);
 
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            mLoginFormView.animate().setDuration(shortAnimTime).alpha(
+            mLoginFormView.animate().setDuration(animTime).alpha(
                     show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
@@ -165,7 +165,7 @@ public class LoginFragment extends DialogFragment {
             });
 
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mProgressView.animate().setDuration(shortAnimTime).alpha(
+            mProgressView.animate().setDuration(animTime).alpha(
                     show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
@@ -195,9 +195,7 @@ public class LoginFragment extends DialogFragment {
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
-        if (mAuthTask != null) {
-            return;
-        }
+
 
         // Reset errors.
         emailView.setError(null);
@@ -211,7 +209,7 @@ public class LoginFragment extends DialogFragment {
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+        if (!isPasswordValid(password)) {
             passwordView.setError(getString(R.string.error_invalid_password));
             focusView = passwordView;
             cancel = true;
@@ -250,7 +248,7 @@ public class LoginFragment extends DialogFragment {
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
+
         return password.length() >= 8 && password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$");
     }
 
