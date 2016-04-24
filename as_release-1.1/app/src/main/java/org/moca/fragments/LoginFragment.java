@@ -26,6 +26,7 @@ import org.moca.R;
 import org.moca.model.LoginResult;
 import org.moca.net.AddisCallback;
 import org.moca.ui.views.ObfuscatedPasswordView;
+import org.moca.util.UserSettings;
 
 import java.util.List;
 
@@ -41,9 +42,9 @@ import retrofit2.Response;
  * create an instance of this fragment.
  */
 public class LoginFragment extends DialogFragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
+    private static final String TAG = LoginFragment.class.getSimpleName();
+    private static final String USERNAME_KEY = TAG + ".USERNAME_KEY";
+    private static final String PASSWORD_KEY = TAG + ".PASSWORD_KEY";
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
@@ -106,9 +107,22 @@ public class LoginFragment extends DialogFragment {
                 attemptLogin();
             }
         });
+        showCredentials(savedInstanceState);
         return rootView;
     }
 
+
+    private void showCredentials(Bundle savedState) {
+        if (savedState != null && savedState.containsKey(USERNAME_KEY)) {
+            emailView.setText(savedState.getString(USERNAME_KEY));
+            passwordView.setText(savedState.getString(PASSWORD_KEY));
+        } else  {
+            UserSettings settings = new UserSettings();
+
+            emailView.setText(settings.getUsername());
+            passwordView.setText(settings.getPassword());
+        }
+    }
 
     @Override
     public void onAttach(Activity activity) {
@@ -259,6 +273,10 @@ public class LoginFragment extends DialogFragment {
             if (response.body().status.equals("SUCCESS")) {
                 dismiss();
                 loginButton.setEnabled(true);
+                UserSettings settings = new UserSettings();
+                String username = emailView.getText().toString();
+                String password = passwordView.getText().toString();
+                settings.setCredentials(username, password);
             } else {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
