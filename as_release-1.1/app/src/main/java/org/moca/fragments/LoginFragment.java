@@ -217,7 +217,7 @@ public class LoginFragment extends DialogFragment {
 
         // Store values at the time of the login attempt.
         String email = emailView.getText().toString();
-        String password = passwordView.getText().toString();
+        String password = passwordView.getText();
 
         boolean cancel = false;
         View focusView = null;
@@ -250,8 +250,6 @@ public class LoginFragment extends DialogFragment {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            //mAuthTask = new UserLoginTask(email, password, this);
-            //mAuthTask.execute((Void) null);
             AddisApp.getInstance().getNetworkClient().login(callback, email, password);
         }
     }
@@ -266,6 +264,24 @@ public class LoginFragment extends DialogFragment {
         return password.length() >= 8 && password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$");
     }
 
+    private void showLoginFail(final String errMsg) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                        .setMessage("Login Failed: " + errMsg)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                loginButton.setEnabled(true);
+                            }
+                        }).create();
+                dialog.show();
+            }
+        });
+    }
+
     private AddisCallback<LoginResult> callback = new AddisCallback<LoginResult>() {
         @Override
         public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
@@ -273,27 +289,15 @@ public class LoginFragment extends DialogFragment {
             if (response.body().status.equals("SUCCESS")) {
                 dismiss();
                 loginButton.setEnabled(true);
-                UserSettings settings = new UserSettings();
-                String username = emailView.getText().toString();
-                String password = passwordView.getText().toString();
-                settings.setCredentials(username, password);
             } else {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        AlertDialog dialog = new AlertDialog.Builder(getActivity())
-                                .setMessage("Login Failed.")
-                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-                                        loginButton.setEnabled(true);
-                                    }
-                                }).create();
-                        dialog.show();
-                    }
-                });
+                showLoginFail(String.valueOf(response.code()));
             }
+        }
+
+        @Override
+        public void onFailure(Call<LoginResult> call, Throwable t) {
+            showProgress(false);
+            showLoginFail(t.getMessage());
         }
     };
 }

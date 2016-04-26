@@ -41,7 +41,7 @@ public abstract class AddisCallback<T> implements Callback<T> {
             if (command != null) {
                 Log.e(command.getClass().getSimpleName(), t.getMessage());
             } else {
-                Log.e("UNKNOWN CLASS, PLEASE FIX ME", t.getMessage());
+                Log.e("UNKNOWN CLASS: FIX ME", t.getMessage());
             }
 
         }

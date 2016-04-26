@@ -20,6 +20,7 @@ public class LoginCommand extends BaseNetworkCommand {
     private String mdsPassword;
 
     public LoginCommand(AddisCallback<LoginResult> callback, String user, String password) {
+        super();
         this.callback = callback;
         this.mdsUser = user;
         this.mdsPassword = password;
@@ -28,10 +29,8 @@ public class LoginCommand extends BaseNetworkCommand {
     @Override
     public void execute() {
         LoginService service = MDSNetwork.getInstance().getLoginService();
-        UserSettings userSettings = new UserSettings();
-        //String mdsUser = userSettings.getUsername();
-        //String mdsPassword = userSettings.getPassword();
         Call<LoginResult> call = service.login(mdsUser, mdsPassword);
+        loginCallback.registerCommand(this);
         call.enqueue(loginCallback);
     }
 
@@ -39,19 +38,23 @@ public class LoginCommand extends BaseNetworkCommand {
         @Override
         public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
             super.onResponse(call, response);
-            if (response.isSuccessful()) {
+            if (response.isSuccessful() && response.body().status.equals("SUCCESS")) {
                 UserSettings userSettings = new UserSettings();
                 userSettings.setCredentials(mdsUser, mdsPassword);
-                callback.onResponse(call, response);
             }
+            callback.onResponse(call, response);
+        }
+
+        @Override
+        public void onFailure(Call<LoginResult> call, Throwable t) {
+            super.onFailure(call, t);
+            callback.onFailure(call, t);
         }
     };
 
     public LoginResult executeSynchronous() {
         LoginService service = MDSNetwork.getInstance().getLoginService();
 
-        //String mdsUser = userSettings.getUsername();
-        //String mdsPassword = userSettings.getPassword();
         Call<LoginResult> call = service.login(mdsUser, mdsPassword);
         try {
             Response<LoginResult> result = call.execute();
