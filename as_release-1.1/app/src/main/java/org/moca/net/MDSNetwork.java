@@ -40,7 +40,7 @@ import retrofit2.Retrofit;
 public class MDSNetwork {
 
     private static final String TAG = MDSNetwork.class.getSimpleName();
-    private static final int[] sslCertificateArray = {R.raw.mds_dev};
+    private static final int[] sslCertificateArray = {R.raw.mds_dev, R.raw.mds_prod};
     private static MDSNetwork singleton;
     public  Gson gson = new GsonBuilder().create();
 
