@@ -289,8 +289,10 @@ public class LoginFragment extends DialogFragment {
             if (response.body().status.equals("SUCCESS")) {
                 dismiss();
                 loginButton.setEnabled(true);
+            } else if (response.code() == 200) {
+                showLoginFail(String.valueOf(response.body().data));
             } else {
-                showLoginFail(String.valueOf(response.code()));
+                showLoginFail(String.valueOf(String.valueOf(response.code())));
             }
         }
 
