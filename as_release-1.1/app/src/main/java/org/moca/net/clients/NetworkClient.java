@@ -4,6 +4,10 @@ import com.squareup.otto.Subscribe;
 
 import org.moca.AddisApp;
 import org.moca.events.NetworkApiEvent;
+import org.moca.model.LoginResult;
+import org.moca.net.AddisCallback;
+import org.moca.net.commands.ICommand;
+import org.moca.net.commands.LoginCommand;
 
 import java.net.NoRouteToHostException;
 import java.net.SocketException;
@@ -20,6 +24,10 @@ public class NetworkClient extends NotificationNetworkClient {
         AddisApp.getInstance().getBus().register(this);
     }
 
+    public void login(AddisCallback<LoginResult> callback, String user, String password) {
+        ICommand command = new LoginCommand(callback, user, password);
+        executeCommand(command);
+    }
 
     @Subscribe
     public void onNetworkFail(NetworkApiEvent event) {

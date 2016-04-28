@@ -26,8 +26,8 @@ public class UserSettings {
 
     private enum UserPrefKey {
         FIRST_TIME_KEY              ( TAG + ".FIRST_TIME_KEY"           ),
-        USERNAME_KEY                ( TAG + ".USERNAME_KEY"             ),
-        PASSWORD_KEY                ( TAG + ".PASSWORD_KEY"             ),
+        USERNAME_KEY                ( Constants.PREFERENCE_EMR_USERNAME ),
+        PASSWORD_KEY                ( Constants.PREFERENCE_EMR_PASSWORD ),
         DJANGO_USERNAME_KEY         ( TAG + ".DJANGO_USERNAME_KEY"),
         DJANGO_PASSWORD_KEY         ( TAG + ".DJANGO_PASSWORD_KEY"),
         PATIENT_ID_KEY              ( TAG + ".PATIENT_ID_KEY"),

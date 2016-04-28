@@ -9,6 +9,7 @@ import com.google.gson.GsonBuilder;
 
 import org.moca.AddisApp;
 import org.moca.R;
+import org.moca.net.api.LoginService;
 import org.moca.net.api.NotificationService;
 import org.moca.util.UserSettings;
 
@@ -17,6 +18,7 @@ import java.io.InputStream;
 import java.lang.reflect.Modifier;
 import java.security.GeneralSecurityException;
 import java.security.KeyStore;
+import java.security.SecureRandom;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
 
@@ -38,6 +40,7 @@ import retrofit2.Retrofit;
 public class MDSNetwork {
 
     private static final String TAG = MDSNetwork.class.getSimpleName();
+    private static final int[] sslCertificateArray = {R.raw.mds_dev, R.raw.mds_prod};
     private static MDSNetwork singleton;
     public  Gson gson = new GsonBuilder().create();
 
@@ -48,6 +51,7 @@ public class MDSNetwork {
     private  Retrofit.Builder builder;
 
     private  NotificationService userService;
+    private  LoginService loginService;
 
     public static MDSNetwork getInstance() {
         if (singleton == null) {
@@ -95,20 +99,24 @@ public class MDSNetwork {
 
     private SSLSocketFactory getSocketFactory() throws GeneralSecurityException, IOException {
         Context context = AddisApp.getInstance().getApplicationContext();
-        // loading CAs from an InputStream
-        CertificateFactory cf = CertificateFactory.getInstance("X.509");
-        InputStream cert = context.getResources().openRawResource(R.raw.mds_dev);
-        Certificate ca;
-        try {
-            ca = cf.generateCertificate(cert);
-        } finally { cert.close(); }
-
         // creating a KeyStore containing our trusted CAs
         String keyStoreType = KeyStore.getDefaultType();
         KeyStore keyStore = KeyStore.getInstance(keyStoreType);
         keyStore.load(null, null);
-        keyStore.setCertificateEntry("ca", ca);
 
+        for (int i=0; i < sslCertificateArray.length; i++) {
+            // loading CAs from an InputStream
+            CertificateFactory cf = CertificateFactory.getInstance("X.509");
+            InputStream cert = context.getResources().openRawResource(sslCertificateArray[i]);
+            Certificate ca;
+            try {
+                ca = cf.generateCertificate(cert);
+            } finally {
+                cert.close();
+            }
+
+            keyStore.setCertificateEntry("ca" + i, ca);
+        }
         // creating a TrustManager that trusts the CAs in our KeyStore
         String tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm();
         TrustManagerFactory tmf = TrustManagerFactory.getInstance(tmfAlgorithm);
@@ -116,7 +124,7 @@ public class MDSNetwork {
 
         // creating an SSLSocketFactory that uses our TrustManager
         SSLContext sslContext = SSLContext.getInstance("TLS");
-        sslContext.init(null, tmf.getTrustManagers(), null);
+        sslContext.init(null, tmf.getTrustManagers(), new SecureRandom());
 
         return sslContext.getSocketFactory();
     }
@@ -146,5 +154,13 @@ public class MDSNetwork {
 
         TokenAuthenticator.resetRetryCount();
         return userService;
+    }
+
+    public LoginService getLoginService() {
+        if (loginService == null)
+            loginService = createServiceWithAuth(LoginService.class);
+
+        TokenAuthenticator.resetRetryCount();
+        return loginService;
     }
 }
