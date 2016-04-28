@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask.Status;
 import android.os.Bundle;
@@ -54,7 +56,8 @@ public class Moca extends AppCompatActivity implements View.OnClickListener, Log
     private static final int OPTION_RELOAD_DATABASE = 0;
     private static final int OPTION_SETTINGS = 1;
 	private static final int OPTION_SYNC = 2;
-	
+    private static final int OPTION_ABOUT = 3;
+
     // Activity request codes
 	/** Intent request code for picking a procedure */
     public static final int PICK_PROCEDURE = 0;
@@ -185,6 +188,15 @@ public class Moca extends AppCompatActivity implements View.OnClickListener, Log
         // Make sure directory structure is in place on external drive
         EducationResource.intializeDevice();
         Procedure.intializeDevice();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (dialog != null) {
+            dialog.dismiss();
+            dialog = null;
+        }
     }
 
     private void inflateViews() {
@@ -427,10 +439,11 @@ public class Moca extends AppCompatActivity implements View.OnClickListener, Log
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
     	super.onCreateOptionsMenu(menu);
-        menu.add(0, OPTION_RELOAD_DATABASE, 0, 
+        menu.add(0, OPTION_RELOAD_DATABASE, 0,
         		getString(R.string.menu_reload_db));
         menu.add(0, OPTION_SETTINGS, 1, getString(R.string.menu_settings));
 		menu.add(0, OPTION_SYNC, 2, getString(R.string.menu_sync));
+        menu.add(0, OPTION_ABOUT, 3, "About");
         return true;
     }
     
@@ -453,36 +466,55 @@ public class Moca extends AppCompatActivity implements View.OnClickListener, Log
     		mSyncTask = (MDSSyncTask) new MDSSyncTask(this).execute(this);
     	}
     }
-    
+
+    private  AlertDialog dialog;
     /** {@inheritDoc} */
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()) {
-        case OPTION_RELOAD_DATABASE:
-        	// TODO: Dialog leak
-        	AlertDialog.Builder bldr = new AlertDialog.Builder(this);
-        	AlertDialog dialog = bldr.create();
-        	dialog.setMessage(getString(R.string.dialog_no_reload_db_warn));
-        	dialog.setCancelable(true);
-        	dialog.setButton("Yes", new OnClickListener() {
-        		public void onClick(DialogInterface i, int v) {
-        			doClearDatabase();
-        		}
-        	});
-        	dialog.setButton2(getString(R.string.general_no), 
-        			(OnClickListener)null);
-        	if(!isFinishing())
-        		dialog.show();
-            return true;
-        case OPTION_SETTINGS:
-            Intent i = new Intent(Intent.ACTION_PICK);
-            i.setClass(this, Settings.class);
-            startActivityForResult(i, SETTINGS);
-            return true;
-        case OPTION_SYNC:
-        	doUpdatePatientDatabase();
-			return true;
-        }    
+            case OPTION_RELOAD_DATABASE:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setPositiveButton("Yes", new OnClickListener() {
+                    public void onClick(DialogInterface i, int v) {
+                        doClearDatabase();
+                    }
+                });
+
+                builder.setMessage(getString(R.string.dialog_no_reload_db_warn));
+                builder.setCancelable(true);
+                builder.setNegativeButton(getString(R.string.general_no), null);
+
+                dialog = builder.create();
+                if(!isFinishing())
+                    dialog.show();
+                return true;
+            case OPTION_SETTINGS:
+                Intent i = new Intent(Intent.ACTION_PICK);
+                i.setClass(this, Settings.class);
+                startActivityForResult(i, SETTINGS);
+                return true;
+            case OPTION_SYNC:
+                doUpdatePatientDatabase();
+                return true;
+            case OPTION_ABOUT:
+                AlertDialog.Builder aboutBuilder = new AlertDialog.Builder(this);
+                aboutBuilder.setPositiveButton("OK", null);
+                PackageInfo pInfo = null;
+                try {
+                    pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
+                String version = pInfo.versionName;
+                int versionCode = pInfo.versionCode;
+                String message = String.format("Addis Clinic App: %s(%d)", version, versionCode);
+                aboutBuilder.setMessage(message);
+                aboutBuilder.setCancelable(true);
+                dialog = aboutBuilder.create();
+                if(!isFinishing())
+                    dialog.show();
+                return true;
+        }
         return false;
     }
     
