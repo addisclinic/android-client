@@ -13,3 +13,7 @@ as_sana-mobile-release-1.1.x1/gradlew
 as_sana-mobile-release-1.1.x1/gradlew.bat
 as_sana-mobile-release-1.1.x1/import-summary.txt
 as_release-1.1/build/
+as_sana-mobile-release-1.1.x/.gradle/
+as_sana-mobile-release-1.1.x/.idea/
+as_sana-mobile-release-1.1.x/app/build/
+as_sana-mobile-release-1.1.x/local.properties
