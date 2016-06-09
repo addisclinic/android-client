@@ -1,9 +1,10 @@
-package org.moca;
+package org.moca.ui;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 
+import org.moca.ui.views.SelectableImageView;
 import org.moca.db.ImageProvider;
 import org.moca.db.MocaDB;
 import org.moca.db.MocaDB.ImageSQLFormat;

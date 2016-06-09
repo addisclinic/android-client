@@ -1,15 +1,5 @@
 package org.moca.procedure;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-import org.moca.ImagePreviewDialog;
-import org.moca.ScalingImageAdapter;
-import org.moca.activity.ProcedureRunner;
-import org.moca.db.MocaDB;
-import org.moca.db.MocaDB.ImageSQLFormat;
-import org.w3c.dom.Node;
-
 import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Context;
@@ -21,12 +11,22 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
+
+import org.moca.ImagePreviewDialog;
+import org.moca.activity.ProcedureRunner;
+import org.moca.db.MocaDB;
+import org.moca.db.MocaDB.ImageSQLFormat;
+import org.moca.ui.ScalingImageAdapter;
+import org.w3c.dom.Node;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * PictureElement is a ProcedureElement that allows a user to take photos. It 

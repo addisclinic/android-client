@@ -20,6 +20,9 @@ public class MDSNotification {
     @SerializedName( "procedure_id" )
     public String procedureId;
 
+    @SerializedName( "timestamp" )
+    public String timestamp;
+
     public String message;
 	
 	/** The patient identifier. */ 

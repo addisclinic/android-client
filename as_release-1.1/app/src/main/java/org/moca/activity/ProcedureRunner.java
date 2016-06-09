@@ -1,49 +1,5 @@
 package org.moca.activity;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.locks.ReentrantLock;
-
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONTokener;
-import org.moca.Constants;
-import org.moca.R;
-import org.moca.db.BinaryDAO;
-import org.moca.db.EncounterDAO;
-import org.moca.db.EventDAO;
-import org.moca.db.PatientInfo;
-import org.moca.db.ProcedureDAO;
-import org.moca.db.MocaDB.BinarySQLFormat;
-import org.moca.db.MocaDB.ProcedureSQLFormat;
-import org.moca.db.MocaDB.SavedProcedureSQLFormat;
-import org.moca.db.MocaDB.EventSQLFormat.EventType;
-import org.moca.media.EducationResource.Audience;
-import org.moca.net.MDSInterface;
-import org.moca.procedure.PatientIdElement;
-import org.moca.procedure.PictureElement;
-import org.moca.procedure.Procedure;
-import org.moca.procedure.ProcedureElement;
-import org.moca.procedure.ProcedurePage;
-import org.moca.procedure.ProcedureParseException;
-import org.moca.procedure.ValidationError;
-import org.moca.service.BackgroundUploader;
-import org.moca.service.PluginService;
-import org.moca.service.ServiceConnector;
-import org.moca.service.ServiceListener;
-import org.moca.task.ImageProcessingTask;
-import org.moca.task.ImageProcessingTaskRequest;
-import org.moca.task.PatientLookupListener;
-import org.moca.task.PatientLookupTask;
-import org.moca.util.MocaUtil;
-import org.xml.sax.SAXException;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -57,9 +13,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.AsyncTask.Status;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.AsyncTask.Status;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -78,6 +34,47 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewAnimator;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+import org.moca.Constants;
+import org.moca.R;
+import org.moca.db.BinaryDAO;
+import org.moca.db.EncounterDAO;
+import org.moca.db.EventDAO;
+import org.moca.db.MocaDB.EventSQLFormat.EventType;
+import org.moca.db.MocaDB.ProcedureSQLFormat;
+import org.moca.db.MocaDB.SavedProcedureSQLFormat;
+import org.moca.db.PatientInfo;
+import org.moca.db.ProcedureDAO;
+import org.moca.media.EducationResource.Audience;
+import org.moca.net.MDSInterface;
+import org.moca.procedure.PictureElement;
+import org.moca.procedure.Procedure;
+import org.moca.procedure.ProcedureElement;
+import org.moca.procedure.ProcedureParseException;
+import org.moca.procedure.ValidationError;
+import org.moca.service.BackgroundUploader;
+import org.moca.service.PluginService;
+import org.moca.service.ServiceConnector;
+import org.moca.service.ServiceListener;
+import org.moca.task.ImageProcessingTask;
+import org.moca.task.ImageProcessingTaskRequest;
+import org.moca.task.PatientLookupListener;
+import org.moca.task.PatientLookupTask;
+import org.moca.util.MocaUtil;
+import org.xml.sax.SAXException;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.locks.ReentrantLock;
+
+import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * Activity which loops through the available steps within a procedure including
@@ -314,9 +311,7 @@ public class ProcedureRunner extends Activity implements View.OnClickListener,
 	    	if(!isFinishing())
 	    		lookupProgress.show();
 	    		
-			if(patientLookupTask == null || 
-				(patientLookupTask == null && patientLookupTask.getStatus() == Status.FINISHED))
-			{
+			if(patientLookupTask == null || (patientLookupTask.getStatus() == Status.FINISHED)){
 				patientLookupTask = new PatientLookupTask(this);
 				patientLookupTask.setPatientLookupListener(this);
 				patientLookupTask.execute(patientId);

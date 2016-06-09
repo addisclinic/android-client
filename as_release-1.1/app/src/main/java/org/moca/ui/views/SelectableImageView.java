@@ -1,4 +1,4 @@
-package org.moca;
+package org.moca.ui.views;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -7,6 +7,8 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.Log;
 import android.widget.ImageView;
+
+import org.moca.ui.ScalingImageAdapter;
 
 /**
  * A view in which one or more images can be selected
