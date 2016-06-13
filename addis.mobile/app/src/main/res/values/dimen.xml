@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Main -->
+    <dimen name="btn_main_width">120dp</dimen>
+    
+    <!-- Authentication -->
+    <dimen name="auth_input_width">270dp</dimen>
+</resources>

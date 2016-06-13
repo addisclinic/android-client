@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="vertical"
+    tools:context="org.sana.android.activity.AuthenticationActivity"
+    android:background="@drawable/bg_hdpi"
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:contentDescription="@string/authentication_sana"
+            android:src="@drawable/logo"
+            android:padding="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="0dp"
+            android:maxWidth="64dp"
+            android:adjustViewBounds="false"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/form"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+
+        <EditText
+            android:id="@+id/input_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/authentication_username"
+            android:inputType="text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_margin="10dp"
+            android:textStyle="normal" style="@style/Widget.EditText.Light"/>
+
+        <EditText
+            android:id="@+id/input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/authentication_password"
+            android:inputType="textPassword"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="16dp"
+            style="@style/Widget.EditText.Light"/>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/authentication_login"
+            android:onClick="submit"
+            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:minWidth="128dp"
+            android:nestedScrollingEnabled="false"
+            android:layout_gravity="center"
+            android:padding="16dp"/>
+        <Button
+            android:id="@+id/btn_exit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/general_exit"
+            android:onClick="submit"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:minWidth="128dp"
+            android:padding="16dp"/>
+        <Button
+            android:id="@+id/btn_configure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_configure"
+            android:onClick="submit"
+            android:layout_margin="5dp"
+            android:minWidth="128dp"
+            android:layout_gravity="center"
+            android:padding="16dp"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_local_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat"
+        android:text="@string/display_version"
+        android:textColor="@color/light_gray"/>
+
+</LinearLayout>
