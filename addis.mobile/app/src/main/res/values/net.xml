@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Resource values used for connecting to the dispatch server -->
+
+    <integer name="port_mds">443</integer>
+    <string name="scheme_mds">https</string>
+    <string name="host_mds" translatable="false">demo.sana.csail.mit.edu</string>
+    
+    <string name="path_root" translatable="false">/mds/</string>
+
+    <string name="path_root_training" translatable="false">test/mds/</string>
+    
+    <string name="path_session" translatable="false">core/session/</string>
+    <string name="path_encounter" translatable="false"></string>
+    <string name="path_notification" translatable="false"></string>
+    <string name="path_observation" translatable="false"></string>
+    <string name="path_procedure"></string>
+    <string name="path_subject" translatable="false">core/subject/</string>
+    <string name="path_subject_sync" translatable="false">json/patient/list/</string>
+    <string name="path_sch_encounter" translatable="false">sch/encounter/</string>
+    <string name="path_sp_submit" translatable="false">json/procedure/submit/</string>
+    <string name="path_etasks" translatable="false">tasks/encounter/</string>
+    <string name="path_otasks" translatable="false">tasks/observation/</string>
+    <string name="path_app" translatable="false">clients/</string>
+    <integer name="packet_size">20</integer>
+
+</resources>

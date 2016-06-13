@@ -1,0 +1,39 @@
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Eclipse folders
+.metadata/
+.settings/
+
+# Android libs
+/android-support-v7-appcompat
+
+# local private resource files
+*-private.xml
+
+app/app.iml
+.idea
+api/api.iml
+*.iml
+api-android/api-android.iml
+SanaMobile.iml
+build/
+.gradle/
+
+# OS Files
+.DS_Store
+app/src/main/res/values/private.xml

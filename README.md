@@ -1,4 +1,1 @@
-android-client
-==============
-
-Addis Clinic Android Client Development
+This is a readme for the repo. 

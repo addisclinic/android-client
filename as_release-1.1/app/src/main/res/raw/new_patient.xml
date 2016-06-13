@@ -1,9 +1,0 @@
-<Procedure title="New Patient" author="Sana">
-  <Page>
-    <Element type="RADIO" id="1" concept="PATIENT TYPE" question="The patient is a:" answer="" choices="ACT Project Beneficiary,Community Clinic Patient"/>
-    <Element type="ENTRY" id="2" concept="TEMPERATURE" question="Enter patient's temperature:" answer=""/>
-    <Element type="ENTRY" id="3" concept="BLOOD PRESSURE" question="Enter patient's blood pressure:" answer=""/>
-    <Element type="ENTRY" id="4" concept="HEARTBEAT" question="Enter patient's heart rate:" answer=""/>
-    <Element type="ENTRY" id="5" concept="RESPIRATION RATE" question="Enter patient's respiration rate:" answer=""/>
-  </Page>
-</Procedure>
