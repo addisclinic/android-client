@@ -364,6 +364,10 @@ public class SanaUtil {
         insertProcedure(ctx, R.raw.audio_upload_test);
         */
         insertProcedure(ctx, R.raw.demonstration);
+        insertProcedure(ctx, R.raw.shoulderpain);
+        insertProcedure(ctx, R.raw.kneepain);
+        insertProcedure(ctx, R.raw.ssi_en);
+
         /*
         insertProcedure(ctx, R.raw.chain_test1);
         insertProcedure(ctx, R.raw.chain_test2);

@@ -134,7 +134,7 @@
                 <data android:mimeType="vnd.android.cursor.dir/org.sana.encounter" />
             </intent-filter>
             <intent-filter>
-                6E3L;<action android:name="android.intent.action.PICK" />
+                <action android:name="android.intent.action.PICK" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="vnd.android.cursor.dir/org.sana.encounter" />
             </intent-filter>
@@ -304,11 +304,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <category android:name="android.intent.category.HOME" />
             </intent-filter>
         </activity>
 
