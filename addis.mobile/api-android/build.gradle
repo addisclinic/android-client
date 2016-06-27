@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.0'
+        classpath 'com.android.tools.build:gradle:2.1.2'
     }
 }
 apply plugin: 'com.android.library'
@@ -26,5 +26,6 @@ dependencies {
     compile project(':api')
     compile 'com.android.support:support-v4:23.0.1'
     compile 'org.apache.httpcomponents:httpcore:4.3.3'
+    compile 'org.apache.httpcomponents:httpclient:4.5.1'
     //compile group: 'org.apache.httpcomponents' , name: 'httpclient-android' , version: '4.3.5.1'
 }
