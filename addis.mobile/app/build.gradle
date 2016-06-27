@@ -8,9 +8,9 @@ android {
     }
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
-        applicationId "org.sana.android"
-        minSdkVersion 11
-        targetSdkVersion 17
+        applicationId "org.moca"
+        minSdkVersion 15
+        targetSdkVersion 22
         versionCode 9
         versionName '2.2.0'
     }

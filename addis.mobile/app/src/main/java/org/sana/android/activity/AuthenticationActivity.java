@@ -1,16 +1,6 @@
 
 package org.sana.android.activity;
 
-import org.sana.R;
-import org.sana.android.activity.settings.BasicSettings;
-import org.sana.android.app.Locales;
-import org.sana.android.content.Intents;
-import org.sana.android.content.Uris;
-import org.sana.android.provider.Observers;
-import org.sana.android.service.ISessionCallback;
-import org.sana.android.service.ISessionService;
-import org.sana.android.service.impl.SessionService;
-
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -26,8 +16,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.sana.R;
+import org.sana.android.activity.settings.BasicSettings;
+import org.sana.android.app.Locales;
+import org.sana.android.content.Intents;
+import org.sana.android.content.Uris;
+import org.sana.android.provider.Observers;
+import org.sana.android.service.ISessionCallback;
+import org.sana.android.service.ISessionService;
+import org.sana.android.service.impl.SessionService;
 
 /**
  * Activity that handles user authentication. When finishing with RESULT_OK,
@@ -254,7 +254,9 @@ public class AuthenticationActivity extends BaseActivity {
     private void bindSessionService(){
         Log.i(TAG, "bindSessionService()");
         if(!mBound){
-            bindService(new Intent(SessionService.ACTION_START), mConnection, Context.BIND_AUTO_CREATE);
+            bindService(SessionService.getIntent(this),
+                        mConnection,
+                        Context.BIND_AUTO_CREATE);
         }
     }
 

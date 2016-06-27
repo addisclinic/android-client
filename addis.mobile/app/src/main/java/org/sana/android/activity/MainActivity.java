@@ -1,22 +1,38 @@
 package org.sana.android.activity;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
-import java.util.Locale;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map.Entry;
+import android.content.ComponentName;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.ServiceConnection;
+import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.AsyncTask.Status;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.RemoteException;
+import android.preference.PreferenceManager;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.content.LocalBroadcastManager;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import org.sana.R;
-import org.sana.api.IModel;
-import org.sana.net.Response;
 import org.sana.analytics.Runner;
 import org.sana.android.Constants;
 import org.sana.android.activity.settings.Settings;
 import org.sana.android.app.DefaultActivityRunner;
 import org.sana.android.app.Locales;
-import org.sana.android.content.DispatchResponseReceiver;
 import org.sana.android.content.Intents;
 import org.sana.android.content.Uris;
 import org.sana.android.db.ModelWrapper;
@@ -37,39 +53,14 @@ import org.sana.android.service.impl.SessionService;
 import org.sana.android.task.ResetDatabaseTask;
 import org.sana.android.util.Logf;
 import org.sana.android.util.SanaUtil;
+import org.sana.api.IModel;
+import org.sana.net.Response;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
-import android.content.ComponentName;
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.ServiceConnection;
-import android.content.SharedPreferences;
-import android.content.DialogInterface.OnClickListener;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.RemoteException;
-import android.os.AsyncTask.Status;
-import android.preference.PreferenceManager;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.content.LocalBroadcastManager;
-import android.telephony.TelephonyManager;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Main Activity which handles user authentication and initializes services that
@@ -280,7 +271,7 @@ public class MainActivity extends BaseActivity implements AuthenticationDialogLi
         Logf.I(TAG, "onStart()");
         // We want the session service to be running if Main has been started
         // and until after it stops.
-        startService(new Intent(SessionService.ACTION_START));
+        startService(SessionService.getIntent(this));
     }
 
     @Override
@@ -289,9 +280,9 @@ public class MainActivity extends BaseActivity implements AuthenticationDialogLi
         super.onStop();
         // kill the session service if there is nothing else bound
         if(mBound)
-            stopService(new Intent(SessionService.ACTION_START));
+            stopService(SessionService.getIntent(this));
         else
-            stopService(new Intent(SessionService.ACTION_START));
+            stopService(SessionService.getIntent(this));
     }
 
     @Override
