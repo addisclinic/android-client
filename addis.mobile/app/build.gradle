@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion "23.0.3"
     compileOptions{
         encoding "UTF-8"
     }
@@ -12,7 +12,12 @@ android {
         minSdkVersion 11
         targetSdkVersion 17
         versionCode 9
-        versionName '2.1.0-beta6'
+        versionName '2.2.0'
+    }
+    dexOptions {
+        incremental = true;
+        preDexLibraries = false
+        javaMaxHeapSize "4g"
     }
     buildTypes {
         release {
@@ -27,6 +32,9 @@ android {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/DEPENDENCIES'
     }
+    compileOptions {
+
+    }
 }
 
 dependencies {
@@ -34,9 +42,9 @@ dependencies {
     compile 'com.android.support:support-v4:23.0.1'
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.google.code.gson:gson:2.3'
-    compile 'org.apache.commons:commons-lang3:3.0'
-    compile 'commons-codec:commons-codec:1.9'
-    compile 'org.apache.httpcomponents:httpcore:4.3.3'
+    //compile 'org.apache.commons:commons-lang3:3.0'
+    //compile 'commons-codec:commons-codec:1.9'
+    //compile 'org.apache.httpcomponents:httpcore:4.3.3'
     //compile group: 'org.apache.httpcomponents' , name: 'httpclient-android' , version: '4.3.5.1'
     compile 'org.apache.httpcomponents:httpmime:4.3.5'
     compile project(':api')
