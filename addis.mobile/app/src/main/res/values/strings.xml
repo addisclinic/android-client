@@ -2,7 +2,7 @@
 <!-- Language: EN -->
 <!-- Docs say that all the identifiers should be in lower case -->
 <resources>
-    <string name="app_name">Sana</string>
+    <string name="app_name">Addis Clinic</string>
 
     <!--  Activity titles  -->
     <string name="title_register_new_patient">Register New Patient</string>
