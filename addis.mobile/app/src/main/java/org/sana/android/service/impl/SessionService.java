@@ -47,6 +47,7 @@ import org.sana.android.service.ISessionService;
 import org.sana.api.IObserver;
 import org.sana.util.UUIDUtil;
 
+import android.app.Activity;
 import android.app.Service;
 import android.content.ContentValues;
 import android.content.Context;
@@ -135,7 +136,14 @@ public class SessionService extends Service{
 		}
 		
 	};
-	
+
+	public static Intent getIntent(Activity activity) {
+		Intent intent = new Intent(activity, SessionService.class);
+		intent.setAction(SessionService.ACTION_START);
+
+		return intent;
+	}
+
 	//TODO refactor this out
 	/**
 	 * Simple callback interface for HttpSessions
@@ -206,7 +214,7 @@ public class SessionService extends Service{
 		else
 			return null;
 	}
-	
+
     @Override
     public void onDestroy() {
 		Log.i(TAG, "onDestroy()");
@@ -237,8 +245,8 @@ public class SessionService extends Service{
 	 * admin credentials. 
 	 *  
 	 * @param state
-	 * @param username
-	 * @param password
+	 * @param state
+	 * @param tempKey
 	 */
 	protected void openSession(int state, String tempKey){
 		switch(state){

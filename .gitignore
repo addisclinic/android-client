@@ -17,3 +17,6 @@ as_sana-mobile-release-1.1.x/.gradle/
 as_sana-mobile-release-1.1.x/.idea/
 as_sana-mobile-release-1.1.x/app/build/
 as_sana-mobile-release-1.1.x/local.properties
+as_release-1.1/gradle/wrapper/gradle-wrapper.jar
+as_release-1.1/gradle/wrapper/gradle-wrapper.properties
+as_release-1.1/local.properties

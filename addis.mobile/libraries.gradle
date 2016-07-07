@@ -1,0 +1,22 @@
+// define common dependencies that will be shared across multiple projects
+project.ext {
+    libraries = [
+            apache_http_mime:  'org.apache.httpcomponents:httpmime:4.3.5',
+            recyclerViewLib:   'com.android.support:recyclerview-v7:22.2.1',
+            picasso:               "com.squareup.picasso:picasso:2.4.0",
+            android_support_v4:    "com.android.support:support-v4:23.0.1",
+            android_support_v7:    'com.android.support:appcompat-v7:22.2.1',
+            ok_http_client:        "com.squareup.okhttp:okhttp:2.3.0",
+            ok_http_urlconnection: "com.squareup.okhttp:okhttp-urlconnection:2.3.0",
+            play_services_base:    'com.google.android.gms:play-services-base:8.4.0',
+            crashlytics:           'com.crashlytics.sdk.android:crashlytics:2.5.2@aar',
+            android_multidex:      'com.android.support:multidex:1.0.1'
+    ]
+
+    // Define the global parameters that all child module projects should use
+    // define the version to use for compileSdkVersion in individual projects
+    androidSdkVersion = 23
+    androidSdkBuildToolVersion = "23.0.3"
+    projectTargetSdkVersion = 22
+    projectMinSdkVersion = 15
+}
