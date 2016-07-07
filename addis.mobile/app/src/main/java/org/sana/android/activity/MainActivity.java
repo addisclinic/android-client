@@ -227,12 +227,7 @@ public class MainActivity extends BaseActivity implements AuthenticationDialogLi
         mDebug = this.getResources().getBoolean(R.bool.debug);
         Locales.updateLocale(this, getString(R.string.force_locale));
         setContentView(R.layout.main);
-        /*
-        if(mDebug)
-            setContentView(R.layout.main);
-        else
-            setContentView(R.layout.main_ht);
-        */
+
         // TODO rethink where to integrate this
         checkUpdate(Uris.buildUri("package", "org.sana.provider" , ""));
         runner = new DefaultActivityRunner();

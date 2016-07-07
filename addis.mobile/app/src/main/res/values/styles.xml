@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <color name="alt_bg_color">#000000</color>
-    <color name="alt_fg_color">#ffffff</color>
-    <color name="alt_border_color">#00d700</color>
     
     <style name="Widget.Button.Large" parent="@android:style/Widget.Button">
         <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
