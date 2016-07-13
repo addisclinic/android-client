@@ -29,9 +29,9 @@ public class NetworkClient extends NotificationNetworkClient {
         executeCommand(command);
     }
 
-    public void loginSynchronous(AddisCallback<LoginResult> callback, String user, String password) {
+    public LoginResult loginSynchronous(AddisCallback<LoginResult> callback, String user, String password) {
         LoginCommand command = new LoginCommand(callback, user, password);
-        LoginResult result = command.executeSynchronous();
+        return command.executeSynchronous();
     }
 
 

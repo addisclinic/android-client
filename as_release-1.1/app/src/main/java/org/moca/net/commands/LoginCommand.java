@@ -8,6 +8,8 @@ import org.moca.util.UserSettings;
 
 import java.io.IOException;
 
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -22,14 +24,16 @@ public class LoginCommand extends BaseNetworkCommand {
     public LoginCommand(AddisCallback<LoginResult> callback, String user, String password) {
         super();
         this.callback = callback;
-        this.mdsUser = user;
-        this.mdsPassword = password;
+        this.mdsUser = user.trim();
+        this.mdsPassword = password.trim();
     }
 
     @Override
     public void execute() {
         LoginService service = MDSNetwork.getInstance().getLoginService();
-        Call<LoginResult> call = service.login(mdsUser, mdsPassword);
+        RequestBody user = RequestBody.create(MediaType.parse("text/plain"), mdsUser);
+        RequestBody password = RequestBody.create(MediaType.parse("text/plain"), mdsPassword);
+        Call<LoginResult> call = service.login(user, password);
         loginCallback.registerCommand(this);
         call.enqueue(loginCallback);
     }
@@ -54,8 +58,10 @@ public class LoginCommand extends BaseNetworkCommand {
 
     public LoginResult executeSynchronous() {
         LoginService service = MDSNetwork.getInstance().getLoginService();
+        RequestBody user = RequestBody.create(MediaType.parse("text/plain"), mdsUser);
+        RequestBody password = RequestBody.create(MediaType.parse("text/plain"), mdsPassword);
 
-        Call<LoginResult> call = service.login(mdsUser, mdsPassword);
+        Call<LoginResult> call = service.login(user, password);
         try {
             Response<LoginResult> result = call.execute();
             if (result.isSuccessful()) {

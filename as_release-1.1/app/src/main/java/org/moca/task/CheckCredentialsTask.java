@@ -1,13 +1,14 @@
 package org.moca.task;
 
-import org.moca.net.MDSInterface;
-import org.moca.util.MocaUtil;
-
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import java.io.IOException;
+import org.moca.AddisApp;
+import org.moca.model.LoginResult;
+import org.moca.net.MDSResult;
+import org.moca.util.MocaUtil;
+import org.moca.util.UserSettings;
 
 /**
  * A Task for validating authorization.
@@ -51,15 +52,17 @@ public class CheckCredentialsTask extends AsyncTask<Context, Void, Integer> {
 		Integer result = CREDENTIALS_NO_CONNECTION;
 		
 		if (MocaUtil.checkConnection(c)) {
-			try {
-				boolean credentialsValid = MDSInterface.validateCredentials(c);
-				result = credentialsValid ? 
-						CREDENTIALS_VALID : CREDENTIALS_INVALID;
-			} catch (IOException e) {
-				Log.e(TAG, "Got exception while validating credentials: " + e);
-				//e.printStackTrace();
-				return CREDENTIALS_NO_CONNECTION;
-			}
+
+			UserSettings settings = new UserSettings();
+			String username = settings.getUsername();
+			String password = settings.getPassword();
+			LoginResult loginResult =  AddisApp.getInstance()
+											   .getNetworkClient()
+											   .loginSynchronous(null, username, password);
+
+			result = loginResult.status.equals(MDSResult.SUCCESS_STRING) ?
+					CREDENTIALS_VALID : CREDENTIALS_INVALID;
+
 		}
 		return result;
 	}

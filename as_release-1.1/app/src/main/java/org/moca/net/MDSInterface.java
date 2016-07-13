@@ -363,12 +363,9 @@ public class MDSInterface {
 		String mdsURL = getMDSUrl(preferences);
 		mdsURL = checkMDSUrl(mdsURL);
 		String mUrl = constructProcedureSubmitURL(mdsURL);
-		String phoneId = preferences.getString("s_phone_name", 
-				Constants.PHONE_ID);
-		String username = preferences.getString(
-				Constants.PREFERENCE_EMR_USERNAME, Constants.DEFAULT_USERNAME);
-		String password = preferences.getString(
-				Constants.PREFERENCE_EMR_PASSWORD, Constants.DEFAULT_PASSWORD);
+		String phoneId = preferences.getString("s_phone_name", Constants.PHONE_ID);
+		String username = preferences.getString(Constants.PREFERENCE_EMR_USERNAME, Constants.DEFAULT_USERNAME);
+		String password = preferences.getString(Constants.PREFERENCE_EMR_PASSWORD, Constants.DEFAULT_PASSWORD);
 		List<NameValuePair> postData = new ArrayList<NameValuePair>();
 		postData.add(new NameValuePair("savedproc_guid", savedProcedureGuid));
 		postData.add(new NameValuePair("procedure_guid", Integer.toString(0)));
@@ -377,7 +374,7 @@ public class MDSInterface {
 		postData.add(new NameValuePair("password", password));
 		postData.add(new NameValuePair("responses", jsonResponses));
 		MDSResult postResponse = MDSInterface.doPost(c, mUrl, postData);
-		return (postResponse != null)? postResponse.succeeded(): false;
+		return (postResponse != null) && postResponse.succeeded();
 		
 	}
 
@@ -728,18 +725,15 @@ public class MDSInterface {
 		boolean savedProcedureUploaded = cursor.getInt(5) != 0;
 		cursor.close();
 
-		Uri procedureUri = ContentUris.withAppendedId(
-				ProcedureSQLFormat.CONTENT_URI, procedureId);
+		Uri procedureUri = ContentUris.withAppendedId(ProcedureSQLFormat.CONTENT_URI, procedureId);
 		Log.i(TAG, "Getting procedure " + procedureUri.toString());
 		cursor = context.getContentResolver().query(procedureUri, 
 				new String[] { ProcedureSQLFormat.TITLE, 
 							   ProcedureSQLFormat.PROCEDURE },
 				null, null, null);
 		cursor.moveToFirst();
-		String procedureTitle = cursor.getString(
-				cursor.getColumnIndex(ProcedureSQLFormat.TITLE));
-		String procedureXml = cursor.getString(
-				cursor.getColumnIndex(ProcedureSQLFormat.PROCEDURE));
+		String procedureTitle = cursor.getString(cursor.getColumnIndex(ProcedureSQLFormat.TITLE));
+		String procedureXml = cursor.getString(cursor.getColumnIndex(ProcedureSQLFormat.PROCEDURE));
 		cursor.close();
 		
 		if(!finished) {
@@ -1135,10 +1129,8 @@ public class MDSInterface {
 		String mdsURL = getMDSUrl(preferences);
 		mdsURL = checkMDSUrl(mdsURL);
 		String mUrl = constructValidateCredentialsURL(mdsURL);
-		String username = preferences.getString(
-				Constants.PREFERENCE_EMR_USERNAME, Constants.DEFAULT_USERNAME);
-		String password = preferences.getString(
-				Constants.PREFERENCE_EMR_PASSWORD, Constants.DEFAULT_PASSWORD);
+		String username = preferences.getString(Constants.PREFERENCE_EMR_USERNAME, Constants.DEFAULT_USERNAME);
+		String password = preferences.getString(Constants.PREFERENCE_EMR_PASSWORD, Constants.DEFAULT_PASSWORD);
 		
 		List<NameValuePair> postData = new ArrayList<NameValuePair>();
 		postData.add(new NameValuePair("username", username));

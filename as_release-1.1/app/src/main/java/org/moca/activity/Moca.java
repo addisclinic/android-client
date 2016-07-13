@@ -87,6 +87,7 @@ public class Moca extends AppCompatActivity implements View.OnClickListener, Log
     private CheckCredentialsTask mCredentialsTask;
     private ResetDatabaseTask mResetDatabaseTask;
     private MDSSyncTask mSyncTask;
+    private boolean appInForeground = false;
     
     // State 
     private Bundle mSavedState;
@@ -188,6 +189,20 @@ public class Moca extends AppCompatActivity implements View.OnClickListener, Log
         // Make sure directory structure is in place on external drive
         EducationResource.intializeDevice();
         Procedure.intializeDevice();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mSavedState != null) restoreLocalTaskState(mSavedState);
+        appInForeground = true;
+        showLoginDialog();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        appInForeground = false;
     }
 
     @Override
@@ -564,26 +579,30 @@ public class Moca extends AppCompatActivity implements View.OnClickListener, Log
     			(ResetDatabaseTask) new ResetDatabaseTask(this).execute(this);
     }
     
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (mSavedState != null) restoreLocalTaskState(mSavedState);
-    }
-
 
     @Override
     public void onFragmentInteraction(Uri uri) {
 
     }
+    private boolean shouldShowLoginDialog = false;
 
+    private void showLoginDialog() {
+        if (shouldShowLoginDialog) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    LoginFragment login = LoginFragment.getInstance(1);
+                    login.show(getFragmentManager(), LoginFragment.class.getSimpleName());
+                }
+            });
+            shouldShowLoginDialog = false;
+        }
+    }
     @Subscribe
     public void onFailedLogin(LoginFailedEvent event) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                LoginFragment login = LoginFragment.getInstance(1);
-                login.show(getFragmentManager(), LoginFragment.class.getSimpleName());
-            }
-        });
+        shouldShowLoginDialog = true;
+        if (appInForeground) {
+            showLoginDialog();
+        }
     }
 }

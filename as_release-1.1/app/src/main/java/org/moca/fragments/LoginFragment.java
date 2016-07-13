@@ -18,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import org.moca.AddisApp;
@@ -38,7 +37,7 @@ import retrofit2.Response;
  * Activities that contain this fragment must implement the
  * {@link LoginFragmentListener} interface
  * to handle interaction events.
- * Use the {@link LoginFragment#newInstance} factory method to
+ * Use the {@link LoginFragment#getInstance} factory method to
  * create an instance of this fragment.
  */
 public class LoginFragment extends DialogFragment {

@@ -13,8 +13,8 @@ package org.moca.net;
  *  @author Sana Development Team
  */
 public class MDSResult {
-	private static final String SUCCESS_STRING = "SUCCESS";
-	private static final String FAILURE_STRING = "FAILURE";
+	public static final String SUCCESS_STRING = "SUCCESS";
+	public static final String FAILURE_STRING = "FAILURE";
 	
 	private String status;
 	private String code;
