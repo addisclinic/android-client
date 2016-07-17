@@ -52,7 +52,7 @@
             android:layout_margin="10dp"
             android:textStyle="normal" style="@style/Widget.EditText.Light"/>
 
-        <EditText
+        <org.sana.android.widget.ObfuscatedPasswordView
             android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -29,6 +29,8 @@ import org.sana.android.service.ISessionCallback;
 import org.sana.android.service.ISessionService;
 import org.sana.android.service.impl.SessionService;
 
+import java.util.Locale;
+
 /**
  * Activity that handles user authentication. When finishing with RESULT_OK,
  * will return a valid session key String or
@@ -104,7 +106,7 @@ public class AuthenticationActivity extends BaseActivity {
                 enableInput();
                 // TODO use a string resource
                 Toast.makeText(AuthenticationActivity.this,
-                        String.format("%s. %s: %d",
+                        String.format(Locale.CANADA, "%s. %s: %d",
                                 getString(R.string.msg_login_failed),
                                 getString(R.string.authentication_logins_remaining),
                                 loginsRemaining),
