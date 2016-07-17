@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
 
-import org.moca.R;
+import org.sana.R;
 
 /**
  * Created by Albert on 4/14/2016.

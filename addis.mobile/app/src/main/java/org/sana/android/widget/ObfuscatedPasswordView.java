@@ -40,6 +40,7 @@ public class ObfuscatedPasswordView extends RelativeLayout {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.account_password, this, true);
 
+        //setOrientation(HORIZONTAL);
         passwordView = (EditTextCustom) view.findViewById(R.id.passwordView);
         obfuscate = (TextView) view.findViewById(R.id.obfuscatePassword);
         //addView(view);

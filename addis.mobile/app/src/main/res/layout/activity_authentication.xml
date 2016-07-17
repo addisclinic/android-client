@@ -56,16 +56,12 @@
             android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/authentication_password"
-            android:inputType="textPassword"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_margin="10dp"
-            android:layout_marginBottom="16dp"
-            style="@style/Widget.EditText.Light"/>
+
+            />
 
         <Button
             android:id="@+id/btn_login"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/authentication_login"
             android:onClick="submit"

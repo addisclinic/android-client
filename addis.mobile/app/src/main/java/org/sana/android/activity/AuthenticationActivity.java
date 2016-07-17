@@ -28,6 +28,7 @@ import org.sana.android.provider.Observers;
 import org.sana.android.service.ISessionCallback;
 import org.sana.android.service.ISessionService;
 import org.sana.android.service.impl.SessionService;
+import org.sana.android.widget.ObfuscatedPasswordView;
 
 import java.util.Locale;
 
@@ -151,7 +152,7 @@ public class AuthenticationActivity extends BaseActivity {
     // Views
     EditText mInputUsername;
 
-    EditText mInputPassword;
+    ObfuscatedPasswordView mInputPassword;
 
     Button mBtnLogin;
     Button mBtnExit;
@@ -162,7 +163,7 @@ public class AuthenticationActivity extends BaseActivity {
         setContentViewLocalized(R.layout.activity_authentication);
         showBuildString(R.id.text_local_version);
         mInputUsername = (EditText) findViewById(R.id.input_username);
-        mInputPassword = (EditText) findViewById(R.id.input_password);
+        mInputPassword = (ObfuscatedPasswordView) findViewById(R.id.input_password);
         loginsRemaining = getResources().getInteger(R.integer.max_login_attempts);
         loadCredentials();
     }
