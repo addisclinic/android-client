@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.sana.R;
+import org.sana.android.AddisApp;
 import org.sana.android.activity.settings.BasicSettings;
 import org.sana.android.app.Locales;
 import org.sana.android.content.Intents;
@@ -166,6 +167,7 @@ public class AuthenticationActivity extends BaseActivity {
         mInputPassword = (ObfuscatedPasswordView) findViewById(R.id.input_password);
         loginsRemaining = getResources().getInteger(R.integer.max_login_attempts);
         loadCredentials();
+        AddisApp.getInstance().getBus().register(this);
     }
 
     /* Loads the debug credentials from res/values/debug.xml if debug_credentials = true */
