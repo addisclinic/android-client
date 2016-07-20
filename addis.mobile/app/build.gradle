@@ -1,4 +1,19 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 
 android {
     compileSdkVersion 23
@@ -8,17 +23,19 @@ android {
     }
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
-        applicationId "org.moca"
+        applicationId "org.moca.dev"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 9
+        versionCode 12
         versionName '2.2.0'
     }
+
     dexOptions {
         incremental = true;
         preDexLibraries = false
         javaMaxHeapSize "4g"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -35,6 +52,19 @@ android {
     compileOptions {
 
     }
+
+    productFlavors {
+         dev {
+                applicationId "org.moca.dev"
+                minSdkVersion 15
+         }
+
+         prod {
+              applicationId "org.moca"
+              minSdkVersion 15
+           }
+    }
+
 }
 
 dependencies {
@@ -49,4 +79,7 @@ dependencies {
     compile 'org.apache.httpcomponents:httpmime:4.3.5'
     compile project(':api')
     compile project(':api-android')
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.1@aar') {
+        transitive = true;
+    }
 }

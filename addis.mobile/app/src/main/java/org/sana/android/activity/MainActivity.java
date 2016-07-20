@@ -27,6 +27,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
+
 import org.sana.R;
 import org.sana.analytics.Runner;
 import org.sana.android.Constants;
@@ -61,6 +63,8 @@ import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Main Activity which handles user authentication and initializes services that
@@ -222,6 +226,7 @@ public class MainActivity extends BaseActivity implements AuthenticationDialogLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         Logf.I(TAG, "onCreate()");
 
         mDebug = this.getResources().getBoolean(R.bool.debug);
