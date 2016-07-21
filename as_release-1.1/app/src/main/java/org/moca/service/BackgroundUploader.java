@@ -257,8 +257,7 @@ public class BackgroundUploader extends Service {
 		
 		// check if there are pending transfers in the database
 		// if so, then spawn a thread to upload the first one
-		boolean credentialsValid = CredentialStatus.VALID.equals(
-				credentialStatus);
+		boolean credentialsValid = CredentialStatus.VALID.equals(credentialStatus);
 		boolean connectionAvailable = updateQueueStatusAndCheckConnection();
 		
 		if (!credentialsValid) {
@@ -266,11 +265,13 @@ public class BackgroundUploader extends Service {
 				if (checkCredentialsTask == null) {
 					// Spawn worker to check
 					checkCredentialsTask = new CheckCredentialsTask();
-					checkCredentialsTask.setValidationListener(
-							new CredentialValidationListener());
+					checkCredentialsTask.setValidationListener(new CredentialValidationListener());
 					checkCredentialsTask.execute(this);
 				}
-			} else {
+			} else if(CredentialStatus.INVALID.equals(credentialStatus)) {
+				AddisApp.getInstance().getBus().post(new LoginFailedEvent());
+			}
+			else {
 				Log.i(TAG, "OpenMRS username/password incorrect - will not " +
 						"attempt to upload");
 			}

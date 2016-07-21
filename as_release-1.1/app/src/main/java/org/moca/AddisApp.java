@@ -42,6 +42,7 @@ public class AddisApp extends Application {
         UserSettings user = new UserSettings();
         user.setDjangoServerCredentials("root", "ark9.SD13");
         user.setPatientId("33333");
+        user.setSecureTransmission();
     }
 
     /*public StoreNotifications getNetworkService() {

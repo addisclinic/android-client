@@ -116,7 +116,7 @@ public class Constants {
      **************************************************************************/
     //DEFAULT PREFERENCE VALUES
     /** Default location of the Sana mobile Dispatch Server */
-    public static final String DEFAULT_DISPATCH_SERVER ="ec2-54-209-157-139.compute-1.amazonaws.com";
+    public static final String DEFAULT_DISPATCH_SERVER ="emr.addisclinic.org";
     
     /** A default username for authorization with the Sana demo server. */
     public static final String DEFAULT_USERNAME = "admin";

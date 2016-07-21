@@ -21,6 +21,7 @@ import java.security.KeyStore;
 import java.security.SecureRandom;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
+import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -65,6 +66,8 @@ public class MDSNetwork {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         httpClient = new OkHttpClient.Builder();
+        httpClient.writeTimeout(20, TimeUnit.SECONDS);
+        httpClient.readTimeout(20, TimeUnit.SECONDS);
         httpClient.addInterceptor(interceptor);
 
         try {

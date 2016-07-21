@@ -2,9 +2,11 @@ package org.moca.task;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.moca.AddisApp;
+import org.moca.events.LoginIOExceptionEvent;
 import org.moca.model.LoginResult;
 import org.moca.net.MDSResult;
 import org.moca.util.MocaUtil;
@@ -56,10 +58,17 @@ public class CheckCredentialsTask extends AsyncTask<Context, Void, Integer> {
 			UserSettings settings = new UserSettings();
 			String username = settings.getUsername();
 			String password = settings.getPassword();
+			if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+				return CREDENTIALS_INVALID;
+			}
+
 			LoginResult loginResult =  AddisApp.getInstance()
 											   .getNetworkClient()
 											   .loginSynchronous(null, username, password);
-
+            if (loginResult == null) {
+                AddisApp.getInstance().getBus().post(new LoginIOExceptionEvent());
+                return -1;
+            }
 			result = loginResult.status.equals(MDSResult.SUCCESS_STRING) ?
 					CREDENTIALS_VALID : CREDENTIALS_INVALID;
 

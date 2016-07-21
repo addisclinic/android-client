@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Build;
@@ -16,6 +17,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ProgressBar;
@@ -44,11 +46,11 @@ public class LoginFragment extends DialogFragment {
     private static final String TAG = LoginFragment.class.getSimpleName();
     private static final String USERNAME_KEY = TAG + ".USERNAME_KEY";
     private static final String PASSWORD_KEY = TAG + ".PASSWORD_KEY";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String DIALOG_MSG_KEY = TAG + ".DIALOG_MSG_KEY";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
-    private int mParam2;
+    private int dialogMsg;
 
     private LoginFragmentListener mListener;
 
@@ -75,7 +77,7 @@ public class LoginFragment extends DialogFragment {
     public static LoginFragment getInstance(int param2) {
         LoginFragment fragment = new LoginFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_PARAM2, param2);
+        args.putInt(DIALOG_MSG_KEY, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -85,7 +87,7 @@ public class LoginFragment extends DialogFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
 
-            mParam2 = getArguments().getInt(ARG_PARAM2);
+            dialogMsg = getArguments().getInt(DIALOG_MSG_KEY);
         }
     }
 
@@ -110,7 +112,14 @@ public class LoginFragment extends DialogFragment {
         return rootView;
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (dialogMsg > 0) {
+            showLoginFail(getString(dialogMsg));
+            dialogMsg = 0;
+        }
+    }
     private void showCredentials(Bundle savedState) {
         if (savedState != null && savedState.containsKey(USERNAME_KEY)) {
             emailView.setText(savedState.getString(USERNAME_KEY));
@@ -249,6 +258,8 @@ public class LoginFragment extends DialogFragment {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(passwordView.getWindowToken(), 0);
             AddisApp.getInstance().getNetworkClient().login(callback, email, password);
         }
     }

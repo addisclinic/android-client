@@ -118,6 +118,7 @@ public class UserSettings {
     public String getHostname () {
         return settings.contains(UserPrefKey.PREFERENCE_MDS_URL.get()) ? getUserStringPref(UserPrefKey.PREFERENCE_MDS_URL) : Constants.DEFAULT_DISPATCH_SERVER;
     }
+
     public String getMDSUrl() {
         String host = settings.contains(UserPrefKey.PREFERENCE_MDS_URL.get()) ? getUserStringPref(UserPrefKey.PREFERENCE_MDS_URL) : Constants.DEFAULT_DISPATCH_SERVER;
 
@@ -127,5 +128,9 @@ public class UserSettings {
         String scheme = (useSecure)? "https": "http";
         String url = scheme + "://" + host;
         return url +"/"; //+ Constants.PATH_MDS + "/";
+    }
+
+    public void setSecureTransmission() {
+        setUserPref(UserPrefKey.PREFERENCE_SECURE_TRANSMISSION, true);
     }
 }

@@ -1,5 +1,7 @@
 package org.moca.net.commands;
 
+import com.crashlytics.android.Crashlytics;
+
 import org.moca.model.LoginResult;
 import org.moca.net.AddisCallback;
 import org.moca.net.MDSNetwork;
@@ -46,13 +48,17 @@ public class LoginCommand extends BaseNetworkCommand {
                 UserSettings userSettings = new UserSettings();
                 userSettings.setCredentials(mdsUser, mdsPassword);
             }
-            callback.onResponse(call, response);
+            if (callback != null) {
+                callback.onResponse(call, response);
+            }
         }
 
         @Override
         public void onFailure(Call<LoginResult> call, Throwable t) {
             super.onFailure(call, t);
-            callback.onFailure(call, t);
+            if (callback != null) {
+                callback.onFailure(call, t);
+            }
         }
     };
 
@@ -72,6 +78,7 @@ public class LoginCommand extends BaseNetworkCommand {
 
         } catch (IOException e) {
             e.printStackTrace();
+            Crashlytics.logException(e);
             return null;
         }
     }

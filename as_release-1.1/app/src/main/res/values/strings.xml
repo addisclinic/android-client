@@ -189,4 +189,5 @@
     <string name="forgot_password"><u>I forgot my password.</u></string>
     <string name="show">Show</string>
     <string name="hide">Hide</string>
+    <string name="show_login_ioexception_msg">Unable to reach server, Please try again.</string>
 </resources>

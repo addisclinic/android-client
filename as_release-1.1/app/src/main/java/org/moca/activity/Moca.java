@@ -27,6 +27,7 @@ import org.moca.db.MocaDB.NotificationSQLFormat;
 import org.moca.db.MocaDB.ProcedureSQLFormat;
 import org.moca.db.MocaDB.SavedProcedureSQLFormat;
 import org.moca.events.LoginFailedEvent;
+import org.moca.events.LoginIOExceptionEvent;
 import org.moca.fragments.BaseDialog;
 import org.moca.fragments.LoginFragment;
 import org.moca.media.EducationResource;
@@ -196,7 +197,7 @@ public class Moca extends AppCompatActivity implements View.OnClickListener, Log
         super.onResume();
         if (mSavedState != null) restoreLocalTaskState(mSavedState);
         appInForeground = true;
-        showLoginDialog();
+        showLoginDialog(0);
     }
 
     @Override
@@ -586,23 +587,32 @@ public class Moca extends AppCompatActivity implements View.OnClickListener, Log
     }
     private boolean shouldShowLoginDialog = false;
 
-    private void showLoginDialog() {
+    private void showLoginDialog(final int message) {
         if (shouldShowLoginDialog) {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    LoginFragment login = LoginFragment.getInstance(1);
+                    LoginFragment login = LoginFragment.getInstance(message);
                     login.show(getFragmentManager(), LoginFragment.class.getSimpleName());
                 }
             });
             shouldShowLoginDialog = false;
         }
     }
+
+    @Subscribe
+    public void onLoginIOException(LoginIOExceptionEvent event) {
+        shouldShowLoginDialog = true;
+        if (appInForeground) {
+            showLoginDialog(R.string.show_login_ioexception_msg);
+        }
+    }
+
     @Subscribe
     public void onFailedLogin(LoginFailedEvent event) {
         shouldShowLoginDialog = true;
         if (appInForeground) {
-            showLoginDialog();
+            showLoginDialog(0);
         }
     }
 }
