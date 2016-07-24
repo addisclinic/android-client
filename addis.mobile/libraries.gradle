@@ -9,7 +9,7 @@ project.ext {
             ok_http_client:        "com.squareup.okhttp:okhttp:2.3.0",
             ok_http_urlconnection: "com.squareup.okhttp:okhttp-urlconnection:2.3.0",
             play_services_base:    'com.google.android.gms:play-services-base:8.4.0',
-            crashlytics:           'com.crashlytics.sdk.android:crashlytics:2.5.2@aar',
+            crashlytics:           'com.crashlytics.sdk.android:crashlytics:2.5.5@aar',
             android_multidex:      'com.android.support:multidex:1.0.1'
     ]
 

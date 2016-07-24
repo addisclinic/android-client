@@ -1,13 +1,9 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
-    }
-}
 apply plugin: 'com.android.library'
+
+repositories {
+    jcenter()
+    maven { url 'https://maven.fabric.io/public' }
+}
 
 android {
     compileSdkVersion rootProject.ext.androidSdkVersion
