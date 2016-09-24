@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/login_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="login: "/>
+
+    <TextView
+        android:id="@+id/login_reult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="login: "
+        android:minLines="2"
+        android:singleLine="false"
+        android:lines="2" />
+
+    <Button
+        android:id="@+id/start_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="startTest"
+        android:text="START"
+        />
+</RelativeLayout>

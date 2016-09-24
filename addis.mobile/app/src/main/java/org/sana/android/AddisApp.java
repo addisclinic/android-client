@@ -6,6 +6,8 @@ import com.crashlytics.android.Crashlytics;
 import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
 
+import org.sana.android.net.clients.NetworkClient;
+
 import io.fabric.sdk.android.Fabric;
 
 /**
@@ -14,10 +16,10 @@ import io.fabric.sdk.android.Fabric;
 public class AddisApp extends Application {
 
     private static AddisApp singleton;
-
     private static  Bus BUS;
     //private StoreNotifications networkService;
-    //private NetworkClient networkClient;
+    private NetworkClient networkClient;
+    private NetworkClient testHarnessClient;
 
     public static AddisApp getInstance() {
         return singleton;
@@ -34,7 +36,7 @@ public class AddisApp extends Application {
         Fabric.with(this, new Crashlytics());
         //networkService = new StoreNotifications();
         BUS = new Bus(ThreadEnforcer.ANY, AddisApp.class.getSimpleName());
-        //networkClient = new NetworkClient();
+        networkClient = new NetworkClient();
         //UserSettings user = new UserSettings();
         //user.setDjangoServerCredentials("root", "ark9.SD13");
         //user.setPatientId("33333");
@@ -44,10 +46,11 @@ public class AddisApp extends Application {
         return networkService;
     }*/
 
-    /*public NetworkClient getNetworkClient() {
+    public NetworkClient getNetworkClient() {
         return networkClient;
     }
-*/
+
+
     public Bus getBus() {
         return BUS;
     }

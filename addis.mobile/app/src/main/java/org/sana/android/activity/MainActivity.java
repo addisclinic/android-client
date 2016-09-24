@@ -600,6 +600,9 @@ public class MainActivity extends BaseActivity implements AuthenticationDialogLi
                 startActivityForResult(intent, Intents.RUN_PROCEDURE);
                 break;
             */
+            case R.id.button_test_harness:
+                //NetworkTestFragment
+                break;
             case R.id.btn_exit:
                 clearCredentials();
                 onClearAppState();
