@@ -1,0 +1,55 @@
+<Procedure title="Physician to Physician Consult" author="addisclinic">
+    <Page>
+        <Element type="ENTRY" id="1" concept="PATIENTNAME" question="Enter patient's first name:" answer=""/>
+        <Element type="ENTRY" id="2" concept="PATIENTNAME2" question="Enter patient's last name/surname:" answer=""/>
+    </Page>
+    <Page>
+        <Element type="RADIO" id="3" concept="SEX" question="The patient is a:" answer="" choices="Male, Female"/>
+        <Element type="ENTRY" id="4" concept="AGE" question="Enter patient's age:" answer=""/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="5" concept="CHIEFCOMPLAINT" question="What is the patient's chief complaint?" answer=""/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="6" concept="MEDHX" question="List any significant medical history:" answer=""/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="7" concept="FAMHX" question="Patient's Family History:" answer=""/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="8" concept="SOCHX" question="Patient's Social History:" answer=""/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="9" concept="ALLERGIES" question="List any allergies the patient has:" answer=""/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="10" concept="MEDICATION" question="What medications is the patient currently taking?" answer=""/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="11" concept="HEENT" question="Patient Vitals HEENT:" answer=""/>
+        <Element type="ENTRY" id="12" concept="CONST" question="Constitutional:" answer=""/>
+        <Element type="ENTRY" id="13" concept="CARDIO" question="Cardiovascular:" answer=""/>
+        <Element type="ENTRY" id="14" concept="LUNGS" question="Lungs:" answer=""/>
+        <Element type="ENTRY" id="15" concept="ABDOM" question="Abdominal:" answer=""/>
+        <Element type="ENTRY" id="16" concept="MUSCSKEL" question="Musculoskeletal:" answer=""/>
+        <Element type="ENTRY" id="17" concept="EXTREM" question="Extremeties:" answer=""/>
+        <Element type="ENTRY" id="18" concept="NEURO" question="Neurological:" answer=""/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="19" concept="SKIN" question="Skin:" answer=""/>
+        <Element type="ENTRY" id="20" concept="PSYCH" question="Psychiatric:" answer=""/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="21" concept="LABRESULT" question="Enter Lab Results Component, Value, and Date:" answer=""/>
+        <Element type="ENTRY" id="22" concept="IMAGING" question="Other Lab Results and Imaging:" answer=""/>
+        <Element type="ENTRY" id="23" concept="ECG" question="ECG (if any):" answer=""/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="24" concept="IMPRESSION" question="Current Impression:" answer=""/>
+        <Element type="ENTRY" id="25" concept="PLAN" question="Current Plan:" answer=""/>
+        <Element type="ENTRY" id="26" concept="MANAGE" question="Current Management:" answer=""/>
+    </Page>
+    <Page>
+        <Element type="ENTRY" id="27" concept="QUESTIONS" question="Questions for Consultation:" answer=""/>
+    </Page>
+</Procedure>

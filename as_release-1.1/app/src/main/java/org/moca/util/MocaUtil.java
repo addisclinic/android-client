@@ -1,32 +1,5 @@
 package org.moca.util;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
-
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.moca.R;
-import org.moca.db.MocaDB;
-import org.moca.db.MocaDB.BinarySQLFormat;
-import org.moca.db.MocaDB.ImageSQLFormat;
-import org.moca.db.MocaDB.NotificationSQLFormat;
-import org.moca.db.MocaDB.PatientSQLFormat;
-import org.moca.db.MocaDB.ProcedureSQLFormat;
-import org.moca.db.MocaDB.SavedProcedureSQLFormat;
-import org.moca.db.MocaDB.SoundSQLFormat;
-import org.moca.media.EducationResource;
-import org.moca.procedure.Procedure;
-import org.moca.procedure.ProcedureParseException;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.xml.sax.SAXException;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -36,9 +9,31 @@ import android.content.DialogInterface;
 import android.database.Cursor;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
-import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+
+import org.moca.R;
+import org.moca.db.MocaDB.BinarySQLFormat;
+import org.moca.db.MocaDB.ImageSQLFormat;
+import org.moca.db.MocaDB.NotificationSQLFormat;
+import org.moca.db.MocaDB.PatientSQLFormat;
+import org.moca.db.MocaDB.ProcedureSQLFormat;
+import org.moca.db.MocaDB.SavedProcedureSQLFormat;
+import org.moca.db.MocaDB.SoundSQLFormat;
+import org.moca.procedure.Procedure;
+import org.moca.procedure.ProcedureParseException;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.xml.sax.SAXException;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
+
+import javax.xml.parsers.ParserConfigurationException;
 
 //TODO
 /**
@@ -427,6 +422,7 @@ public class MocaUtil {
         insertProcedure(ctx, R.raw.generalhistory);
         insertProcedure(ctx, R.raw.headache);
         insertProcedure(ctx, R.raw.hippain);
+        insertProcedure(ctx, R.raw.ihope);
         insertProcedure(ctx, R.raw.kneepain);
         insertProcedure(ctx, R.raw.nauseavomiting);
         insertProcedure(ctx, R.raw.new_patient);
