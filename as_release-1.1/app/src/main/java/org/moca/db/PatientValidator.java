@@ -1,13 +1,15 @@
 package org.moca.db;
 
-import java.util.Calendar;
-import java.util.List;
+import android.util.Log;
+
+import com.crashlytics.android.Crashlytics;
 
 import org.moca.procedure.Procedure;
 import org.moca.procedure.ProcedureElement;
 import org.moca.procedure.ValidationError;
 
-import android.util.Log;
+import java.util.Calendar;
+import java.util.List;
 
 /**
  * Utility class for handling patient information. 
@@ -85,26 +87,24 @@ public class PatientValidator {
 			} else if (element_id.equals("patientGender")) {
 				
 			} else if (element_id.equals("patientBirthdateMonth")) {
-				String year = p.current().getElementValue(
-						"patientBirthdateYear");
+				String year = p.current().getElementValue("patientBirthdateYear");
 				try {
 					int yearValue = Integer.parseInt(year);
-					int currentYear = Calendar.getInstance().get(
-							Calendar.YEAR);
-					Log.i(TAG, "Validating year: " + yearValue + " against " 
-							+ currentYear);
+					int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+					String logMsg = "Validating year: " + yearValue + " against " + currentYear;
+					Log.i(TAG, logMsg);
+					Crashlytics.log(logMsg);
 					if (yearValue > currentYear || yearValue < currentYear-120){
-						throw new ValidationError("The year entered is not "
-								+"valid (in the future or too far in the past)."
-								+"Please try again.");
+						Crashlytics.logException(new IllegalArgumentException("The year entered is not "
+								+"valid (in the future or too far in the past)."));
 					}
 				} catch (Exception e) {
-					throw new ValidationError("The year entered is not a "
-							+"number. Please enter a number.");
+					Crashlytics.logException(new IllegalArgumentException("The year entered is not a "
+							+"number. " + year));
+					return true;
 				}
 			}
 		}
 		return true;
 	}
-
 }

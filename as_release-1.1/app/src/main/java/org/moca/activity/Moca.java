@@ -43,6 +43,8 @@ import org.moca.task.ValidationListener;
 import org.moca.util.MocaUtil;
 import org.moca.util.UserSettings;
 
+import java.util.Locale;
+
 /**
  * Main Sana activity. When Sana is launched, this activity runs, allowing the 
  * user to either run a procedure, view notifications, or view pending 
@@ -197,7 +199,9 @@ public class Moca extends AppCompatActivity implements View.OnClickListener, Log
         super.onResume();
         if (mSavedState != null) restoreLocalTaskState(mSavedState);
         appInForeground = true;
-        showLoginDialog(0);
+        if (shouldShowLoginDialog) {
+            showLoginDialog(message);
+        }
     }
 
     @Override
@@ -523,7 +527,7 @@ public class Moca extends AppCompatActivity implements View.OnClickListener, Log
                 }
                 String version = pInfo.versionName;
                 int versionCode = pInfo.versionCode;
-                String message = String.format("Addis Clinic App: %s(%d)", version, versionCode);
+                String message = String.format(Locale.US, "Addis Clinic App: %s(%d)", version, versionCode);
                 aboutBuilder.setMessage(message);
                 aboutBuilder.setCancelable(true);
                 dialog = aboutBuilder.create();
@@ -586,33 +590,31 @@ public class Moca extends AppCompatActivity implements View.OnClickListener, Log
 
     }
     private boolean shouldShowLoginDialog = false;
+    private int message;
 
     private void showLoginDialog(final int message) {
-        if (shouldShowLoginDialog) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
+        this.message = message;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (appInForeground) {
                     LoginFragment login = LoginFragment.getInstance(message);
                     login.show(getFragmentManager(), LoginFragment.class.getSimpleName());
+                    shouldShowLoginDialog = false;
+                } else {
+                    shouldShowLoginDialog = true;
                 }
-            });
-            shouldShowLoginDialog = false;
-        }
+            }
+        });
     }
 
     @Subscribe
     public void onLoginIOException(LoginIOExceptionEvent event) {
-        shouldShowLoginDialog = true;
-        if (appInForeground) {
-            showLoginDialog(R.string.show_login_ioexception_msg);
-        }
+        showLoginDialog(R.string.show_login_ioexception_msg);
     }
 
     @Subscribe
     public void onFailedLogin(LoginFailedEvent event) {
-        shouldShowLoginDialog = true;
-        if (appInForeground) {
-            showLoginDialog(0);
-        }
+        showLoginDialog(R.string.login_failed);
     }
 }

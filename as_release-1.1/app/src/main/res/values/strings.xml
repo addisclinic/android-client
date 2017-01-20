@@ -190,4 +190,5 @@
     <string name="show">Show</string>
     <string name="hide">Hide</string>
     <string name="show_login_ioexception_msg">Unable to reach server, Please try again.</string>
+    <string name="login_failed">Login failed, please try again.</string>
 </resources>

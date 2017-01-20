@@ -1,19 +1,11 @@
 package org.moca.procedure;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+import android.content.Context;
+import android.net.Uri;
+import android.os.Environment;
+import android.util.Log;
+import android.view.View;
+import android.widget.ViewAnimator;
 
 import org.moca.Constants;
 import org.moca.R;
@@ -25,12 +17,22 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.Environment;
-import android.util.Log;
-import android.view.View;
-import android.widget.ViewAnimator;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * A Procedure is, conceptually, a form that can be made up of a number of 
@@ -452,14 +454,38 @@ public class Procedure {
      * @return The answers for all of the ProcedureElements mapped to their ids 
      */
     public Map<String, String> toAnswers() {
-        HashMap<String,String> answers = new HashMap<String,String>(); 
+        Map<String,String> answers = new LinkedHashMap<>(pages.size());
         for(ProcedurePage pp : pages) {
         	pp.populateAnswers(answers);
         }
         
         return answers;
     }
-    
+
+    private Comparator<String> templateIdComparator = new Comparator<String>() {
+        @Override
+        public int compare(String lhs, String rhs) {
+            try {
+                int lhsNum = Integer.parseInt(lhs);
+                int rhsNum = Integer.parseInt(rhs);
+                return lhsNum < rhsNum ? -1 : (lhsNum == rhsNum) ? 0 : 1 ;
+            } catch (NumberFormatException e) {
+                return  -1;
+            }
+
+        }
+    };
+
+    private long toAscii(String s){
+        StringBuilder sb = new StringBuilder();
+        long asciiInt;
+        for (int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
+            asciiInt = (int)c;
+            sb.append(asciiInt);
+        }
+        return Long.parseLong(sb.toString());
+    }
     /**
      * Takes a map of answers and fills them into the elements of this 
      * procedure. Functionally, this is used to return a prior patient encounter
